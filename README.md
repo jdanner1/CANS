@@ -48,10 +48,10 @@ This is where CANS comes in!  Get an edge by letting the Craigslist Advanced Not
 
 ### Design
 
-* [Screen Design](DesignDocuments/Screens.md)
+* [Screen Design](Project_Documentation/Individual_Project_Screens.pdf)
 * [Application Flow](DesignDocuments/applicationFlow.md)
 * [Database Design](DesignDocuments/databaseDiagram.png)
 
-### [Project Plan](ProjectPlan.md)
+### [Project Plan](Project_Documentation/Individual Project Plan.docx)
 
 ### [Development Journal](Journal.md)
