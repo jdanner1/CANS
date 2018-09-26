@@ -23,6 +23,9 @@ Total time spent: 10-12 hours hours
 Total time spent:  10 hours
 
 ### Week 3
+
+9/23/18
+
 * Watched rest of videos for week 3.
 * Completed week 3 exercise and activity
 * Prepared for checkpoint 1 for Individual Project 
