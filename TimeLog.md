@@ -18,6 +18,13 @@ Total time spent: 10-12 hours hours
 * Started individual project, set up repo, configured web.xml, pom.xml, added README.md, Journal.md and TimeLog.md.
 * Completed Week 2 Activities.
 * Completed Week 2 Exercise.
-* Watched Week 3 videos.
+* Watched some Week 3 videos.
 
-Total time spent:  
+Total time spent:  10 hours
+
+### Week 3
+* Watched rest of videos for week 3.
+* Completed week 3 exercise and activity
+* Prepared for checkpoint 1 for Individual Project 
+
+Total time spent: 8 hours
