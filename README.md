@@ -52,6 +52,6 @@ This is where CANS comes in!  Get an edge by letting the Craigslist Advanced Not
 * [Application Flow](DesignDocuments/applicationFlow.md)
 * [Database Design](DesignDocuments/databaseDiagram.png)
 
-### [Project Plan](Project_Documentation/Individual Project Plan.docx)
+### [Project Plan](Project_Documentation/Individual_Project_Plan.docx)
 
 ### [Development Journal](Journal.md)
