@@ -7,10 +7,6 @@ Many people throughout the world enjoy using the website craigslist.org.  They a
 This is where CANS comes in!  Get an edge by letting the Craigslist Advanced Notification System watch for posting you care about and when one arrives you will be notified by your choice of email or text.  Be the first to reply more often without wasting time monitoring the site.  The site will allow users to register, then create as many notifications as desired, by location and category.  To align with the mission of craigslist this service will be offered for free but each user's notifications will be tracked to permit customer-specific advertising in the future.  Advertisers will enjoy the ability to build an understanding of CANS customers' interests and current needs so targeted marketing efforts are more successful.
 
 
-![Trail Description](images/MirrorLakeTrailExample.png)
-
-![Trail Report](images/MadisonAreaExample.png)
-
 
 ### Project Technologies/Techniques  - Retained Temporarily as a Guide
 
