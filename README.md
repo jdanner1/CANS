@@ -2,10 +2,9 @@
 
 ### Problem Statement
 
-Many people throughout the world enjoy using the website craigslist.org.  They appreciate the ability to post for free and many exchanges occur in win-win fashion.  It shines particularly for situations where shipping is impractical.  The primary down side of this site is competition; generally folks that post use the 'first come first served' approach when selecting a responder to work with.    
+Many people throughout the world enjoy using the website craigslist.org.  They appreciate the ability to post for free and many exchanges occur in win-win fashion.  It shines particularly for situations where shipping is impractical.  The site may appear to be built for non-commercial use but craigslist does offer features that businesses can take advantage of.  However, using the features is not practical for a non-technical user.    
 
-This is where CANS comes in!  Get an edge by letting the Craigslist Advanced Notification System watch for posting you care about and when one arrives you will be notified by your choice of email or text.  Be the first to reply more often without wasting time monitoring the site.  The site will allow users to register, then create as many notifications as desired, by location and category.  To align with the mission of craigslist this service will be offered for free but each user's notifications will be tracked to permit customer-specific advertising in the future.  Advertisers will enjoy the ability to build an understanding of CANS customers' interests and current needs so targeted marketing efforts are more successful.
-
+This is where CAPS comes in!  Get an edge by letting the Craigslist Advanced Posting System put your listings out in many cities or under several product categories with the same effort as creating a single post.  Our intention is not to flood the site with repetetive postings.  Instead, we are here to help aspiring entreprenures reach more people with less time at the computer.  Provided here are tools that will help you create, manage and remove postings at any scale.  Our service is not only for business owners and power hobbyists - it can work for folks that need something hard to find who are willing to search without regard to location to find what they need.  It is also well suited for high value items.  Give CAPS a try and see for yourself the power of craigslist's reach without losing all your time to repetetive work.  
 
 
 ### Project Technologies/Techniques  - Retained Temporarily as a Guide
