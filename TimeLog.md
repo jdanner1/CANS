@@ -31,3 +31,15 @@ Total time spent:  10 hours
 * Prepared for checkpoint 1 for Individual Project 
 
 Total time spent: 8 hours
+
+### Week 4
+
+9/30/18
+
+* Watched videos for week 4.
+* Refactored my indie project idea, updated the project plan, screen plan and problem statement accordingly
+* Created my database and tables I know I will need
+* Populated the Category table using terminal
+* Populated the much larger Area table by creating a small program
+* Used the task above as an excuse to set up logging, the database properties file, connection class and packages
+* Built some stub classes to help clarify what goes in the packages
