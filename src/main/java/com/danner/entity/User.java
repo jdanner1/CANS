@@ -15,6 +15,7 @@ public class User {
     @Column(name = "first_name")
     private String firstName;
 
+
     @Column(name = "last_name")
     private String lastName;
 
@@ -36,54 +37,54 @@ public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO, generator="native")
     @GenericGenerator(name = "native", strategy = "native")
+    @Column(name = "userID")
     private int userID;
 
     public User() {
 
     }
 
-    public User(int userID, String status_code, String first_name, String last_name, String user_name, String password, String email, String cl_password, int cl_accountID) {
-
+    public User(String statusCode, String firstName, String lastName, String userName, String password, String email, String clPassword, int clAccountID) {
+        this.statusCode = statusCode;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+        this.clPassword = clPassword;
+        this.clAccountID = clAccountID;
     }
 
-    public int getUserID() {
-        return userID;
-    }
-
-    public void setUserID(int userID) {
-        this.userID = userID;
-    }
-
-    public String getStatus_code() {
+    public String getStatusCode() {
         return statusCode;
     }
 
-    public void setStatus_code(String status_code) {
-        this.statusCode = status_code;
+    public void setStatusCode(String statusCode) {
+        this.statusCode = statusCode;
     }
 
-    public String getFirst_name() {
+    public String getFirstName() {
         return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.firstName = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLast_name() {
+    public String getLastName() {
         return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.lastName = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getUser_name() {
+    public String getUserName() {
         return userName;
     }
 
-    public void setUser_name(String user_name) {
-        this.userName = user_name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -102,21 +103,27 @@ public class User {
         this.email = email;
     }
 
-    public String getCl_password() {
+    public String getClPassword() {
         return clPassword;
     }
 
-    public void setCl_password(String cl_password) {
-        this.clPassword = cl_password;
+    public void setClPassword(String clPassword) {
+        this.clPassword = clPassword;
     }
 
-    public int getCl_accountID() {
+    public int getClAccountID() {
         return clAccountID;
     }
 
-    public void setCl_accountID(int cl_accountID) {
-        this.clAccountID = cl_accountID;
+    public void setClAccountID(int clAccountID) {
+        this.clAccountID = clAccountID;
     }
 
+    public int getUserID() {
+        return userID;
+    }
 
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
 }

@@ -1,4 +1,4 @@
 package com.danner.persistence;
 
-public class PostDAO {
+public class PostDao {
 }
