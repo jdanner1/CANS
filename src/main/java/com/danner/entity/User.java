@@ -1,16 +1,42 @@
 package com.danner.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.annotation.Generated;
+import javax.persistence.*;
+
+@Entity(name = "User")
+@Table(name = "user")
 public class User {
 
-    private int userID;
-    private String status_code;
-    private String first_name;
-    private String last_name;
-    private String user_name;
+    @Column(name = "status_code")
+    private String statusCode;
+
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
+
+    @Column(name = "user_name")
+    private String userName;
+
+    @Column(name = "password")
     private String password;
+
+    @Column(name = "email")
     private String email;
-    private String cl_password;
-    private int cl_accountID;
+
+    @Column(name = "cl_password")
+    private String clPassword;
+
+    @Column(name = "cl_accountID")
+    private int clAccountID;
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO, generator="native")
+    @GenericGenerator(name = "native", strategy = "native")
+    private int userID;
 
     public User() {
 
@@ -29,35 +55,35 @@ public class User {
     }
 
     public String getStatus_code() {
-        return status_code;
+        return statusCode;
     }
 
     public void setStatus_code(String status_code) {
-        this.status_code = status_code;
+        this.statusCode = status_code;
     }
 
     public String getFirst_name() {
-        return first_name;
+        return firstName;
     }
 
     public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+        this.firstName = first_name;
     }
 
     public String getLast_name() {
-        return last_name;
+        return lastName;
     }
 
     public void setLast_name(String last_name) {
-        this.last_name = last_name;
+        this.lastName = last_name;
     }
 
     public String getUser_name() {
-        return user_name;
+        return userName;
     }
 
     public void setUser_name(String user_name) {
-        this.user_name = user_name;
+        this.userName = user_name;
     }
 
     public String getPassword() {
@@ -77,19 +103,19 @@ public class User {
     }
 
     public String getCl_password() {
-        return cl_password;
+        return clPassword;
     }
 
     public void setCl_password(String cl_password) {
-        this.cl_password = cl_password;
+        this.clPassword = cl_password;
     }
 
     public int getCl_accountID() {
-        return cl_accountID;
+        return clAccountID;
     }
 
     public void setCl_accountID(int cl_accountID) {
-        this.cl_accountID = cl_accountID;
+        this.clAccountID = cl_accountID;
     }
 
 
