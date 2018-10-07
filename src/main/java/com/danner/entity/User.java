@@ -2,8 +2,9 @@ package com.danner.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.annotation.Generated;
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity(name = "User")
 @Table(name = "user")
@@ -38,6 +39,9 @@ public class User {
     @GenericGenerator(name = "native", strategy = "native")
     @Column(name = "userID")
     private int userID;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<Post> posts = new HashSet<>();
 
     public User() {
 
@@ -124,5 +128,28 @@ public class User {
 
     public void setUserID(int userID) {
         this.userID = userID;
+    }
+
+    public Set<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(Set<Post> posts) {
+        this.posts = posts;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "statusCode='" + statusCode + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", clPassword='" + clPassword + '\'' +
+                ", clAccountID=" + clAccountID +
+                ", userID=" + userID +
+                '}';
     }
 }

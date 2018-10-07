@@ -1,66 +1,144 @@
 package com.danner.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+
+@Entity(name = "Post")
+@Table(name = "post")
 public class Post {
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO, generator="native")
+    @GenericGenerator(name = "native", strategy = "native")
+    @Column(name = "postID")
     private int postID;
-    private int userID;
-    private String status_code;
+
+    @ManyToOne
+    private User user;
+
+    @Column(name = "status_code")
+    private String statusCode;
+
     private String title;
+
     private String description;
-    private String category_code;
-    private String area_code;
-    private String subarea_code;
-    private String replyemail;
-    private String privacy_code;
-    private int outsidecontactok;
-    private String location_city;
-    private String location_state;
-    private String location_postal;
-    private String location_crossstreet1;
-    private String location_crossstreet2;
-    private String location_latitude;
-    private String location_longitude;
+
+    @Column(name = "category_code")
+    private String categoryCode;
+
+    @Column(name = "area_code")
+    private String areaCode;
+
+    @Column(name = "subarea_code")
+    private String subareaCode;
+
+    @Column(name = "reply_email")
+    private String replyEmail;
+
+    @Column(name = "privacy_code")
+    private String privacyCode;
+
+    @Column(name = "outsidecontactok")
+    private int outsideContactOk;
+
+    @Column(name = "location_city")
+    private String locationCity;
+
+    @Column(name = "location_state")
+    private String locationState;
+
+    @Column(name = "location_postal")
+    private String locationPostal;
+
+    @Column(name = "location_crossstreet1")
+    private String locationCrossStreet1;
+
+    @Column(name = "location_crossstreet2")
+    private String locationCrossStreet2;
+
+    @Column(name = "location_latitude")
+    private String locationLatitude;
+
+    @Column(name = "location_longitude")
+    private String locationLongitude;
+
     private String image;
-    private int image_postion;
+
+    @Column(name = "image_postion")
+    private int imagePostion;
+
     private int price;
-    private String contact_name;
-    private String contact_phone;
-    private String contact_phone_extension;
-    private int contacttextok;
-    private int seemyother;
+
+    @Column(name = "contact_name")
+    private String contactName;
+
+    @Column(name = "contact_phone")
+    private String contactPhone;
+
+    @Column(name = "contact_phone_extension")
+    private String contactPhoneExtension;
+
+    @Column(name = "contacttextok")
+    private int contactTextOk;
+
+    @Column(name = "seemyother")
+    private int seeMyOther;
 
     public Post() {
 
     }
 
-    public Post(int postID, int userID, String status_code, String title, String description, String category_code, String area_code, String subarea_code, String replyemail, String privacy_code,
-                int outsidecontactok, String location_city, String location_state, String location_postal, String location_crossstreet1, String location_crossstreet2, String location_latitude,
-                String location_longitude, String image, int image_postion, int price, String contact_name, String contact_phone, String contact_phone_extension, int contacttextok, int seemyother) {
+    public Post(User user, String statusCode, String title, String description, String categoryCode, String areaCode, String subareaCode, String replyEmail,
+                String privacyCode, int outsideContactOk, String locationCity, String locationState, String locationPostal, String locationCrossStreet1, String locationCrossStreet2,
+                String locationLatitude, String locationLongitude, String image, int imagePostion, int price, String contactName, String contactPhone, String contactPhoneExtension,
+                int contactTextOk, int seeMyOther) {
 
+        this.user = user;
+        this.statusCode = statusCode;
+        this.title = title;
+        this.description = description;
+        this.categoryCode = categoryCode;
+        this.areaCode = areaCode;
+        this.subareaCode = subareaCode;
+        this.replyEmail = replyEmail;
+        this.privacyCode = privacyCode;
+        this.outsideContactOk = outsideContactOk;
+        this.locationCity = locationCity;
+        this.locationState = locationState;
+        this.locationPostal = locationPostal;
+        this.locationCrossStreet1 = locationCrossStreet1;
+        this.locationCrossStreet2 = locationCrossStreet2;
+        this.locationLatitude = locationLatitude;
+        this.locationLongitude = locationLongitude;
+        this.image = image;
+        this.imagePostion = imagePostion;
+        this.price = price;
+        this.contactName = contactName;
+        this.contactPhone = contactPhone;
+        this.contactPhoneExtension = contactPhoneExtension;
+        this.contactTextOk = contactTextOk;
+        this.seeMyOther = seeMyOther;
     }
 
     public int getPostID() {
         return postID;
+    } //removed setPostID since the db does this, assume ok
+
+    public User getUser() {
+        return user;
     }
 
-    public void setPostID(int postID) {
-        this.postID = postID;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public int getUserID() {
-        return userID;
+    public String getStatusCode() {
+        return statusCode;
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
-    }
-
-    public String getStatus_code() {
-        return status_code;
-    }
-
-    public void setStatus_code(String status_code) {
-        this.status_code = status_code;
+    public void setStatusCode(String statusCode) {
+        this.statusCode = statusCode;
     }
 
     public String getTitle() {
@@ -79,108 +157,108 @@ public class Post {
         this.description = description;
     }
 
-    public String getCategory_code() {
-        return category_code;
+    public String getCategoryCode() {
+        return categoryCode;
     }
 
-    public void setCategory_code(String category_code) {
-        this.category_code = category_code;
+    public void setCategoryCode(String categoryCode) {
+        this.categoryCode = categoryCode;
     }
 
-    public String getArea_code() {
-        return area_code;
+    public String getAreaCode() {
+        return areaCode;
     }
 
-    public void setArea_code(String area_code) {
-        this.area_code = area_code;
+    public void setAreaCode(String areaCode) {
+        this.areaCode = areaCode;
     }
 
-    public String getSubarea_code() {
-        return subarea_code;
+    public String getSubareaCode() {
+        return subareaCode;
     }
 
-    public void setSubarea_code(String subarea_code) {
-        this.subarea_code = subarea_code;
+    public void setSubareaCode(String subareaCode) {
+        this.subareaCode = subareaCode;
     }
 
-    public String getReplyemail() {
-        return replyemail;
+    public String getReplyEmail() {
+        return replyEmail;
     }
 
-    public void setReplyemail(String replyemail) {
-        this.replyemail = replyemail;
+    public void setReplyEmail(String replyEmail) {
+        this.replyEmail = replyEmail;
     }
 
-    public String getPrivacy_code() {
-        return privacy_code;
+    public String getPrivacyCode() {
+        return privacyCode;
     }
 
-    public void setPrivacy_code(String privacy_code) {
-        this.privacy_code = privacy_code;
+    public void setPrivacyCode(String privacyCode) {
+        this.privacyCode = privacyCode;
     }
 
-    public int getOutsidecontactok() {
-        return outsidecontactok;
+    public int getOutsideContactOk() {
+        return outsideContactOk;
     }
 
-    public void setOutsidecontactok(int outsidecontactok) {
-        this.outsidecontactok = outsidecontactok;
+    public void setOutsideContactOk(int outsideContactOk) {
+        this.outsideContactOk = outsideContactOk;
     }
 
-    public String getLocation_city() {
-        return location_city;
+    public String getLocationCity() {
+        return locationCity;
     }
 
-    public void setLocation_city(String location_city) {
-        this.location_city = location_city;
+    public void setLocationCity(String locationCity) {
+        this.locationCity = locationCity;
     }
 
-    public String getLocation_state() {
-        return location_state;
+    public String getLocationState() {
+        return locationState;
     }
 
-    public void setLocation_state(String location_state) {
-        this.location_state = location_state;
+    public void setLocationState(String locationState) {
+        this.locationState = locationState;
     }
 
-    public String getLocation_postal() {
-        return location_postal;
+    public String getLocationPostal() {
+        return locationPostal;
     }
 
-    public void setLocation_postal(String location_postal) {
-        this.location_postal = location_postal;
+    public void setLocationPostal(String locationPostal) {
+        this.locationPostal = locationPostal;
     }
 
-    public String getLocation_crossstreet1() {
-        return location_crossstreet1;
+    public String getLocationCrossStreet1() {
+        return locationCrossStreet1;
     }
 
-    public void setLocation_crossstreet1(String location_crossstreet1) {
-        this.location_crossstreet1 = location_crossstreet1;
+    public void setLocationCrossStreet1(String locationCrossStreet1) {
+        this.locationCrossStreet1 = locationCrossStreet1;
     }
 
-    public String getLocation_crossstreet2() {
-        return location_crossstreet2;
+    public String getLocationCrossStreet2() {
+        return locationCrossStreet2;
     }
 
-    public void setLocation_crossstreet2(String location_crossstreet2) {
-        this.location_crossstreet2 = location_crossstreet2;
+    public void setLocationCrossStreet2(String locationCrossStreet2) {
+        this.locationCrossStreet2 = locationCrossStreet2;
     }
 
-    public String getLocation_latitude() {
-        return location_latitude;
+    public String getLocationLatitude() {
+        return locationLatitude;
     }
 
-    public void setLocation_latitude(String location_latitude) {
-        this.location_latitude = location_latitude;
+    public void setLocationLatitude(String locationLatitude) {
+        this.locationLatitude = locationLatitude;
     }
 
-    public String getLocation_longitude() {
-        return location_longitude;
+    public String getLocationLongitude() {
+        return locationLongitude;
     }
 
-    public void setLocation_longitude(String location_longitude) {
-        this.location_longitude = location_longitude;
+    public void setLocationLongitude(String locationLongitude) {
+        this.locationLongitude = locationLongitude;
     }
 
     public String getImage() {
@@ -191,12 +269,12 @@ public class Post {
         this.image = image;
     }
 
-    public int getImage_postion() {
-        return image_postion;
+    public int getImagePostion() {
+        return imagePostion;
     }
 
-    public void setImage_postion(int image_postion) {
-        this.image_postion = image_postion;
+    public void setImagePostion(int imagePostion) {
+        this.imagePostion = imagePostion;
     }
 
     public int getPrice() {
@@ -207,44 +285,75 @@ public class Post {
         this.price = price;
     }
 
-    public String getContact_name() {
-        return contact_name;
+    public String getContactName() {
+        return contactName;
     }
 
-    public void setContact_name(String contact_name) {
-        this.contact_name = contact_name;
+    public void setContactName(String contactName) {
+        this.contactName = contactName;
     }
 
-    public String getContact_phone() {
-        return contact_phone;
+    public String getContactPhone() {
+        return contactPhone;
     }
 
-    public void setContact_phone(String contact_phone) {
-        this.contact_phone = contact_phone;
+    public void setContactPhone(String contactPhone) {
+        this.contactPhone = contactPhone;
     }
 
-    public String getContact_phone_extension() {
-        return contact_phone_extension;
+    public String getContactPhoneExtension() {
+        return contactPhoneExtension;
     }
 
-    public void setContact_phone_extension(String contact_phone_extension) {
-        this.contact_phone_extension = contact_phone_extension;
+    public void setContactPhoneExtension(String contactPhoneExtension) {
+        this.contactPhoneExtension = contactPhoneExtension;
     }
 
-    public int getContacttextok() {
-        return contacttextok;
+    public int getContactTextOk() {
+        return contactTextOk;
     }
 
-    public void setContacttextok(int contacttextok) {
-        this.contacttextok = contacttextok;
+    public void setContactTextOk(int contactTextOk) {
+        this.contactTextOk = contactTextOk;
     }
 
-    public int getSeemyother() {
-        return seemyother;
+    public int getSeeMyOther() {
+        return seeMyOther;
     }
 
-    public void setSeemyother(int seemyother) {
-        this.seemyother = seemyother;
+    public void setSeeMyOther(int seeMyOther) {
+        this.seeMyOther = seeMyOther;
     }
 
+    @Override
+    public String toString() {
+        return "Post{" +
+                "postID=" + postID +
+                ", user=" + user +
+                ", statusCode='" + statusCode + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", categoryCode='" + categoryCode + '\'' +
+                ", areaCode='" + areaCode + '\'' +
+                ", subareaCode='" + subareaCode + '\'' +
+                ", replyEmail='" + replyEmail + '\'' +
+                ", privacyCode='" + privacyCode + '\'' +
+                ", outsideContactOk=" + outsideContactOk +
+                ", locationCity='" + locationCity + '\'' +
+                ", locationState='" + locationState + '\'' +
+                ", locationPostal='" + locationPostal + '\'' +
+                ", locationCrossStreet1='" + locationCrossStreet1 + '\'' +
+                ", locationCrossStreet2='" + locationCrossStreet2 + '\'' +
+                ", locationLatitude='" + locationLatitude + '\'' +
+                ", locationLongitude='" + locationLongitude + '\'' +
+                ", image='" + image + '\'' +
+                ", imagePostion=" + imagePostion +
+                ", price=" + price +
+                ", contactName='" + contactName + '\'' +
+                ", contactPhone='" + contactPhone + '\'' +
+                ", contactPhoneExtension='" + contactPhoneExtension + '\'' +
+                ", contactTextOk=" + contactTextOk +
+                ", seeMyOther=" + seeMyOther +
+                '}';
+    }
 }
