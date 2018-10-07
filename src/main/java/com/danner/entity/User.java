@@ -58,6 +58,17 @@ public class User {
         this.clAccountID = clAccountID;
     }
 
+    public void addPost(Post post)  {
+        posts.add(post);
+        post.setUser(this);
+
+    }
+
+    public void removePost(Post post)  {
+        posts.remove(post);
+        post.setUser(null);
+    }
+
     public String getStatusCode() {
         return statusCode;
     }
@@ -126,9 +137,6 @@ public class User {
         return userID;
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
-    }
 
     public Set<Post> getPosts() {
         return posts;

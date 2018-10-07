@@ -33,7 +33,7 @@ public class Post {
     @Column(name = "subarea_code")
     private String subareaCode;
 
-    @Column(name = "reply_email")
+    @Column(name = "replyemail")
     private String replyEmail;
 
     @Column(name = "privacy_code")
@@ -65,8 +65,8 @@ public class Post {
 
     private String image;
 
-    @Column(name = "image_postion")
-    private int imagePostion;
+    @Column(name = "image_position")
+    private int imagePosition;
 
     private int price;
 
@@ -91,7 +91,7 @@ public class Post {
 
     public Post(User user, String statusCode, String title, String description, String categoryCode, String areaCode, String subareaCode, String replyEmail,
                 String privacyCode, int outsideContactOk, String locationCity, String locationState, String locationPostal, String locationCrossStreet1, String locationCrossStreet2,
-                String locationLatitude, String locationLongitude, String image, int imagePostion, int price, String contactName, String contactPhone, String contactPhoneExtension,
+                String locationLatitude, String locationLongitude, String image, int imagePosition, int price, String contactName, String contactPhone, String contactPhoneExtension,
                 int contactTextOk, int seeMyOther) {
 
         this.user = user;
@@ -112,7 +112,7 @@ public class Post {
         this.locationLatitude = locationLatitude;
         this.locationLongitude = locationLongitude;
         this.image = image;
-        this.imagePostion = imagePostion;
+        this.imagePosition = imagePosition;
         this.price = price;
         this.contactName = contactName;
         this.contactPhone = contactPhone;
@@ -270,11 +270,11 @@ public class Post {
     }
 
     public int getImagePostion() {
-        return imagePostion;
+        return imagePosition;
     }
 
     public void setImagePostion(int imagePostion) {
-        this.imagePostion = imagePostion;
+        this.imagePosition = imagePostion;
     }
 
     public int getPrice() {
@@ -347,7 +347,7 @@ public class Post {
                 ", locationLatitude='" + locationLatitude + '\'' +
                 ", locationLongitude='" + locationLongitude + '\'' +
                 ", image='" + image + '\'' +
-                ", imagePostion=" + imagePostion +
+                ", imagePostion=" + imagePosition +
                 ", price=" + price +
                 ", contactName='" + contactName + '\'' +
                 ", contactPhone='" + contactPhone + '\'' +

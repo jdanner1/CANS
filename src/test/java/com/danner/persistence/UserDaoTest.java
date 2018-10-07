@@ -1,5 +1,6 @@
 package com.danner.persistence;
 
+import com.danner.entity.Post;
 import com.danner.entity.User;
 import com.danner.persistence.Database;
 import org.apache.logging.log4j.LogManager;
@@ -70,6 +71,48 @@ class UserDaoTest {
         User addedUser = dao.getUserByID(userID);
         assertEquals("Luther", addedUser.getFirstName());
     }
+/**
+    @Test  //working here!!!!!!!!!!!!!!
+    void addUserWithPost() {
+        User user = new User("A", "Luther", "Danner", "ldanner2", "password", "ldanner2@madisoncollege.edu", "password2", 2123970);
+
+        String statusCode = "A";
+        String title = "Dual Axle Dump Trailer";
+        String description = "With all steel construction, pull out loading ramps, dual 5,000 lb axles and a 10,000 lb capacity hydraulic dump box, 'The Mule' work trailer will help you get the job done.";
+        String categoryCode = "trb";
+        String areaCode = "mad";
+        String subAreaCode = null;
+        String replyEmail = "jdanner1@madisoncollege.edu";
+        String privacyCode = "P";
+        int outsideContactOk = 0;
+        String locationCity = "Madison";
+        String locationState = "WI";
+        String locationPostal = "53711";
+        String locationCrossStreet1 = "John Nolen Dr.";
+        String locationCrossStreet2 = "E. Wilson St.";
+        String locationLatitude = "43.053619";
+        String locationLongitude = "-89.377808";
+        String image = null;
+        int imagePosition = 0;
+        int price = 6899;
+        String contactName = "John Danner";
+        String contactPhone = null;
+        String contactPhoneExtension = null;
+        int contactTextOk = 1;
+        int seeMyOther = 1;
+
+        Post post = new Post(user, statusCode, title, description, categoryCode, areaCode, subAreaCode, replyEmail, privacyCode, outsideContactOk,
+                locationCity, locationState, locationPostal, locationCrossStreet1, locationCrossStreet2, locationLatitude, locationLongitude, image,
+                imagePosition, price, contactName, contactPhone, contactPhoneExtension, contactTextOk, seeMyOther);
+
+        user.addPost(post);
+
+        int userID = dao.addUser(user);
+        assertNotEquals(0, userID);
+        User addedUser = dao.getUserByID(userID);
+        assertEquals("Luther", addedUser.getFirstName());
+        assertEquals(1, addedUser.getPosts().size());
+    }
 
     @Test
     void getUserByID() {
@@ -93,5 +136,6 @@ class UserDaoTest {
         dao.deleteUser(dao.getUserByID(1));
         assertNull(dao.getUserByID(1));
     }
+    */
 }
 
