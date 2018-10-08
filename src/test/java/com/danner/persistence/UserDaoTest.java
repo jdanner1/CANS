@@ -35,6 +35,7 @@ class UserDaoTest {
             int result = statement.executeUpdate("SET FOREIGN_KEY_CHECKS = 0;");
             logger.info("SQL_Result_1: " + result);
             result = statement.executeUpdate("TRUNCATE user;");
+            result = statement.executeUpdate("TRUNCATE post;");
             logger.info("SQL_Result_2: " + result);
             result = statement.executeUpdate("SET FOREIGN_KEY_CHECKS = 1;");
             logger.info("SQL_Result_3: " + result);
@@ -71,8 +72,8 @@ class UserDaoTest {
         User addedUser = dao.getUserByID(userID);
         assertEquals("Luther", addedUser.getFirstName());
     }
-/**
-    @Test  //working here!!!!!!!!!!!!!!
+
+    @Test //Working on this
     void addUserWithPost() {
         User user = new User("A", "Luther", "Danner", "ldanner2", "password", "ldanner2@madisoncollege.edu", "password2", 2123970);
 
@@ -136,6 +137,5 @@ class UserDaoTest {
         dao.deleteUser(dao.getUserByID(1));
         assertNull(dao.getUserByID(1));
     }
-    */
 }
 

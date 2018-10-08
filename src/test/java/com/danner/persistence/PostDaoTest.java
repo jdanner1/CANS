@@ -39,17 +39,11 @@ class PostDaoTest {
             int result = statement.executeUpdate("SET FOREIGN_KEY_CHECKS = 0;");
             logger.info("SQL_Result_1: " + result);
             result = statement.executeUpdate("TRUNCATE user;");
+            result = statement.executeUpdate("TRUNCATE post;");
             logger.info("SQL_Result_2: " + result);
             result = statement.executeUpdate("SET FOREIGN_KEY_CHECKS = 1;");
             logger.info("SQL_Result_3: " + result);
 
-            Statement statement2 = connection.createStatement();
-            int result2 = statement2.executeUpdate("SET FOREIGN_KEY_CHECKS = 0;");
-            logger.info("SQL_Result_1b: " + result);
-            result2 = statement2.executeUpdate("TRUNCATE post;");
-            logger.info("SQL_Result_2b: " + result);
-            result2 = statement2.executeUpdate("SET FOREIGN_KEY_CHECKS = 1;");
-            logger.info("SQL_Result_3b: " + result);
 
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO user "
                     + "(status_code, first_name, last_name, user_name, password, email, cl_password, cl_accountID, create_date) "
@@ -108,7 +102,7 @@ class PostDaoTest {
         }
     }
 
-    @Test
+   @Test
     void addPost() {
         User user = userDao.getUserByID(1);
         String statusCode = "A";

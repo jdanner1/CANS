@@ -15,6 +15,7 @@ public class Post {
     private int postID;
 
     @ManyToOne
+    @JoinColumn(name = "UserID")
     private User user;
 
     @Column(name = "status_code")
