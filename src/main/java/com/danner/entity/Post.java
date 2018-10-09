@@ -3,6 +3,7 @@ package com.danner.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity(name = "Post")
 @Table(name = "post")
@@ -86,6 +87,12 @@ public class Post {
     @Column(name = "seemyother")
     private int seeMyOther;
 
+    @Column(name = "create_date")
+    private LocalDate createDate;
+
+    @Column(name = "modify_date")
+    private LocalDate modifyDate;
+
     public Post() {
 
     }
@@ -120,6 +127,7 @@ public class Post {
         this.contactPhoneExtension = contactPhoneExtension;
         this.contactTextOk = contactTextOk;
         this.seeMyOther = seeMyOther;
+        createDate = LocalDate.now();
     }
 
     public int getPostID() {
@@ -326,6 +334,19 @@ public class Post {
         this.seeMyOther = seeMyOther;
     }
 
+
+    public LocalDate getCreateDate() {
+        return createDate;
+    }
+
+    public LocalDate getModifyDate() {
+        return modifyDate;
+    }
+
+    public void setModifyDate(LocalDate modifyDate) {
+        this.modifyDate = modifyDate;
+    }
+
     @Override
     public String toString() {
         return "Post{" +
@@ -348,13 +369,86 @@ public class Post {
                 ", locationLatitude='" + locationLatitude + '\'' +
                 ", locationLongitude='" + locationLongitude + '\'' +
                 ", image='" + image + '\'' +
-                ", imagePostion=" + imagePosition +
+                ", imagePosition=" + imagePosition +
                 ", price=" + price +
                 ", contactName='" + contactName + '\'' +
                 ", contactPhone='" + contactPhone + '\'' +
                 ", contactPhoneExtension='" + contactPhoneExtension + '\'' +
                 ", contactTextOk=" + contactTextOk +
                 ", seeMyOther=" + seeMyOther +
+                ", createDate=" + createDate +
+                ", modifyDate=" + modifyDate +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Post post = (Post) o;
+
+        if (postID != post.postID) return false;
+        if (outsideContactOk != post.outsideContactOk) return false;
+        if (imagePosition != post.imagePosition) return false;
+        if (price != post.price) return false;
+        if (contactTextOk != post.contactTextOk) return false;
+        if (seeMyOther != post.seeMyOther) return false;
+        if (!user.equals(post.user)) return false;
+        if (statusCode != null ? !statusCode.equals(post.statusCode) : post.statusCode != null) return false;
+        if (!title.equals(post.title)) return false;
+        if (!description.equals(post.description)) return false;
+        if (!categoryCode.equals(post.categoryCode)) return false;
+        if (!areaCode.equals(post.areaCode)) return false;
+        if (subareaCode != null ? !subareaCode.equals(post.subareaCode) : post.subareaCode != null) return false;
+        if (!replyEmail.equals(post.replyEmail)) return false;
+        if (!privacyCode.equals(post.privacyCode)) return false;
+        if (!locationCity.equals(post.locationCity)) return false;
+        if (!locationState.equals(post.locationState)) return false;
+        if (!locationPostal.equals(post.locationPostal)) return false;
+        if (!locationCrossStreet1.equals(post.locationCrossStreet1)) return false;
+        if (!locationCrossStreet2.equals(post.locationCrossStreet2)) return false;
+        if (!locationLatitude.equals(post.locationLatitude)) return false;
+        if (!locationLongitude.equals(post.locationLongitude)) return false;
+        if (image != null ? !image.equals(post.image) : post.image != null) return false;
+        if (contactName != null ? !contactName.equals(post.contactName) : post.contactName != null) return false;
+        if (contactPhone != null ? !contactPhone.equals(post.contactPhone) : post.contactPhone != null) return false;
+        if (contactPhoneExtension != null ? !contactPhoneExtension.equals(post.contactPhoneExtension) : post.contactPhoneExtension != null)
+            return false;
+        if (createDate != null ? !createDate.equals(post.createDate) : post.createDate != null) return false;
+        return modifyDate != null ? modifyDate.equals(post.modifyDate) : post.modifyDate == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = postID;
+        result = 31 * result + user.hashCode();
+        result = 31 * result + (statusCode != null ? statusCode.hashCode() : 0);
+        result = 31 * result + title.hashCode();
+        result = 31 * result + description.hashCode();
+        result = 31 * result + categoryCode.hashCode();
+        result = 31 * result + areaCode.hashCode();
+        result = 31 * result + (subareaCode != null ? subareaCode.hashCode() : 0);
+        result = 31 * result + replyEmail.hashCode();
+        result = 31 * result + privacyCode.hashCode();
+        result = 31 * result + outsideContactOk;
+        result = 31 * result + locationCity.hashCode();
+        result = 31 * result + locationState.hashCode();
+        result = 31 * result + locationPostal.hashCode();
+        result = 31 * result + locationCrossStreet1.hashCode();
+        result = 31 * result + locationCrossStreet2.hashCode();
+        result = 31 * result + locationLatitude.hashCode();
+        result = 31 * result + locationLongitude.hashCode();
+        result = 31 * result + (image != null ? image.hashCode() : 0);
+        result = 31 * result + imagePosition;
+        result = 31 * result + price;
+        result = 31 * result + (contactName != null ? contactName.hashCode() : 0);
+        result = 31 * result + (contactPhone != null ? contactPhone.hashCode() : 0);
+        result = 31 * result + (contactPhoneExtension != null ? contactPhoneExtension.hashCode() : 0);
+        result = 31 * result + contactTextOk;
+        result = 31 * result + seeMyOther;
+        result = 31 * result + (createDate != null ? createDate.hashCode() : 0);
+        result = 31 * result + (modifyDate != null ? modifyDate.hashCode() : 0);
+        return result;
     }
 }

@@ -3,6 +3,7 @@ package com.danner.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,10 +23,7 @@ public class User {
     @Column(name = "user_name")
     private String userName;
 
-    @Column(name = "password")
     private String password;
-
-    @Column(name = "email")
     private String email;
 
     @Column(name = "cl_password")
@@ -33,6 +31,12 @@ public class User {
 
     @Column(name = "cl_accountID")
     private int clAccountID;
+
+    @Column(name = "create_date")
+    private LocalDate createDate;
+
+    @Column(name = "modify_date")
+    private LocalDate modifyDate;
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO, generator="native")
@@ -56,6 +60,7 @@ public class User {
         this.email = email;
         this.clPassword = clPassword;
         this.clAccountID = clAccountID;
+        createDate = LocalDate.now();
     }
 
     public void addPost(Post post)  {
@@ -137,6 +142,17 @@ public class User {
         return userID;
     }
 
+    public LocalDate getCreateDate() {
+        return createDate;
+    }
+
+    public LocalDate getModifyDate() {
+        return modifyDate;
+    }
+
+    public void setModifyDate(LocalDate modifyDate) {
+        this.modifyDate = modifyDate;
+    }
 
     public Set<Post> getPosts() {
         return posts;
@@ -157,7 +173,45 @@ public class User {
                 ", email='" + email + '\'' +
                 ", clPassword='" + clPassword + '\'' +
                 ", clAccountID=" + clAccountID +
+                ", createDate=" + createDate +
+                ", modifyDate=" + modifyDate +
                 ", userID=" + userID +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (clAccountID != user.clAccountID) return false;
+        if (userID != user.userID) return false;
+        if (statusCode != null ? !statusCode.equals(user.statusCode) : user.statusCode != null) return false;
+        if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
+        if (!userName.equals(user.userName)) return false;
+        if (!password.equals(user.password)) return false;
+        if (!email.equals(user.email)) return false;
+        if (!clPassword.equals(user.clPassword)) return false;
+        if (createDate != null ? !createDate.equals(user.createDate) : user.createDate != null) return false;
+        return modifyDate != null ? modifyDate.equals(user.modifyDate) : user.modifyDate == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = statusCode != null ? statusCode.hashCode() : 0;
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + userName.hashCode();
+        result = 31 * result + password.hashCode();
+        result = 31 * result + email.hashCode();
+        result = 31 * result + clPassword.hashCode();
+        result = 31 * result + clAccountID;
+        result = 31 * result + (createDate != null ? createDate.hashCode() : 0);
+        result = 31 * result + (modifyDate != null ? modifyDate.hashCode() : 0);
+        result = 31 * result + userID;
+        return result;
     }
 }

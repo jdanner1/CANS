@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 
 import static junit.framework.TestCase.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -58,6 +59,7 @@ class PostDaoTest {
         String contactPhoneExtension = null;
         int contactTextOk = 1;
         int seeMyOther = 1;
+        LocalDate createDate = LocalDate.now();
 
         Post post = new Post(user, statusCode, title, description, categoryCode, areaCode, subAreaCode, replyEmail, privacyCode, outsideContactOk,
                 locationCity, locationState, locationPostal, locationCrossStreet1, locationCrossStreet2, locationLatitude, locationLongitude, image,
@@ -66,7 +68,8 @@ class PostDaoTest {
         int postID = dao.addPost(post);
         assertNotEquals(0, postID);
         Post addedPost = dao.getPostByID(postID);
-        assertEquals(8899, addedPost.getPrice());
+        assertEquals(post, addedPost);
+       logger.info("Post Info: " + addedPost.toString());
     }
 
 
@@ -75,7 +78,8 @@ class PostDaoTest {
     void getPostByID() {
         Post retrievedPost = dao.getPostByID(1);
         assertNotNull(retrievedPost);
-        assertEquals("Snowmobile Trailer", retrievedPost.getTitle());
+        assertEquals(dao.getPostByID(1), retrievedPost);
+        logger.info("Post Info: " + retrievedPost.toString());
     }
 
     @Test
@@ -85,7 +89,8 @@ class PostDaoTest {
         post.setTitle(newTitle);
         dao.updatePost(post);
         Post retrievedPost = dao.getPostByID(1);
-        assertEquals(newTitle, retrievedPost.getTitle());
+        assertEquals(post, retrievedPost);
+        logger.info("Post Info: " + retrievedPost.toString());
     }
 
     @Test

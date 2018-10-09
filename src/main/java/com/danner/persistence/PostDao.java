@@ -8,6 +8,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import java.time.LocalDate;
+
 public class PostDao {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
@@ -31,6 +33,7 @@ public class PostDao {
     }
 
     public void updatePost(Post post)  {
+        post.setModifyDate(LocalDate.now());
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         session.saveOrUpdate(post);

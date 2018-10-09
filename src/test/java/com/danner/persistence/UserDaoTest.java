@@ -6,16 +6,21 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserDaoTest {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
     UserDao dao;
+    PostDao postDao;
 
     @BeforeEach
     void setUp() {
         dao = new UserDao();
+        postDao = new PostDao();
         TestUserGenerator testUser = new TestUserGenerator();
         testUser.initializeUser();
     }
@@ -29,7 +34,7 @@ class UserDaoTest {
         assertEquals("Luther", addedUser.getFirstName());
     }
 
-    @Test //Working on this
+    @Test
     void addUserWithPost() {
         User user = new User("A", "Luther", "Danner", "ldanner2", "password", "ldanner2@madisoncollege.edu", "password2", 2123970);
 
@@ -67,15 +72,21 @@ class UserDaoTest {
         int userID = dao.addUser(user);
         assertNotEquals(0, userID);
         User addedUser = dao.getUserByID(userID);
-        assertEquals("Luther", addedUser.getFirstName());
+        assertEquals(user, addedUser);
         assertEquals(1, addedUser.getPosts().size());
+        int postId = post.getPostID();
+        Post addedPost = postDao.getPostByID(postId);
+        assertEquals(post, addedPost);
+        logger.info("User Info: " + user.toString());
+        logger.info("Post Info: " + post.toString());
     }
 
     @Test
     void getUserByID() {
         User retrievedUser = dao.getUserByID(1);
         assertNotNull(retrievedUser);
-        assertEquals("John", retrievedUser.getFirstName());
+        assertEquals(dao.getUserByID(1), retrievedUser);
+        logger.info("User Info: " + retrievedUser.toString());
     }
 
     @Test
@@ -85,7 +96,8 @@ class UserDaoTest {
         user.setFirstName(newFirstName);
         dao.updateUser(user);
         User retrievedUser = dao.getUserByID(1);
-        assertEquals(newFirstName, retrievedUser.getFirstName());
+        assertEquals(user, retrievedUser);
+        logger.info("User Info: " + retrievedUser.toString());
     }
 
     @Test

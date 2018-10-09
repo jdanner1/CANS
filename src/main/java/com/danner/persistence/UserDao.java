@@ -10,6 +10,7 @@ import org.hibernate.Transaction;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.time.LocalDate;
 
 public class UserDao {
 
@@ -34,6 +35,7 @@ public class UserDao {
     }
 
     public void updateUser(User user)  {
+        user.setModifyDate(LocalDate.now());
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         session.saveOrUpdate(user);

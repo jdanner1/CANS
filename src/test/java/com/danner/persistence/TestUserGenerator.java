@@ -50,8 +50,8 @@ public class TestUserGenerator {
             PreparedStatement preparedStatement2 = connection.prepareStatement("INSERT INTO post "
                     + "(userID, status_code, title, description, category_code, area_code, subarea_code, replyemail, privacy_code, outsidecontactok," +
                     "location_city, location_state, location_postal, location_crossstreet1, location_crossstreet2, location_latitude, location_longitude," +
-                    "image, image_position, price, contact_name, contact_phone, contact_phone_extension, contacttextok, seemyother) "
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                    "image, image_position, price, contact_name, contact_phone, contact_phone_extension, contacttextok, seemyother, create_date) "
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?)");
 
 
             preparedStatement2.setInt(1, 1);
@@ -79,6 +79,7 @@ public class TestUserGenerator {
             preparedStatement2.setString(23, null);
             preparedStatement2.setInt(24, 1);
             preparedStatement2.setInt(25, 1);
+            preparedStatement2.setDate(26, new java.sql.Date(System.currentTimeMillis()));
             rowsAdded = preparedStatement2.executeUpdate();
             logger.info("Post Rows Added: " + rowsAdded);
             database.disconnect();
