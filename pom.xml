@@ -158,6 +158,13 @@
       <version>5.0.0</version>
     </dependency>
 
+    <!-- watson API -->
+    <dependency>
+      <groupId>com.ibm.watson.developer_cloud</groupId>
+      <artifactId>java-sdk</artifactId>
+      <version>6.8.0</version>
+    </dependency>
+
   </dependencies>
 
 </project>
