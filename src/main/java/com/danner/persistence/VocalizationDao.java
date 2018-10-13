@@ -1,6 +1,6 @@
 package com.danner.persistence;
 
-import com.danner.entity.Post;
+import com.danner.entity.Vocalization;
 import com.danner.entity.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,41 +10,33 @@ import org.hibernate.Transaction;
 
 import java.time.LocalDate;
 
-public class PostDao {
+public class VocalizationDao {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
     SessionFactory sessionFactory = SessionFactoryProvider.getSessionFactory();
 
-    public int addPost(Post post) {
-        int postID = 0;
+    public int addVocalization(Vocalization vocalization) {
+        int vocalizationID = 0;
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        postID = (int)session.save(post);
+        vocalizationID = (int)session.save(vocalization);
         transaction.commit();
         session.close();
-        return postID;
+        return vocalizationID;
     }
 
-    public Post getPostByID(int postID) {
+    public Vocalization getVocalizationByID(int vocalizationID) {
         Session session = sessionFactory.openSession();
-        Post post = session.get(Post.class, postID);
+        Vocalization vocalization = session.get(Vocalization.class, vocalizationID);
         session.close();
-        return post;
+        return vocalization;
     }
 
-    public void updatePost(Post post)  {
-        post.setModifyDate(LocalDate.now());
+
+    public void deleteVocalization(Vocalization vocalization)  {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        session.saveOrUpdate(post);
-        transaction.commit();
-        session.close();
-    }
-
-    public void deletePost(Post post)  {
-        Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
-        session.delete(post);
+        session.delete(vocalization);
         transaction.commit();
         session.close();
     }

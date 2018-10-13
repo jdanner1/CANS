@@ -17,7 +17,7 @@
         <property name="hibernate.c3p0.idle_test_period">3000</property>
 
         <mapping class="com.danner.entity.User"/>
-        <mapping class="com.danner.entity.Post"/>
+        <mapping class="com.danner.entity.Vocalization"/>
 
     </session-factory>
 

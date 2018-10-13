@@ -1,33 +1,31 @@
 package com.danner.persistence;
 
-import com.danner.entity.Post;
+import com.danner.entity.Vocalization;
 import com.danner.entity.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserDaoTest {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
-    UserDao dao;
-    PostDao postDao;
+    private UserDao dao;
+    private VocalizationDao vocalizationDao;
 
     @BeforeEach
     void setUp() {
         dao = new UserDao();
-        postDao = new PostDao();
+        vocalizationDao = new VocalizationDao();
         TestUserGenerator testUser = new TestUserGenerator();
         testUser.initializeUser();
     }
 
     @Test
     void addUser() {
-        User user = new User("A", "Luther", "Danner", "ldanner2", "password", "ldanner2@madisoncollege.edu", "password2", 2123970);
+        User user = new User("A", "Luther", "Danner", "ldanner2", "password", "ldanner2@madisoncollege.edu");
         int userID = dao.addUser(user);
         assertNotEquals(0, userID);
         User addedUser = dao.getUserByID(userID);
@@ -35,50 +33,27 @@ class UserDaoTest {
     }
 
     @Test
-    void addUserWithPost() {
-        User user = new User("A", "Luther", "Danner", "ldanner2", "password", "ldanner2@madisoncollege.edu", "password2", 2123970);
+    void addUserWithVocalization() {
+        User user = new User("A", "Luther", "Danner", "ldanner2", "password", "ldanner2@madisoncollege.edu");
 
-        String statusCode = "A";
-        String title = "Dual Axle Dump Trailer";
-        String description = "With all steel construction, pull out loading ramps, dual 5,000 lb axles and a 10,000 lb capacity hydraulic dump box, 'The Mule' work trailer will help you get the job done.";
-        String categoryCode = "trb";
-        String areaCode = "mad";
-        String subAreaCode = null;
-        String replyEmail = "jdanner1@madisoncollege.edu";
-        String privacyCode = "P";
-        int outsideContactOk = 0;
-        String locationCity = "Madison";
-        String locationState = "WI";
-        String locationPostal = "53711";
-        String locationCrossStreet1 = "John Nolen Dr.";
-        String locationCrossStreet2 = "E. Wilson St.";
-        String locationLatitude = "43.053619";
-        String locationLongitude = "-89.377808";
-        String image = null;
-        int imagePosition = 0;
-        int price = 6899;
-        String contactName = "Luther Danner";
-        String contactPhone = null;
-        String contactPhoneExtension = null;
-        int contactTextOk = 1;
-        int seeMyOther = 1;
+        String text = "Testing add user with vocoalization method.";
+        String language = "en-US_AllisonVoice";
+        boolean isEmailed = true;
 
-        Post post = new Post(user, statusCode, title, description, categoryCode, areaCode, subAreaCode, replyEmail, privacyCode, outsideContactOk,
-                locationCity, locationState, locationPostal, locationCrossStreet1, locationCrossStreet2, locationLatitude, locationLongitude, image,
-                imagePosition, price, contactName, contactPhone, contactPhoneExtension, contactTextOk, seeMyOther);
+        Vocalization vocalization = new Vocalization(user, text, language, isEmailed);
 
-        user.addPost(post);
+        user.addVocalization(vocalization);
 
         int userID = dao.addUser(user);
         assertNotEquals(0, userID);
         User addedUser = dao.getUserByID(userID);
         assertEquals(user, addedUser);
-        assertEquals(1, addedUser.getPosts().size());
-        int postId = post.getPostID();
-        Post addedPost = postDao.getPostByID(postId);
-        assertEquals(post, addedPost);
+        assertEquals(1, addedUser.getVocalizations().size());
+        int vocalizationId = vocalization.getVocalizationID();
+        Vocalization addedVocalization = vocalizationDao.getVocalizationByID(vocalizationId);
+        assertEquals(vocalization, addedVocalization);
         logger.info("User Info: " + user.toString());
-        logger.info("Post Info: " + post.toString());
+        logger.info("Vocalization Info: " + vocalization.toString());
     }
 
     @Test
