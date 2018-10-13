@@ -1,5 +1,6 @@
 package com.danner.controller;
 
+import com.danner.utility.PropertiesLoader;
 import com.ibm.watson.developer_cloud.text_to_speech.v1.TextToSpeech;
 import com.ibm.watson.developer_cloud.text_to_speech.v1.model.SynthesizeOptions;
 import com.ibm.watson.developer_cloud.text_to_speech.v1.util.WaveUtils;
@@ -10,19 +11,23 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Properties;
 
-public class VoiceFiler {
+public class VoiceFiler implements PropertiesLoader {
+
+    String FILE_PATH = "/properties.properties";
     private final Logger logger = LogManager.getLogger(this.getClass());
+    private Properties properties = loadProperties(FILE_PATH);
 
     public void generateVoiceFile()  {
         TextToSpeech textToSpeech = new TextToSpeech();
-        textToSpeech.setUsernameAndPassword("b2eb6ae5-6f7f-4ed6-84d5-88fce3a25c55", "rQqQmgXXM6t4");
-        textToSpeech.setEndPoint("https://stream.watsonplatform.net/text-to-speech/api");
+        textToSpeech.setUsernameAndPassword(properties.getProperty("username"), properties.getProperty("password"));
+        textToSpeech.setEndPoint(properties.getProperty("url"));
 
         try {
             SynthesizeOptions synthesizeOptions =
                     new SynthesizeOptions.Builder()
-                            .text("Hello world")
+                            .text("John Danner is awesome")
                             .accept("audio/wav")
                             .voice("en-US_AllisonVoice")
                             .build();
@@ -42,7 +47,5 @@ public class VoiceFiler {
         } catch (IOException e) {
             logger.error("IO_Exceptioon: " , e);
         }
-
     }
-
 }
