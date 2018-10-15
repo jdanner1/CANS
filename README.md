@@ -2,9 +2,11 @@
 
 ### Problem Statement
 
-Many people throughout the world enjoy using the website craigslist.org.  They appreciate the ability to post for free and many exchanges occur in win-win fashion.  It shines particularly for situations where shipping is impractical.  The site may appear to be built for non-commercial use but craigslist does offer features that businesses can take advantage of.  However, using the features is not practical for a non-technical user.    
+There are many advanced technologies making their way into every day life but with so much unfamiliar jargon and overly brief explanations from immersed experts it can be overwhelming and off-putting.  This site was built as a demonstration to show how something really advanced can have practical applications in your life and not be difficult to work with.  This site provides the ability to generate audio files with spoken language for any text you provide.  You can choose from 10 different languages, although a few overlap but contain different dialects.  All of this is made possible by leveraging IBM's Watson artificial intelligence.  
 
-This is where CAPS comes in!  Get an edge by letting the Craigslist Advanced Posting System put your listings out in many cities or under several product categories with the same effort as creating a single post.  Our intention is not to flood the site with repetetive postings.  Instead, we are here to help aspiring entreprenures reach more people with less time at the computer.  Provided here are tools that will help you create, manage and remove postings at any scale.  Our service is not only for business owners and power hobbyists - it can work for folks that need something hard to find who are willing to search without regard to location to find what they need.  It is also well suited for high value items.  Give CAPS a try and see for yourself the power of craigslist's reach without losing all your time to repetetive work.  
+The applications for this are only limited by your imagination.  You could use it to record the message for your voicemail, build your own audio book, learn a new language or just check pronunciation.  You could use it as a voice over to give a robotic twist to your youtube video.  Use it to trick your mom into thinking you finally have a girlfriend.  We don't care what you choose; we just want to put the power in your hands to watch with pride as you breathe life into whatever project makes you happy or motivated.  Give it a try and see just how easy using AI can be.     
+
+  
 
 
 ### Project Technologies/Techniques  - Retained Temporarily as a Guide

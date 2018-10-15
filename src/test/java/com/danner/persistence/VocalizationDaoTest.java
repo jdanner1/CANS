@@ -17,20 +17,20 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 class VocalizationDaoTest {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
-    private VocalizationDao dao;
-    private UserDao userDao;
+    private GenericDao genericDao;
+    private GenericDao genericDao2;
 
     @BeforeEach
     void setUp() {
-        dao = new VocalizationDao();
-        userDao = new UserDao();
+        genericDao = new GenericDao(Vocalization.class);
+        genericDao2 = new GenericDao(User.class);
         TestUserGenerator testUser = new TestUserGenerator();
         testUser.initializeUser();
     }
 
    @Test
     void addVocalization() {
-        User user = userDao.getUserByID(1);
+        User user = (User)genericDao2.getEntityByID(1);
         String text = "This is a jUnit test for Vocalizations";
         String language = "en-US_AllisonVoice";
         boolean isEmailed = true;
@@ -38,28 +38,28 @@ class VocalizationDaoTest {
 
         Vocalization vocalization = new Vocalization(user, text, language, isEmailed);
 
-        int vocalizationID = dao.addVocalization(vocalization);
+        int vocalizationID = genericDao.addEntity(vocalization);
         assertNotEquals(0, vocalizationID);
-        Vocalization addedVocalization = dao.getVocalizationByID(vocalizationID);
+        Vocalization addedVocalization = (Vocalization)genericDao.getEntityByID(vocalizationID);
         assertEquals(vocalization, addedVocalization);
-       logger.info("Vocalization Info: " + addedVocalization.toString());
+        logger.info("Vocalization Info: " + addedVocalization.toString());
     }
 
 
 
     @Test
     void getVocalizationByID() {
-        Vocalization retrievedVocalization = dao.getVocalizationByID(1);
+        Vocalization retrievedVocalization = (Vocalization)genericDao.getEntityByID(1);
         assertNotNull(retrievedVocalization);
-        assertEquals(dao.getVocalizationByID(1), retrievedVocalization);
+        assertEquals(genericDao.getEntityByID(1), retrievedVocalization);
         logger.info("Vocalization Info: " + retrievedVocalization.toString());
     }
 
 
     @Test
     void deleteVocalization() {
-        dao.deleteVocalization(dao.getVocalizationByID(1));
-        assertNull(dao.getVocalizationByID(1));
+        genericDao.deleteEntity(genericDao.getEntityByID(1));
+        assertNull(genericDao.getEntityByID(1));
     }
 
 }

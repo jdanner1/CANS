@@ -7,18 +7,20 @@ import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserDaoTest {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
-    private UserDao dao;
-    private VocalizationDao vocalizationDao;
+    private GenericDao genericDao;
+    private GenericDao genericDao2;
 
     @BeforeEach
     void setUp() {
-        dao = new UserDao();
-        vocalizationDao = new VocalizationDao();
+        genericDao = new GenericDao(User.class);
+        genericDao2 = new GenericDao(Vocalization.class);
         TestUserGenerator testUser = new TestUserGenerator();
         testUser.initializeUser();
     }
@@ -26,9 +28,9 @@ class UserDaoTest {
     @Test
     void addUser() {
         User user = new User("A", "Luther", "Danner", "ldanner2", "password", "ldanner2@madisoncollege.edu");
-        int userID = dao.addUser(user);
+        int userID = genericDao.addEntity(user);
         assertNotEquals(0, userID);
-        User addedUser = dao.getUserByID(userID);
+        User addedUser = (User)genericDao.getEntityByID(userID);
         assertEquals("Luther", addedUser.getFirstName());
     }
 
@@ -44,13 +46,13 @@ class UserDaoTest {
 
         user.addVocalization(vocalization);
 
-        int userID = dao.addUser(user);
-        assertNotEquals(0, userID);
-        User addedUser = dao.getUserByID(userID);
+        int id = genericDao.addEntity(user);
+        assertNotEquals(0, id);
+        User addedUser = (User)genericDao.getEntityByID(id);
         assertEquals(user, addedUser);
         assertEquals(1, addedUser.getVocalizations().size());
         int vocalizationId = vocalization.getVocalizationID();
-        Vocalization addedVocalization = vocalizationDao.getVocalizationByID(vocalizationId);
+        Vocalization addedVocalization = (Vocalization) genericDao2.getEntityByID(vocalizationId);
         assertEquals(vocalization, addedVocalization);
         logger.info("User Info: " + user.toString());
         logger.info("Vocalization Info: " + vocalization.toString());
@@ -58,27 +60,28 @@ class UserDaoTest {
 
     @Test
     void getUserByID() {
-        User retrievedUser = dao.getUserByID(1);
+        User retrievedUser = (User)genericDao.getEntityByID(1);
         assertNotNull(retrievedUser);
-        assertEquals(dao.getUserByID(1), retrievedUser);
+        assertEquals(genericDao.getEntityByID(1), retrievedUser);
         logger.info("User Info: " + retrievedUser.toString());
     }
 
     @Test
     void updateUser() {
         String newFirstName = "Lily";
-        User user = dao.getUserByID(1);
+        User user = (User)genericDao.getEntityByID(1);
         user.setFirstName(newFirstName);
-        dao.updateUser(user);
-        User retrievedUser = dao.getUserByID(1);
+        user.setModifyDate(LocalDate.now());
+        genericDao.updateEntity(user);
+        User retrievedUser = (User)genericDao.getEntityByID(1);
         assertEquals(user, retrievedUser);
         logger.info("User Info: " + retrievedUser.toString());
     }
 
     @Test
     void deleteUser() {
-        dao.deleteUser(dao.getUserByID(1));
-        assertNull(dao.getUserByID(1));
+        genericDao.deleteEntity(genericDao.getEntityByID(1));
+        assertNull(genericDao.getEntityByID(1));
     }
 }
 
