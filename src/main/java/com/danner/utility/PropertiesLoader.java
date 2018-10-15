@@ -1,10 +1,14 @@
 package com.danner.utility;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.*;
 import java.util.*;
 
 
 public interface PropertiesLoader {
+
 
     /**
      * This default method will load a properties file into a Properties instance
