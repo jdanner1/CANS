@@ -17,7 +17,6 @@
 
 <body>
 <div class="container">
-    <div class="container">
         <div class="jumbotron hidden-print">
             <header>
                 <h1>Advanced Text Vocalizer</h1>
