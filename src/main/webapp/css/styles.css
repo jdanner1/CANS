@@ -421,6 +421,20 @@ img  {
     font-size: larger;
 }
 
+.control-label  {
+    color: white;
+    font-size: large;
+}
+
+.form-button  {
+    margin-top: 2em;
+    margin-bottom: 10em;
+}
+
+.form-group   {
+    margin-top: 2em;
+}
+
 #submit  {
     margin-left: -.5em;
 }
