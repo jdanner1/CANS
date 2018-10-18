@@ -418,7 +418,7 @@ img  {
 }
 
 .bigger  {
-    font-size: larger;
+    font: 25px Arial, sans-serif;
 }
 
 .control-label  {
@@ -435,8 +435,12 @@ img  {
     margin-top: 2em;
 }
 
-#submit  {
-    margin-left: -.5em;
+.form-control   {
+    font: 23px Arial, sans-serif;
+}
+
+#spacer01  {
+    margin-right: 2em;
 }
 
 footer {

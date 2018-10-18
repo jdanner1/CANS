@@ -10,7 +10,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">SUPPORT@ATV</a>
+            <a href="mailto:support@atv.com?Subject=Customer%20Inquiry"
+               target="_top"
+               class="navbar-brand">SUPPORT@ATV</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">

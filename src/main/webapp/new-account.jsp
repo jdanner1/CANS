@@ -10,7 +10,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">SUPPORT@ATV</a>
+            <a href="mailto:support@atv.com?Subject=Customer%20Inquiry"
+               target="_top"
+               class="navbar-brand">SUPPORT@ATV</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
@@ -22,7 +24,11 @@
 
 <div class="row">
     <div class="col-sm-1"></div>
-    <form class="form-horizontal col-sm-8" id="multipleForm" method="post">
+    <form class="form-horizontal col-sm-8"
+          method="post"
+          name="account"
+          id="account"
+          action="http://itins3.madisoncollege.edu/echo.php">
 
         <div class="form-group">
             <label class="control-label col-sm-3">First Name</label>
@@ -56,16 +62,24 @@
         <div class="form-group">
             <label class="control-label col-sm-3">Password</label>
             <div class="col-sm-9">
-                <input class="form-control" type="text" name="password" />
+                <input class="form-control" type="password" name="password" />
             </div>
         </div>
 
         <div class="col-sm-3"></div>
         <div class="col-sm-9">
-            <button id="submit" type="button" class="btn btn-primary form-button" >Submit</button>
+            <input type="submit"
+                   value="Submit"
+                   class="buttons form-button" />
 
-            <button type="reset" class="btn btn-primary form-button">Clear</button>
+            <span id="spacer01"></span>
+
+        <input type="reset"
+               value="Reset"
+               class="buttons form-button" />
         </div>
+
+
     </form>
     <div class="col-sm-3"></div>
 </div>

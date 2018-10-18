@@ -10,7 +10,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">SUPPORT@ATV</a>
+            <a href="mailto:support@atv.com?Subject=Customer%20Inquiry"
+               target="_top"
+               class="navbar-brand">SUPPORT@ATV</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
@@ -22,8 +24,9 @@
     <div class="panel panel-info">
         <div class="panel-heading"><h3>What is Advanced Text Vocalizer?</h3></div>
         <div class="panel-body">
-            <p class="bigger">There are many advanced technologies making their way into every day life but often we are not in control.  This site was built as a demonstration to show how something really advanced can have practical applications in your life and not be difficult to work with.  This site provides the ability to generate audio files with spoken language for any text you provide.  You can choose from 10 different languages, although a few overlap but contain different dialects.  All of this is made possible by leveraging IBM's Watson artificial intelligence.</p>
-            <p class="bigger">The applications for this are only limited by your imagination.  You could use it to record the message for your voicemail, build your own audio book, learn a new language or just check pronunciation.  You could use it as a voice over to give a robotic twist to your youtube video.  Use it to trick your mom into thinking you finally have a girlfriend.  We don't care what you choose; we just want to put the power of AI in your hands.  Give it a try and see just how easy it can be.</p>
+            <p class="bigger">There are many advanced technologies making their way into every day life but often we are not in control.  This site was built to demonstrate practical applications of advanced technology that is not difficult to work with.  This site provides the ability to generate audio of spoken language for any text you provide.  You can choose from 10 language options and even email yourself the results.  This is made possible by leveraging IBM's Watson artificial intelligence.</p>
+            <br />
+            <p class="bigger">The uses for this are only limited by your imagination.  You could use it to record the message for your voicemail, build your own audio book, learn a new language or just check pronunciation.  You could use it as a voice over to give a robotic twist to your youtube video.  Take the wheel and see what you can create with easy to use AI in your hands.</p>
         </div>
     </div>
 
