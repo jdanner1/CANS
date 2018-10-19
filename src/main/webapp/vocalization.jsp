@@ -24,4 +24,9 @@
     </div>
 </nav>
 
+<div class="row">
+    <div class="col-sm-1"></div>
+    <audio src="audio-files/output.wav" controls="true" />
+</div>
+
 <%@ include file="footer.jsp" %>

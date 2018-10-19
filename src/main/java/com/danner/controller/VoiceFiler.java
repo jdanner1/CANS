@@ -1,5 +1,6 @@
 package com.danner.controller;
 
+import com.danner.entity.Vocalization;
 import com.danner.utility.PropertiesLoader;
 import com.ibm.watson.developer_cloud.text_to_speech.v1.TextToSpeech;
 import com.ibm.watson.developer_cloud.text_to_speech.v1.model.SynthesizeOptions;
@@ -17,9 +18,11 @@ public class VoiceFiler implements PropertiesLoader {
 
     String FILE_PATH = "/properties.properties";
     private final Logger logger = LogManager.getLogger(this.getClass());
+    //Add session so I can create a folder named for the session and place the file in there, relative path
 
-    public void generateVoiceFile()  {
+    public void generateVoiceFile(Vocalization vocalization)  {
         TextToSpeech textToSpeech = new TextToSpeech();
+        String OUTPUT_FILE_SETTING = "audio/wav";
 
         try {
             Properties properties = loadProperties(FILE_PATH);
@@ -28,15 +31,15 @@ public class VoiceFiler implements PropertiesLoader {
 
             SynthesizeOptions synthesizeOptions =
                     new SynthesizeOptions.Builder()
-                            .text("John Danner is so getting an A")
-                            .accept("audio/wav")
-                            .voice("en-US_AllisonVoice")
+                            .text(vocalization.getText())
+                            .accept(OUTPUT_FILE_SETTING)
+                            .voice(vocalization.getLanguage())
                             .build();
 
             InputStream inputStream = textToSpeech.synthesize(synthesizeOptions).execute();
             InputStream in = WaveUtils.reWriteWaveHeader(inputStream);
 
-            OutputStream out = new FileOutputStream("/home/student/IdeaProjects/individualproject/src/main/resources/hello_world.wav");
+            OutputStream out = new FileOutputStream("/home/student/IdeaProjects/individualproject/src/main/webapp/audio-files/output.wav");
             byte[] buffer = new byte[1024];
             int length;
             while ((length = in.read(buffer)) > 0) {

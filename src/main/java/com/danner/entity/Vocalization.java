@@ -40,7 +40,9 @@ public class Vocalization {
 
     public int getVocalizationID() {
         return vocalizationID;
-    } //removed setVocalizationID since the db does this, assume ok
+    }
+
+
 
     public User getUser() {
         return user;
@@ -50,10 +52,32 @@ public class Vocalization {
         this.user = user;
     }
 
-
-
-    public LocalDate getCreateDate() {
+    public LocalDate getCreateTimestamp() {
         return createTimestamp;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public boolean isEmailed() {
+        return isEmailed;
+    }
+
+    public void setEmailed(boolean emailed) {
+        isEmailed = emailed;
     }
 
 
