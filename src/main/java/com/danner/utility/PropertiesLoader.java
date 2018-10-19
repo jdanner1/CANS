@@ -7,7 +7,7 @@ import java.io.*;
 import java.util.*;
 
 
-public interface PropertiesLoader {
+public interface PropertiesLoader  {
 
 
     /**
@@ -17,15 +17,9 @@ public interface PropertiesLoader {
      * @return a populated Properties instance or an empty Properties instance if
      * the file path was not found.
      */
-    default Properties loadProperties(String propertiesFilePath){
+    default Properties loadProperties(String propertiesFilePath) throws IOException, Exception {
         Properties properties = new Properties();
-        try {
-            properties.load(this.getClass().getResourceAsStream(propertiesFilePath));
-        } catch (IOException ioException) {
-            ioException.printStackTrace();
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
+        properties.load(this.getClass().getResourceAsStream(propertiesFilePath));
         return properties;
     }
 }

@@ -17,17 +17,18 @@ public class VoiceFiler implements PropertiesLoader {
 
     String FILE_PATH = "/properties.properties";
     private final Logger logger = LogManager.getLogger(this.getClass());
-    private Properties properties = loadProperties(FILE_PATH);
 
     public void generateVoiceFile()  {
         TextToSpeech textToSpeech = new TextToSpeech();
-        textToSpeech.setUsernameAndPassword(properties.getProperty("username"), properties.getProperty("password"));
-        textToSpeech.setEndPoint(properties.getProperty("url"));
 
         try {
+            Properties properties = loadProperties(FILE_PATH);
+            textToSpeech.setUsernameAndPassword(properties.getProperty("username"), properties.getProperty("password"));
+            textToSpeech.setEndPoint(properties.getProperty("url"));
+
             SynthesizeOptions synthesizeOptions =
                     new SynthesizeOptions.Builder()
-                            .text("John Danner is awesome")
+                            .text("John Danner is so getting an A")
                             .accept("audio/wav")
                             .voice("en-US_AllisonVoice")
                             .build();
@@ -46,6 +47,8 @@ public class VoiceFiler implements PropertiesLoader {
             inputStream.close();
         } catch (IOException e) {
             logger.error("IO_Exceptioon: " , e);
+        } catch (Exception exception) {
+            logger.error("Exception: ", exception);
         }
     }
 }

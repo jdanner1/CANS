@@ -26,8 +26,8 @@
     <div class="col-sm-1"></div>
     <form class="form-horizontal col-sm-8"
           method="post"
-          name="account"
-          id="account"
+          name="user-form"
+          id="user-form"
           action="http://itins3.madisoncollege.edu/echo.php">
 
         <div class="form-group">
