@@ -13,7 +13,7 @@
 <login-config>
   <auth-method>FORM</auth-method>
   <form-login-config>
-    <form-login-page>/userRole01/home.jsp</form-login-page>
+    <form-login-page>/login.jsp</form-login-page>
     <form-error-page>/login-error.jsp</form-error-page>
   </form-login-config>
 </login-config>
