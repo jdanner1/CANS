@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class VoiceFilerTest {
+class VoiceFilerTest {/*
     private final Logger logger = LogManager.getLogger(this.getClass());
     private GenericDao genericDao;
     private Vocalization vocalization;
@@ -30,5 +30,5 @@ class VoiceFilerTest {
         VoiceFiler voiceFiler = new VoiceFiler();
         voiceFiler.generateVoiceFile(vocalization);
 
-    }
+    } */
 }

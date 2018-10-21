@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<%@ include file="head-tag.jsp" %>
+<%@ include file="../head-tag.jsp" %>
 
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
@@ -18,10 +18,15 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="home.jsp">Home</a></li>
                 <li><a href="history.jsp">History</a></li>
+                <li><a href="edit-profile.jsp">Edit Profile</a></li>
             </ul>
-
         </div>
     </div>
 </nav>
 
-<%@ include file="footer.jsp" %>
+<div class="row">
+    <div class="col-sm-1"></div>
+    <audio src="../audio-files/output.wav" controls="true" />
+</div>
+
+<%@ include file="../footer.jsp" %>

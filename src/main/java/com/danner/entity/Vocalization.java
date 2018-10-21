@@ -16,7 +16,8 @@ public class Vocalization {
     private int vocalizationID;
 
     @ManyToOne
-    @JoinColumn(name = "UserID")
+    @JoinColumn(name = "userID",
+                foreignKey = @ForeignKey(name = "vocalization_user_userID"))
     private User user;
 
     @Column(name = "create_timestamp")

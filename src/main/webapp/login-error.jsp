@@ -23,6 +23,8 @@
 <div class="row">
     <div class="col-sm-1"></div>
 
+
+    <h3>Login failed, please try again.</h3>
     <form class="form-horizontal col-sm-8"
           id="login"
           method="post"

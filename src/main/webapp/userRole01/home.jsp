@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<%@ include file="head-tag.jsp" %>
+<%@ include file="../head-tag.jsp" %>
 
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
@@ -88,4 +88,4 @@
     <div class="col-sm-3"></div>
 </div>
 
-<%@ include file="footer.jsp" %>
+<%@ include file="../footer.jsp" %>

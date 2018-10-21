@@ -24,10 +24,13 @@ public class TestUserGenerator {
             int result = statement.executeUpdate("SET FOREIGN_KEY_CHECKS = 0;");
             logger.info("SQL_Result_1: " + result);
             result = statement.executeUpdate("TRUNCATE user;");
-            result = statement.executeUpdate("TRUNCATE vocalization;");
             logger.info("SQL_Result_2: " + result);
-            result = statement.executeUpdate("SET FOREIGN_KEY_CHECKS = 1;");
+            result = statement.executeUpdate("TRUNCATE vocalization;");
             logger.info("SQL_Result_3: " + result);
+            result = statement.executeUpdate("TRUNCATE role;");
+            logger.info("SQL_Result_4: " + result);
+            result = statement.executeUpdate("SET FOREIGN_KEY_CHECKS = 1;");
+            logger.info("SQL_Result_5: " + result);
 
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO user "
                     + "(status_code, first_name, last_name, user_name, password, email, create_date) "
@@ -57,6 +60,34 @@ public class TestUserGenerator {
             preparedStatement2.setDate(5, new java.sql.Date(System.currentTimeMillis()));
             rowsAdded = preparedStatement2.executeUpdate();
             logger.info("Vocalization Rows Added: " + rowsAdded);
+
+
+            PreparedStatement preparedStatement3 = connection.prepareStatement("INSERT INTO role "
+                    + "(role_name, user_name, userID) "
+                    + "VALUES (?, ?, ?)");
+
+
+            preparedStatement3.setString(1, "userRole01");
+            preparedStatement3.setString(2, "jdanner1");
+            preparedStatement3.setInt(3, 1);
+            rowsAdded = preparedStatement3.executeUpdate();
+            logger.info("Role Rows Added: " + rowsAdded);
+
+            PreparedStatement preparedStatement4 = connection.prepareStatement("INSERT INTO user "
+                    + "(status_code, first_name, last_name, user_name, password, email, create_date) "
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?)");
+
+
+            preparedStatement4.setString(1, "A");
+            preparedStatement4.setString(2, "Booker");
+            preparedStatement4.setString(3, "Danner");
+            preparedStatement4.setString(4, "bdanner1");
+            preparedStatement4.setString(5, "password");
+            preparedStatement4.setString(6, "bdanner@madisoncollege.edu");
+            preparedStatement4.setDate(7, new java.sql.Date(System.currentTimeMillis()));
+            rowsAdded = preparedStatement4.executeUpdate();
+            logger.info("User Rows Added: " + rowsAdded);
+
             database.disconnect();
         } catch (SQLException sqlException) {
             logger.error("SQL_Exceptioon: " , sqlException);

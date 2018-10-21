@@ -80,8 +80,8 @@ class UserDaoTest {
 
     @Test
     void deleteUser() {
-        genericDao.deleteEntity(genericDao.getEntityByID(1));
-        assertNull(genericDao.getEntityByID(1));
+        genericDao.deleteEntity(genericDao.getEntityByID(2));
+        assertNull(genericDao.getEntityByID(2));
     }
 }
 

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<%@ include file="head-tag.jsp" %>
+<%@ include file="../head-tag.jsp" %>
 
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
@@ -17,11 +17,11 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="home.jsp">Home</a></li>
-                <li><a href="edit-profile.jsp">Edit Profile</a></li>
+                <li><a href="history.jsp">History</a></li>
             </ul>
 
         </div>
     </div>
 </nav>
 
-<%@ include file="footer.jsp" %>
+<%@ include file="../footer.jsp" %>
