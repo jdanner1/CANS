@@ -14,11 +14,10 @@
   <auth-method>FORM</auth-method>
   <form-login-config>
     <form-login-page>/login.jsp</form-login-page>
-    <form-error-page>/login-error.jsp</form-error-page>
+    <form-error-page>/login-error2.jsp</form-error-page>
   </form-login-config>
 </login-config>
 
-<!-- Protect the user search page. -->
 <security-constraint>
   <web-resource-collection>
     <web-resource-name>userRole01</web-resource-name>

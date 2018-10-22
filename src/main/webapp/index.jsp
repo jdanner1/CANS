@@ -17,7 +17,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="new-account.jsp"><span class="glyphicon glyphicon-user icons"></span>Sign Up</a></li>
-                <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in icons"></span>Login</a></li>
+                <li><a href="userRole01/home.jsp"><span class="glyphicon glyphicon-log-in icons"></span>Login</a></li>
             </ul>
         </div>
     </div>
