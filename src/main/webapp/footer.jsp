@@ -1,4 +1,5 @@
 <footer>
+
     <p id="script">
         <script language="JavaScript" type="text/javascript">
             getRevisedDate();

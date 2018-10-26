@@ -2,6 +2,19 @@
 <html lang="en">
 <%@ include file="head-tag.jsp" %>
 
+<script src="js/getRevisedDate.js" language="javascript" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+
+<body>
+<div class="container">
+    <div class="jumbotron hidden-print">
+        <header>
+            <h1>Advanced Text Vocalizer</h1>
+        </header>
+    </div>
+
+
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">

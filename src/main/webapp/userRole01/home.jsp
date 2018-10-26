@@ -2,6 +2,19 @@
 <html lang="en">
 <%@ include file="../head-tag.jsp" %>
 
+<script src="../js/getRevisedDate.js" language="javascript" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../css/styles.css">
+</head>
+
+<body>
+<div class="container">
+    <div class="jumbotron hidden-print">
+        <header>
+            <h1>Advanced Text Vocalizer - Home</h1>
+        </header>
+    </div>
+
+
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -18,6 +31,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="history.jsp">History</a></li>
                 <li><a href="edit-profile.jsp">Edit Profile</a></li>
+                <li><a href="../index.jsp">Exit</a></li>
             </ul>
 
         </div>
@@ -56,7 +70,7 @@
                     <option value="laspanish">Latin American Spanish</option>
                     <option value="naspanish">North American Spanish</option>
                     <option value="ukenglish">UK English</option>
-                    <option value="usenglish"> US English</option>
+                    <option value="usenglish">US English</option>
                 </select>
             </div>
         </div>
