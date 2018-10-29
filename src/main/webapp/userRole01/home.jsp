@@ -80,8 +80,8 @@
             <div class="col-sm-9">
                 <select class="form-control" name="email">
                     <option disabled selected value>Select One</option>
-                    <option value="email">Yes</option>
-                    <option value="phone1">No</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
                 </select>
             </div>
         </div>

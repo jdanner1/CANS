@@ -54,7 +54,7 @@
                 <div class="row">
                     <p>
                         <span>&nbsp; &nbsp;</span>
-                        <a href="new-account.jsp" class="btn btn-success whitetext" role="button">Sign Up</a>
+                        <a href="/NewAccount" class="btn btn-success whitetext" role="button">Sign Up</a>
                     </p>
                 </div>
             </div>
