@@ -16,8 +16,8 @@ import java.io.IOException;
  *
  */
 @WebServlet(
-        name = "Edit-Profile",
-        urlPatterns = {"/Edit-Profile"}
+        name = "EditProfile",
+        urlPatterns = {"/EditProfile"}
 )
 public class EditProfileServlet extends HttpServlet {
 

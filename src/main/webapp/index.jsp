@@ -2,19 +2,6 @@
 <html lang="en">
 <%@ include file="head-tag.jsp" %>
 
-<script src="js/getRevisedDate.js" language="javascript" type="text/javascript"></script>
-<link rel="stylesheet" type="text/css" href="css/styles.css">
-</head>
-
-<body>
-<div class="container">
-    <div class="jumbotron hidden-print">
-        <header>
-            <h1>Advanced Text Vocalizer</h1>
-        </header>
-    </div>
-
-
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -29,8 +16,8 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="new-account.jsp"><span class="glyphicon glyphicon-user icons"></span>Sign Up</a></li>
-                <li><a href="userRole01/home.jsp"><span class="glyphicon glyphicon-log-in icons"></span>Login</a></li>
+                <li><a href="NewAccount"><span class="glyphicon glyphicon-user icons"></span>Sign Up</a></li>
+                <li><a href="Home"><span class="glyphicon glyphicon-log-in icons"></span>Login</a></li>
             </ul>
         </div>
     </div>
@@ -54,7 +41,7 @@
                 <div class="row">
                     <p>
                         <span>&nbsp; &nbsp;</span>
-                        <a href="/NewAccount" class="btn btn-success whitetext" role="button">Sign Up</a>
+                        <a href="NewAccount" class="btn btn-success whitetext" role="button">Sign Up</a>
                     </p>
                 </div>
             </div>

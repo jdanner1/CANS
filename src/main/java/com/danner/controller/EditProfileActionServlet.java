@@ -19,8 +19,8 @@ import java.time.LocalDate;
  *@author    John Danner
  */
 @WebServlet(
-        name = "NewAccountAction",
-        urlPatterns = { "/NewAccountAction" }
+        name = "EditProfileAction",
+        urlPatterns = { "/EditProfileAction" }
 )
 
 public class EditProfileActionServlet extends HttpServlet {

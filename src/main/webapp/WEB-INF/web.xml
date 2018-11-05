@@ -18,6 +18,11 @@
   <web-resource-collection>
     <web-resource-name>userRole01</web-resource-name>
     <url-pattern>/userRole01/*</url-pattern>
+    <url-pattern>/Home</url-pattern>
+    <url-pattern>/EditProfile</url-pattern>
+    <url-pattern>/Vocalization</url-pattern>
+    <url-pattern>/History</url-pattern>
+    <url-pattern>/EditProfileAction</url-pattern>
   </web-resource-collection>
   <auth-constraint>
     <role-name>userRole01</role-name>

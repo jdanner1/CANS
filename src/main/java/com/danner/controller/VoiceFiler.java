@@ -7,7 +7,12 @@ import com.ibm.watson.developer_cloud.text_to_speech.v1.model.SynthesizeOptions;
 import com.ibm.watson.developer_cloud.text_to_speech.v1.util.WaveUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.jupiter.api.Test;
 
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,7 +21,7 @@ import java.util.Properties;
 
 public class VoiceFiler implements PropertiesLoader {
 
-    String FILE_PATH = "/properties.properties";
+    private String FILE_PATH = "/properties.properties";
     private final Logger logger = LogManager.getLogger(this.getClass());
     //Add session so I can create a folder named for the session and place the file in there, relative path
 
@@ -55,3 +60,4 @@ public class VoiceFiler implements PropertiesLoader {
         }
     }
 }
+
