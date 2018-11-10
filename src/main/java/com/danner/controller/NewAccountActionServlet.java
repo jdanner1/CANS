@@ -1,6 +1,8 @@
 package com.danner.controller;
 
+import com.danner.entity.Role;
 import com.danner.entity.User;
+import com.danner.persistence.GenericDao;
 
 import java.io.*;
 import javax.servlet.*;
@@ -18,6 +20,9 @@ import javax.servlet.annotation.*;
 )
 
 public class NewAccountActionServlet extends HttpServlet {
+    private GenericDao genericDao;
+    private GenericDao genericDao2;
+
 
     /**
      *  Handles HTTP GET requests.
@@ -32,8 +37,10 @@ public class NewAccountActionServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        ServletContext context = getServletContext();
+        genericDao = new GenericDao(User.class);
+        genericDao2 = new GenericDao(Role.class);
 
+        String ROLE = "userRole01";
         String statusCode = "A";
         String firstName = request.getParameter("first");
         String lastName = request.getParameter("last");
@@ -42,12 +49,15 @@ public class NewAccountActionServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         User user = new User(statusCode, firstName, lastName, userName, password, email);
+        genericDao.addEntity(user);
+        Role role = new Role(ROLE, user.getUserName(), user);
+        genericDao2.addEntity(role);
 
         HttpSession session = request.getSession();
         session.setAttribute("user", user);
+        session.setAttribute("role", role);
 
-        String url = "/Home";
+        String url = "Home";
         response.sendRedirect(url);
-
     }
 }

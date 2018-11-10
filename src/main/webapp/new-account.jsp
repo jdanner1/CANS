@@ -28,7 +28,7 @@
           method="post"
           name="user-form"
           id="user-form"
-          action="http://itins3.madisoncollege.edu/echo.php">
+          action="NewAccountAction">
 
         <div class="form-group">
             <label class="control-label col-sm-3">First Name</label>
