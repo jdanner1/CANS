@@ -20,6 +20,7 @@ import javax.servlet.annotation.*;
 )
 
 public class NewAccountActionServlet extends HttpServlet {
+
     private GenericDao genericDao;
     private GenericDao genericDao2;
 

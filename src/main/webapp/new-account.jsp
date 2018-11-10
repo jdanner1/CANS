@@ -33,7 +33,7 @@
         <div class="form-group">
             <label class="control-label col-sm-3">First Name</label>
             <div class="col-sm-9">
-                <input class="form-control" type="text" name="first" />
+                <input class="form-control" autofocus="autofocus" type="text" name="first" />
             </div>
         </div>
 
@@ -78,7 +78,6 @@
                value="Reset"
                class="buttons form-button" />
         </div>
-
 
     </form>
     <div class="col-sm-3"></div>

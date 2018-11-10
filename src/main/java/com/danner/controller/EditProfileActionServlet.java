@@ -1,6 +1,10 @@
 package com.danner.controller;
 
+import com.danner.entity.Role;
 import com.danner.entity.User;
+import com.danner.persistence.GenericDao;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -25,6 +29,9 @@ import java.time.LocalDate;
 
 public class EditProfileActionServlet extends HttpServlet {
 
+    private final Logger logger = LogManager.getLogger(this.getClass());
+    private GenericDao genericDao;
+
     /**
      *  Handles HTTP GET requests.
      *
@@ -38,26 +45,25 @@ public class EditProfileActionServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        ServletContext context = getServletContext();
+        genericDao = new GenericDao(User.class);
 
-        String statusCode = "A";
-        String firstName = request.getParameter("first");
-        String lastName = request.getParameter("last");
-        String userName = request.getParameter("user");
+        String firstName = request.getParameter("firstName");
+        String lastName = request.getParameter("lastName");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        String status = request.getParameter("status");
 
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("user");
-        user.setStatusCode(statusCode);
         user.setFirstName(firstName);
         user.setLastName(lastName);
-        user.setUserName(userName);
         user.setEmail(email);
         user.setPassword(password);
+        user.setStatusCode(status);
         user.setModifyDate(LocalDate.now());
+        genericDao.updateEntity(user);
 
-        String url = "/Home";
+        String url = "Home";
         response.sendRedirect(url);
 
     }
