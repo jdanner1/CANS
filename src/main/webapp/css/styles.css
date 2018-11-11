@@ -362,7 +362,6 @@ header, footer {
 }
 
 body {
-    color: #000000;
     background-image: url(../images/background.jpg);
     font-family: Calibri, Arial, sans-serif;
 }
@@ -439,9 +438,17 @@ img  {
     font: 19px Arial, sans-serif;
 }
 
-#spacer01  {
+#white  {
     margin-right: 2em;
+    color: white;
 }
+
+.deleteList    {
+    margin-left: 2.5em;
+    color: white;
+}
+
+
 
 footer {
     margin-bottom: 5px;

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <%@ include file="../head-tag.jsp" %>
@@ -16,6 +17,10 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
+                <c:if test="${role.roleName eq 'admin'}">
+                    <li><a href="DeleteUsers">Delete Users</a></li>
+                </c:if>
+
                 <li><a href="History">History</a></li>
                 <li><a href="EditProfile">Edit Profile</a></li>
                 <li><a href="index.jsp">Exit</a></li>
