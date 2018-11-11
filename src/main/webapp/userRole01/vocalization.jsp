@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <%@ include file="../head-tag.jsp" %>
@@ -27,7 +28,7 @@
 
 <div class="row">
     <div class="col-sm-1"></div>
-    <audio src="audio-files/output.wav" controls="true" />
+    <audio src="${playPath}" controls="true" />
 </div>
 
 <%@ include file="../footer.jsp" %>

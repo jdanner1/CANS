@@ -37,7 +37,7 @@
     <form class="form-horizontal col-sm-8"
           id="vocalization-form"
           name="vocalization-form"
-          action="http://itins3.madisoncollege.edu/echo.php"
+          action="HomeAction"
           method="post">
 
         <div class="form-group">
@@ -53,16 +53,16 @@
             <div class="col-sm-9">
                 <select class="form-control" name="language">
                     <option disabled selected value>Select One</option>
-                    <option value="portuguese">Brazilian Portuguese</option>
-                    <option value="cspanish">Castilian Spanish</option>
-                    <option value="french">French</option>
-                    <option value="german">German</option>
-                    <option value="italian">Italian</option>
-                    <option value="japanese">Japanese</option>
-                    <option value="laspanish">Latin American Spanish</option>
-                    <option value="naspanish">North American Spanish</option>
-                    <option value="ukenglish">UK English</option>
-                    <option value="usenglish">US English</option>
+                    <option value="pt-BR_IsabelaVoice">Brazilian Portuguese</option>
+                    <option value="es-ES_LauraVoice">Castilian Spanish</option>
+                    <option value="fr-FR_ReneeVoice">French</option>
+                    <option value="de-DE_BirgitVoice">German</option>
+                    <option value="it-IT_FrancescaVoice">Italian</option>
+                    <option value="ja-JP_EmiVoice">Japanese</option>
+                    <option value="es-LA_SofiaVoice">Latin American Spanish</option>
+                    <option value="es-US_SofiaVoice">North American Spanish</option>
+                    <option value="en-GB_KateVoice">UK English</option>
+                    <option value="en-US_AllisonVoice">US English</option>
                 </select>
             </div>
         </div>

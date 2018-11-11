@@ -2,6 +2,9 @@ package com.danner.controller;
 
 import com.danner.entity.User;
 import com.danner.entity.Vocalization;
+import com.danner.persistence.GenericDao;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -18,11 +21,14 @@ import java.io.IOException;
  *@author    John Danner
  */
 @WebServlet(
-        name = "NewAccountAction",
-        urlPatterns = { "/NewAccountAction" }
+        name = "HomeAction",
+        urlPatterns = { "/HomeAction" }
 )
 
 public class HomeActionServlet extends HttpServlet {
+    private final Logger logger = LogManager.getLogger(this.getClass());
+    private GenericDao genericDao;
+    private GenericDao genericDao2;
 
     /**
      *  Handles HTTP GET requests.
@@ -37,24 +43,38 @@ public class HomeActionServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        ServletContext context = getServletContext();
+        generateVocalization(request);
 
+        String url = "Vocalization";
+        response.sendRedirect(url);
+    }
+
+    private void generateVocalization(HttpServletRequest request)  {
+        genericDao = new GenericDao(Vocalization.class);
         String text = request.getParameter("main-input");
         String language = request.getParameter("language");
         String email = request.getParameter("email");
         boolean isEmailed = false;
+
 
         if (email.equals("Yes")) {
             isEmailed = true;
         }
 
         HttpSession session = request.getSession();
+        String sessionId = request.getSession().getId();
         User user = (User)session.getAttribute("user");
 
         Vocalization vocalization = new Vocalization(user, text, language, isEmailed);
-        session.setAttribute("vocalization", vocalization);
+        genericDao.addEntity(vocalization);
 
-        String url = "/Vocalization";
-        response.sendRedirect(url);
+        VoiceFiler audio = new VoiceFiler();
+        audio.generateVoiceFile(vocalization, sessionId);
+
+
+        String playPath = "audio-files/" + sessionId + "/output.wav";
+        session.setAttribute("vocalization", vocalization);
+        session.setAttribute("sessionId", sessionId);
+        session.setAttribute("playPath", playPath);
     }
 }

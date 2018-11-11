@@ -28,8 +28,9 @@ class VoiceFilerTest {
 
     @Test
     void generateVoiceFile() {
+        String sessionId = "TestSessionId";
         VoiceFiler voiceFiler = new VoiceFiler();
-        voiceFiler.generateVoiceFile(vocalization);
+        voiceFiler.generateVoiceFile(vocalization, sessionId);
 
     } */
 }

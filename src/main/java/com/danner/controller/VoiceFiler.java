@@ -13,10 +13,7 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.util.Properties;
 
 public class VoiceFiler implements PropertiesLoader {
@@ -25,7 +22,7 @@ public class VoiceFiler implements PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
     //Add session so I can create a folder named for the session and place the file in there, relative path
 
-    public void generateVoiceFile(Vocalization vocalization)  {
+    public void generateVoiceFile(Vocalization vocalization, String sessionId)  {
         TextToSpeech textToSpeech = new TextToSpeech();
         String OUTPUT_FILE_SETTING = "audio/wav";
 
@@ -43,8 +40,11 @@ public class VoiceFiler implements PropertiesLoader {
 
             InputStream inputStream = textToSpeech.synthesize(synthesizeOptions).execute();
             InputStream in = WaveUtils.reWriteWaveHeader(inputStream);
+            new File("/home/student/IdeaProjects/individualproject/src/main/webapp/audio-files/" + sessionId).mkdir();
 
-            OutputStream out = new FileOutputStream("/home/student/IdeaProjects/individualproject/src/main/webapp/audio-files/output.wav");
+            String filepath = "/home/student/IdeaProjects/individualproject/src/main/webapp/audio-files/" + sessionId + "/output.wav";
+
+            OutputStream out = new FileOutputStream(filepath);
             byte[] buffer = new byte[1024];
             int length;
             while ((length = in.read(buffer)) > 0) {
