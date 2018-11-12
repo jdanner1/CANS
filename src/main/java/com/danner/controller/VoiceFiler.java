@@ -25,6 +25,7 @@ public class VoiceFiler implements PropertiesLoader {
     public void generateVoiceFile(Vocalization vocalization, String sessionId)  {
         TextToSpeech textToSpeech = new TextToSpeech();
         String OUTPUT_FILE_SETTING = "audio/wav";
+        String catalinaHome = System.getProperty("catalina.home");
 
         try {
             Properties properties = loadProperties(FILE_PATH);
@@ -40,9 +41,9 @@ public class VoiceFiler implements PropertiesLoader {
 
             InputStream inputStream = textToSpeech.synthesize(synthesizeOptions).execute();
             InputStream in = WaveUtils.reWriteWaveHeader(inputStream);
-            new File("/home/student/IdeaProjects/individualproject/src/main/webapp/audio-files/" + sessionId).mkdir();
+            new File(catalinaHome + "/audio-files/" + sessionId).mkdir();
 
-            String filepath = "/home/student/IdeaProjects/individualproject/src/main/webapp/audio-files/" + sessionId + "/output.wav";
+            String filepath = catalinaHome + "/audio-files/" + sessionId + "/output.wav";//  /home/student/IdeaProjects/individualproject/src/main/webapp/audio-files
 
             OutputStream out = new FileOutputStream(filepath);
             byte[] buffer = new byte[1024];
