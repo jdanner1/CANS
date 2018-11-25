@@ -69,10 +69,12 @@ public class HomeActionServlet extends HttpServlet {
         genericDao.addEntity(vocalization);
 
         VoiceFiler audio = new VoiceFiler();
-        audio.generateVoiceFile(vocalization, sessionId);
+
+        String relativePath = this.getServletContext().getRealPath("audio-files/");
+        audio.generateVoiceFile(vocalization, sessionId, request, relativePath);
 
         String catalinaHome = System.getProperty("catalina.home");
-        String playPath = catalinaHome + "/audio-files/" + sessionId + "/output.wav";  //  FileNotFoundException: /home/student/tomcat/audio-files/4C1F657DC83452F3536E64698BF847D2/output.wav
+        String playPath = "/audio-files/" + sessionId + "/output.wav";  //  FileNotFoundException: /home/student/tomcat/audio-files/4C1F657DC83452F3536E64698BF847D2/output.wav
         session.setAttribute("vocalization", vocalization);
         session.setAttribute("sessionId", sessionId);
         session.setAttribute("playPath", playPath);

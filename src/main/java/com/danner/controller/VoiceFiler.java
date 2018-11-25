@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
@@ -20,12 +21,11 @@ public class VoiceFiler implements PropertiesLoader {
 
     private String FILE_PATH = "/properties.properties";
     private final Logger logger = LogManager.getLogger(this.getClass());
-    //Add session so I can create a folder named for the session and place the file in there, relative path
 
-    public void generateVoiceFile(Vocalization vocalization, String sessionId)  {
+    public void generateVoiceFile(Vocalization vocalization, String sessionId, HttpServletRequest request, String relativePath)  {
         TextToSpeech textToSpeech = new TextToSpeech();
         String OUTPUT_FILE_SETTING = "audio/wav";
-        String catalinaHome = System.getProperty("catalina.home");
+        String catalinaHome = request.getContextPath();
 
         try {
             Properties properties = loadProperties(FILE_PATH);
@@ -41,9 +41,17 @@ public class VoiceFiler implements PropertiesLoader {
 
             InputStream inputStream = textToSpeech.synthesize(synthesizeOptions).execute();
             InputStream in = WaveUtils.reWriteWaveHeader(inputStream);
-            new File(catalinaHome + "/audio-files/" + sessionId).mkdir();
 
-            String filepath = catalinaHome + "/audio-files/" + sessionId + "/output.wav";//  /home/student/IdeaProjects/individualproject/src/main/webapp/audio-files
+            String path = relativePath + sessionId;
+            File folder=new File(path);
+            boolean exist=folder.exists();
+            if(!exist){
+                folder.mkdirs();
+            }else{
+                logger.info("Your folder exists.");
+            }
+
+            String filepath = path + "/output.wav";
 
             OutputStream out = new FileOutputStream(filepath);
             byte[] buffer = new byte[1024];
