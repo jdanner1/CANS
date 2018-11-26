@@ -22,10 +22,9 @@ public class VoiceFiler implements PropertiesLoader {
     private String FILE_PATH = "/properties.properties";
     private final Logger logger = LogManager.getLogger(this.getClass());
 
-    public void generateVoiceFile(Vocalization vocalization, String sessionId, HttpServletRequest request, String relativePath)  {
+    public void generateVoiceFile(Vocalization vocalization, String sessionId, String relativePath)  {
         TextToSpeech textToSpeech = new TextToSpeech();
         String OUTPUT_FILE_SETTING = "audio/wav";
-        String catalinaHome = request.getContextPath();
 
         try {
             Properties properties = loadProperties(FILE_PATH);

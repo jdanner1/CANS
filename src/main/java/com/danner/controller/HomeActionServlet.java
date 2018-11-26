@@ -28,7 +28,6 @@ import java.io.IOException;
 public class HomeActionServlet extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
     private GenericDao genericDao;
-    private GenericDao genericDao2;
 
     /**
      *  Handles HTTP GET requests.
@@ -71,10 +70,9 @@ public class HomeActionServlet extends HttpServlet {
         VoiceFiler audio = new VoiceFiler();
 
         String relativePath = this.getServletContext().getRealPath("audio-files/");
-        audio.generateVoiceFile(vocalization, sessionId, request, relativePath);
+        audio.generateVoiceFile(vocalization, sessionId, relativePath);
 
-        String catalinaHome = System.getProperty("catalina.home");
-        String playPath = "/audio-files/" + sessionId + "/output.wav";  //  FileNotFoundException: /home/student/tomcat/audio-files/4C1F657DC83452F3536E64698BF847D2/output.wav
+        String playPath = "/audio-files/" + sessionId + "/output.wav";
         session.setAttribute("vocalization", vocalization);
         session.setAttribute("sessionId", sessionId);
         session.setAttribute("playPath", playPath);
