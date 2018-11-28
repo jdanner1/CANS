@@ -31,6 +31,7 @@ public class HomeServlet extends HttpServlet {
     private GenericDao genericDao;
     private GenericDao genericDao2;
     private String relativePath;
+    private DirectoryCleaner cleaner;
 
     /**
      * Forwards request and response objects to the JSP page.
@@ -63,6 +64,9 @@ public class HomeServlet extends HttpServlet {
         session.setAttribute("user", user);
         session.setAttribute("role", role);
         session.setAttribute("relativePath", relativePath);
+        cleaner = new DirectoryCleaner();
+        cleaner.clean(session);
+
 
         String url = "/userRole01/home.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
