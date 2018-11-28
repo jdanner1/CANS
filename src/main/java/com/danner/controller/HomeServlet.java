@@ -9,10 +9,7 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -53,7 +50,6 @@ public class HomeServlet extends HttpServlet {
         int userID = 0;
 
         for (User currentUser : users) {
-            logger.info(currentUser.getUserName());
             if (currentUser.getUserName().equals(userName)) {
                 userID = currentUser.getUserID();
                 user = (User)genericDao.getEntityByID(userID);
@@ -62,59 +58,15 @@ public class HomeServlet extends HttpServlet {
         }
 
         HttpSession session = request.getSession();
-        session.setAttribute("user", user);
-        session.setAttribute("role", role);
 
         relativePath = this.getServletContext().getRealPath("audio-files/");
-
-        Runtime.getRuntime().addShutdownHook(new Thread() {  //  https://stackoverflow.com/questions/2070179/how-to-check-session-has-been-expired-in-java
-                                                      // this is not working because it only triggers when tomcat shuts down
-                                                      // use link to learn when session ends and clean up then.  Alternately have a job run looking for
-                                                      //old stuff
-
-            public void run() {
-                // setting it up to use this start of the path:  HomeServlet.this.relativePath;
-                String sessionId = request.getSession().getId();
-                String path = relativePath + sessionId;
-                //File outputFile = new File(path, "output.wav");
-                //outputFile.delete();
-                deleteDirectory(path);
-
-
-
-
-            }
-        });
-
+        session.setAttribute("user", user);
+        session.setAttribute("role", role);
+        session.setAttribute("relativePath", relativePath);
 
         String url = "/userRole01/home.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
-    }
-
-    public void deleteDirectory(String path) {
-
-        File file  = new File(path);
-        if(file.isDirectory()){
-            String[] childFiles = file.list();
-            if(childFiles == null) {
-                //Directory is empty. Proceed for deletion
-                file.delete();
-            }
-            else {
-                //Directory has other files.
-                //Need to delete them first
-                for (String childFilePath :  childFiles) {
-                    //recursive delete the files
-                    deleteDirectory(childFilePath);
-                }
-            }
-        }
-        else {
-            //it is a simple file. Proceed for deletion
-            file.delete();
-        }
-
     }
 }
 

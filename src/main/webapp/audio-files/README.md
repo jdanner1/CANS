@@ -1,0 +1,1 @@
+## A file in this directory is needed to ensure the directory is created on tomcat.  Subfolders are created as the initial vocalization per session is created.

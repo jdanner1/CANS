@@ -37,6 +37,14 @@
   <security-role>
     <role-name>userRole01</role-name>
   </security-role>
+
+  <listener>
+    <listener-class>HttpSessionEndListener</listener-class>
+  </listener>
+
+  <session-config>
+    <session-timeout>2</session-timeout>
+  </session-config>
 </web-app>
 
 
