@@ -67,6 +67,7 @@
 
                 <input type="submit"
                        value="Submit"
+                       style="color: black;"
                        class="buttons form-button" />
             </form>
         </div>

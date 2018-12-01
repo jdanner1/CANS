@@ -2,9 +2,6 @@ package com.danner.controller;
 
 import com.danner.entity.User;
 import com.danner.entity.Vocalization;
-import com.danner.persistence.GenericDao;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,10 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-
 
 /**
  * Controls the intake of page requests and forwards to the associated JSP.
@@ -26,12 +20,11 @@ import java.util.List;
  *
  */
 @WebServlet(
-        name = "History",
-        urlPatterns = {"/History"}
+        name = "DeleteVocalizations",
+        urlPatterns = {"/DeleteVocalizations"}
 )
-public class HistoryServlet extends HttpServlet {
-    private GenericDao genericDao;
-    private final Logger logger = LogManager.getLogger(this.getClass());
+public class DeleteVocalizationsServlet extends HttpServlet {
+
     /**
      * Forwards request and response objects to the JSP page.
      *
@@ -41,28 +34,18 @@ public class HistoryServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        genericDao = new GenericDao(Vocalization.class);
+        List<Vocalization> vocalizations;
+        UserManager userManager = new UserManager();
+        vocalizations = userManager.getVocalizations();
+
         HttpSession session = request.getSession();
-        User user = (User)session.getAttribute("user");
-        List<Vocalization> allVocalizations = genericDao.getAll();
-        List<Vocalization> vocalizations = new ArrayList<>();
-
-
-        for (Vocalization currentVocalization : allVocalizations) {
-            if (user.equals(currentVocalization.getUser()))  {
-                vocalizations.add(currentVocalization);
-            }
-        }
-
-        Collections.reverse(vocalizations);
-
-        logger.info("Vocalizations: " + vocalizations);
         session.setAttribute("vocalizations", vocalizations);
 
-        String url = "/userRole01/history.jsp";
+        String url = "/admin/delete-vocalizations.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }
 }
+
 
 

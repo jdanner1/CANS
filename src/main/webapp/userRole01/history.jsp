@@ -39,9 +39,9 @@
     <table class="all" id="vocalizationTable">
         <tr>
 
-            <td class="header col-md-2 allCells" style="color: white;"><strong>Date Created:</strong></td>
-            <td class="header col-md-8 allCells" style="color: white;"><strong>Content:</strong></td>
-            <td class="header col-md-2 allCells" style="color: white;"><strong>Content:</strong></td>
+            <td class="header col-md-2 allCells" style="color: white; font-size: 21px;"><strong>Date Created:</strong></td>
+            <td class="header col-md-8 allCells" style="color: white; font-size: 21px;"><strong>Content:</strong></td>
+            <td class="header col-md-2 allCells" style="color: white; font-size: 21px;"><strong></strong></td>
         </tr>
 
         <c:forEach var="currentVocalization" items="${vocalizations}">

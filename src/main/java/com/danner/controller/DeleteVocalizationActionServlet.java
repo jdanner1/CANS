@@ -12,7 +12,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -22,11 +21,11 @@ import java.util.List;
  *@author    John Danner
  */
 @WebServlet(
-        name = "ResubmitVocalization",
-        urlPatterns = { "/ResubmitVocalization" }
+        name = "DeleteVocalizationAction",
+        urlPatterns = { "/DeleteVocalizationAction" }
 )
 
-public class ResubmitVocalizationServlet extends HttpServlet {
+public class DeleteVocalizationActionServlet extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
     private GenericDao genericDao;
 
@@ -44,36 +43,11 @@ public class ResubmitVocalizationServlet extends HttpServlet {
             throws ServletException, IOException {
 
         genericDao = new GenericDao(Vocalization.class);
-        HttpSession session = request.getSession();
-        String sessionId = (String)session.getAttribute("sessionId");
-        String relativePath = (String)session.getAttribute("relativePath");
-
         int vocalizationID = Integer.parseInt(request.getParameter("vocalization"));
         Vocalization vocalization = (Vocalization)genericDao.getEntityByID(vocalizationID);
-        User user = vocalization.getUser();
-        String text = vocalization.getText();
-        String language = vocalization.getLanguage();
-        boolean isEmailed = vocalization.isEmailed();
+        genericDao.deleteEntity(vocalization);
 
-        Vocalization newVocalization = new Vocalization(user, text, language, isEmailed);
-        genericDao.addEntity(newVocalization);
-
-        VoiceFiler audio = new VoiceFiler();
-
-        //String relativePath2 = this.getServletContext().getRealPath("audio-files/");
-        logger.info("relativePath: " + relativePath);
-        logger.info("SessionId: " + sessionId);
-        logger.info("Context Path: " + request.getContextPath());
-        audio.generateVoiceFile(newVocalization, sessionId, relativePath);
-
-        String fileSuffix = Integer.toString(newVocalization.getVocalizationID());
-        String playPath = "/audio-files/" + sessionId + "/output.wav" + fileSuffix;
-        logger.info("Play path: " + playPath);
-        session.setAttribute("vocalization", newVocalization);
-        session.setAttribute("playPath", playPath);
-
-
-        String url = "Vocalization";
+        String url = "Home";
         response.sendRedirect(url);
     }
 }

@@ -72,7 +72,8 @@ public class HomeActionServlet extends HttpServlet {
         String relativePath = this.getServletContext().getRealPath("audio-files/");
         audio.generateVoiceFile(vocalization, sessionId, relativePath);
 
-        String playPath = "/audio-files/" + sessionId + "/output.wav";
+        String fileSuffix = Integer.toString(vocalization.getVocalizationID());
+        String playPath = "/audio-files/" + sessionId + "/output.wav" + fileSuffix;
         session.setAttribute("vocalization", vocalization);
         session.setAttribute("playPath", playPath);
     }

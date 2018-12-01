@@ -109,13 +109,4 @@ public class Vocalization {
         return language.equals(that.language);
     }
 
-   /* @Override
-    public int hashCode() {
-        int result = vocalizationID;
-        result = 31 * result + user.hashCode();
-        result = 31 * result + (text != null ? text.hashCode() : 0);
-        result = 31 * result + language.hashCode();
-        result = 31 * result + (isEmailed ? 1 : 0);
-        return result;
-    }*/
 }

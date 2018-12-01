@@ -25,6 +25,7 @@ public class VoiceFiler implements PropertiesLoader {
     public void generateVoiceFile(Vocalization vocalization, String sessionId, String relativePath)  {
         TextToSpeech textToSpeech = new TextToSpeech();
         String OUTPUT_FILE_SETTING = "audio/wav";
+        String fileSuffix = Integer.toString(vocalization.getVocalizationID());
 
         try {
             Properties properties = loadProperties(FILE_PATH);
@@ -50,7 +51,7 @@ public class VoiceFiler implements PropertiesLoader {
                 logger.info("Your folder exists.");
             }
 
-            String filepath = path + "/output.wav";
+            String filepath = path + "/output.wav" + fileSuffix;
 
             OutputStream out = new FileOutputStream(filepath);
             byte[] buffer = new byte[1024];

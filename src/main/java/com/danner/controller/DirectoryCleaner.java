@@ -21,44 +21,40 @@ public class DirectoryCleaner {
         logger.info("Inside the cleaner!!");
         scheduler.scheduleAtFixedRate(new Runnable() {
             public void run() {
-                String path = (String)session.getAttribute("relativePath");
+                String path = (String)session.getAttribute("deletePath"); // relativePath
+                logger.info("Relative path: " + path);
                 deleteDirectory(path);
             }
         }, 1, 3L , TimeUnit.MINUTES);
     }
 
 
-    private void deleteDirectory(String path) {
+    private void deleteDirectory(String path) {  // String path
+        File file  = new File(path);
+        String keeper = "README.md";
         LocalDateTime time = LocalDateTime.now();
         ZoneId zoneId = ZoneId.systemDefault();
         long epoch = time.atZone(zoneId).toEpochSecond();
-
-
-        File file  = new File(path);
-        if(file.isDirectory()){
+        if (file.isDirectory()) {
             String[] childFiles = file.list();
-            if(childFiles == null) {
+            if (childFiles == null) {
                 //Directory is empty. Proceed for deletion
                 file.delete();
-            }
-            else {
+            } else {
                 //Directory has other files.
                 //Need to delete them first
-                for (String childFilePath :  childFiles) {
+                for (String childFilePath : childFiles) {
                     //recursive delete the files
                     deleteDirectory(childFilePath);
                 }
             }
-        }
-        else {
+        } else {
             //it is a simple file. Proceed for deletion
-            if (epoch - file.lastModified() > 12000) { // 1 hour
+            if (epoch - file.lastModified() > 12000 && !(keeper.equals(file.getName()))) { //
                 logger.info("About to delete file!!");
                 boolean isDeleted = file.delete();
                 logger.info("File deleted? " + isDeleted);
             }
         }
     }
-
-
 }

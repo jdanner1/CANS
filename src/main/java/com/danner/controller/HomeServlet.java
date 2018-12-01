@@ -58,6 +58,7 @@ public class HomeServlet extends HttpServlet {
         User user = null;
         Role role = null;
         int userID = 0;
+        String deletePath = request.getContextPath() + "/audio-files/";
 
         for (User currentUser : users) {
             if (currentUser.getUserName().equals(userName)) {
@@ -75,6 +76,7 @@ public class HomeServlet extends HttpServlet {
         session.setAttribute("user", user);
         session.setAttribute("role", role);
         session.setAttribute("relativePath", relativePath);
+        session.setAttribute("deletePath", deletePath);
         cleaner = new DirectoryCleaner();
         cleaner.clean(session);
 

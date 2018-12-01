@@ -19,6 +19,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <c:if test="${role.roleName eq 'admin'}">
                     <li><a href="DeleteUsers">Delete Users</a></li>
+                    <li><a href="DeleteVocalizations">Delete Vocalizations</a></li>
                 </c:if>
 
                 <li><a href="History">History</a></li>
@@ -44,14 +45,14 @@
             <label class="control-label col-sm-3">Text</label>
             <div class="col-sm-9">
                 <!--<input class="form-control" type="<textarea name="main-input" id="main-input" cols="30" rows="10"></textarea>" />  -->
-                <textarea name="main-input" autofocus="autofocus" placeholder="Enter the text you wish to vocalize here." rows="10" cols="66"></textarea>
+                <textarea name="main-input" autofocus="autofocus" placeholder="Enter the text you wish to vocalize here." rows="10" cols="66" required></textarea>
             </div>
         </div>
 
         <div class="form-group">
             <label class="control-label col-sm-3">Language</label>
             <div class="col-sm-9">
-                <select class="form-control" name="language">
+                <select class="form-control" name="language" required>
                     <option disabled selected value>Select One</option>
                     <option value="pt-BR_IsabelaVoice">Brazilian Portuguese</option>
                     <option value="es-ES_LauraVoice">Castilian Spanish</option>
@@ -70,7 +71,7 @@
         <div class="form-group">
             <label class="control-label col-sm-3">Email Sound File?</label>
             <div class="col-sm-9">
-                <select class="form-control" name="email">
+                <select class="form-control" name="email" required>
                     <option disabled selected value>Select One</option>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
