@@ -52,8 +52,10 @@ public class DirectoryCleaner {
         }
         else {
             //it is a simple file. Proceed for deletion
-            if (epoch - file.lastModified() > 3600000) { // 1 hour
-                file.delete();
+            if (epoch - file.lastModified() > 12000) { // 1 hour
+                logger.info("About to delete file!!");
+                boolean isDeleted = file.delete();
+                logger.info("File deleted? " + isDeleted);
             }
         }
     }

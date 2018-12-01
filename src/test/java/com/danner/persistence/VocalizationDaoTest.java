@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static junit.framework.TestCase.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -62,5 +63,11 @@ class VocalizationDaoTest {
         assertNull(genericDao.getEntityByID(1));
     }
 
+    @Test
+    void getAll() {
+
+        List<Vocalization> allVocalizations = genericDao.getAll();
+        logger.info(allVocalizations);
+    }
 }
 

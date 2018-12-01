@@ -1,13 +1,17 @@
 package com.danner.persistence;
 
 import com.danner.entity.User;
+import com.danner.entity.Vocalization;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Root;
 import java.time.LocalDate;
 import java.util.List;
@@ -15,6 +19,8 @@ import java.util.List;
 public class GenericDao<T> {
 
     private Class<T> type;
+    private Class<Vocalization> type2;
+    private User user;
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     public GenericDao(Class<T> type) {
@@ -40,15 +46,16 @@ public class GenericDao<T> {
         session.close();
     }
 
-    public List<T> getAll()  {
-       Session session = getSession();
+    public List<T> getAll() {
+        Session session = getSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<T> query = builder.createQuery(type);
         Root<T> root = query.from(type);
         List<T> list = session.createQuery(query).getResultList();
-        session.clear();
+        session.close();
         return list;
     }
+
 
     public int addEntity(T entity) {
         int id = 0;
@@ -67,4 +74,5 @@ public class GenericDao<T> {
         transaction.commit();
         session.close();
     }
+
 }

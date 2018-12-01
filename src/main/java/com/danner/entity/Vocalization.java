@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity(name = "Vocalization")
 @Table(name = "vocalization")
@@ -21,7 +22,7 @@ public class Vocalization {
     private User user;
 
     @Column(name = "create_timestamp")
-    private LocalDate createTimestamp;
+    private LocalDateTime createTimestamp;
 
     private String text;
     private String language;
@@ -36,7 +37,7 @@ public class Vocalization {
         this.text = text;
         this.language = language;
         this.isEmailed = isEmailed;
-        createTimestamp = LocalDate.now();
+        createTimestamp = LocalDateTime.now();
     }
 
     public int getVocalizationID() {
@@ -53,7 +54,7 @@ public class Vocalization {
         this.user = user;
     }
 
-    public LocalDate getCreateTimestamp() {
+    public LocalDateTime getCreateTimestamp() {
         return createTimestamp;
     }
 
@@ -104,19 +105,17 @@ public class Vocalization {
         if (vocalizationID != that.vocalizationID) return false;
         if (isEmailed != that.isEmailed) return false;
         if (!user.equals(that.user)) return false;
-        if (createTimestamp != null ? !createTimestamp.equals(that.createTimestamp) : that.createTimestamp != null) return false;
         if (text != null ? !text.equals(that.text) : that.text != null) return false;
-        return language != null ? language.equals(that.language) : that.language == null;
+        return language.equals(that.language);
     }
 
-    @Override
+   /* @Override
     public int hashCode() {
         int result = vocalizationID;
         result = 31 * result + user.hashCode();
-        result = 31 * result + (createTimestamp != null ? createTimestamp.hashCode() : 0);
         result = 31 * result + (text != null ? text.hashCode() : 0);
-        result = 31 * result + (language != null ? language.hashCode() : 0);
+        result = 31 * result + language.hashCode();
         result = 31 * result + (isEmailed ? 1 : 0);
         return result;
-    }
+    }*/
 }

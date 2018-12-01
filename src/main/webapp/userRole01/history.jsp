@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <%@ include file="../head-tag.jsp" %>
@@ -24,5 +25,36 @@
         </div>
     </div>
 </nav>
+
+<div class="container-fluid">
+    <h2 style="color: white;">Vocalizations:</h2>
+    <br /><br />
+
+    <form class="form-horizontal col-sm-12"
+          method="post"
+          name="resubmitVocalization"
+          id="resubmitVocalization"
+          action="ResubmitVocalization">
+
+    <table class="all" id="vocalizationTable">
+        <tr>
+
+            <td class="header col-md-2 allCells" style="color: white;"><strong>Date Created:</strong></td>
+            <td class="header col-md-8 allCells" style="color: white;"><strong>Content:</strong></td>
+            <td class="header col-md-2 allCells" style="color: white;"><strong>Content:</strong></td>
+        </tr>
+
+        <c:forEach var="currentVocalization" items="${vocalizations}">
+        <tr>
+            <td class="allCells col-md-2" style="color: white;">${currentVocalization.createTimestamp}</td>
+            <td class="allCells col-md-8" style="color: white;">${currentVocalization.text}</td>
+            <td class="allCells col-md-2" style="color: black;"><button name="vocalization" type="submit" value="${currentVocalization.vocalizationID}">Regenerate</button></td>
+        </tr>
+        </c:forEach>
+    </table>
+
+</form>
+<div class="col-sm-3"></div>
+
 
 <%@ include file="../footer.jsp" %>

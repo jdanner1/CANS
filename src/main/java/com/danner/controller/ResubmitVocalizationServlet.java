@@ -1,12 +1,12 @@
 package com.danner.controller;
 
+import com.danner.entity.Role;
 import com.danner.entity.User;
 import com.danner.entity.Vocalization;
 import com.danner.persistence.GenericDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 /**
  *
@@ -21,11 +22,11 @@ import java.io.IOException;
  *@author    John Danner
  */
 @WebServlet(
-        name = "HomeAction",
-        urlPatterns = { "/HomeAction" }
+        name = "ResubmitVocalization",
+        urlPatterns = { "/ResubmitVocalization" }
 )
 
-public class HomeActionServlet extends HttpServlet {
+public class ResubmitVocalizationServlet extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
     private GenericDao genericDao;
 
@@ -42,38 +43,39 @@ public class HomeActionServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        generateVocalization(request);
+        genericDao = new GenericDao(Vocalization.class);
+        HttpSession session = request.getSession();
+        String sessionId = (String)session.getAttribute("sessionId");
+        String relativePath = (String)session.getAttribute("relativePath");
+
+        int vocalizationID = Integer.parseInt(request.getParameter("vocalization"));
+        Vocalization vocalization = (Vocalization)genericDao.getEntityByID(vocalizationID);
+        User user = vocalization.getUser();
+        String text = vocalization.getText();
+        String language = vocalization.getLanguage();
+        boolean isEmailed = vocalization.isEmailed();
+
+        Vocalization newVocalization = new Vocalization(user, text, language, isEmailed);
+        genericDao.addEntity(newVocalization);
+
+        VoiceFiler audio = new VoiceFiler();
+
+        //String relativePath2 = this.getServletContext().getRealPath("audio-files/");
+        logger.info("relativePath: " + relativePath);
+        logger.info("SessionId: " + sessionId);
+        logger.info("Context Path: " + request.getContextPath());
+        audio.generateVoiceFile(newVocalization, sessionId, relativePath);
+
+        String playPath = "/audio-files/" + sessionId + "/output.wav";
+        logger.info("Play path: " + playPath);
+        session.setAttribute("vocalization", newVocalization);
+        session.setAttribute("playPath", playPath);
+
 
         String url = "Vocalization";
         response.sendRedirect(url);
     }
-
-    private void generateVocalization(HttpServletRequest request)  {
-        genericDao = new GenericDao(Vocalization.class);
-        String text = request.getParameter("main-input");
-        String language = request.getParameter("language");
-        String email = request.getParameter("email");
-        boolean isEmailed = false;
-
-
-        if (email.equals("Yes")) {
-            isEmailed = true;
-        }
-
-        HttpSession session = request.getSession();
-        String sessionId = (String)session.getAttribute("sessionId");
-        User user = (User)session.getAttribute("user");
-
-        Vocalization vocalization = new Vocalization(user, text, language, isEmailed);
-        genericDao.addEntity(vocalization);
-
-        VoiceFiler audio = new VoiceFiler();
-
-        String relativePath = this.getServletContext().getRealPath("audio-files/");
-        audio.generateVoiceFile(vocalization, sessionId, relativePath);
-
-        String playPath = "/audio-files/" + sessionId + "/output.wav";
-        session.setAttribute("vocalization", vocalization);
-        session.setAttribute("playPath", playPath);
-    }
 }
+
+
+

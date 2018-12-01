@@ -28,7 +28,7 @@
 
 <div class="row">
     <div class="col-sm-1"></div>
-    <audio src="<%=request.getContextPath()%>${playPath}" controls="true" />  <!--   -->
+    <audio src="<%=request.getContextPath()%>${playPath}" controls="true" />
 </div>
 
 <%@ include file="../footer.jsp" %>

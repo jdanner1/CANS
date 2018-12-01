@@ -448,6 +448,11 @@ img  {
     color: white;
 }
 
+#vocalizationTable  {
+    border-collapse: separate;
+    border-spacing: 1em;
+}
+
 
 
 footer {

@@ -2,10 +2,18 @@ package com.danner.controller;
 
 import com.danner.entity.Role;
 import com.danner.entity.User;
+import com.danner.entity.Vocalization;
 import com.danner.persistence.GenericDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.Session;
 
+import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaDelete;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.CriteriaUpdate;
+import javax.persistence.metamodel.Metamodel;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +21,7 @@ import javax.servlet.http.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -59,8 +68,10 @@ public class HomeServlet extends HttpServlet {
         }
 
         HttpSession session = request.getSession();
+        String sessionId = request.getSession().getId();
 
         relativePath = this.getServletContext().getRealPath("audio-files/");
+        session.setAttribute("sessionId", sessionId);
         session.setAttribute("user", user);
         session.setAttribute("role", role);
         session.setAttribute("relativePath", relativePath);
