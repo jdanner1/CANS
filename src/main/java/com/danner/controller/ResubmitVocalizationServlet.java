@@ -67,7 +67,7 @@ public class ResubmitVocalizationServlet extends HttpServlet {
         audio.generateVoiceFile(newVocalization, sessionId, relativePath);
 
         String fileSuffix = Integer.toString(newVocalization.getVocalizationID());
-        String playPath = "/audio-files/" + sessionId + "/output.wav" + fileSuffix;
+        String playPath = "/audio-files/" + sessionId + "/output" + fileSuffix + ".wav";
         logger.info("Play path: " + playPath);
         session.setAttribute("vocalization", newVocalization);
         session.setAttribute("playPath", playPath);

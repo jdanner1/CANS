@@ -51,7 +51,7 @@ public class VoiceFiler implements PropertiesLoader {
                 logger.info("Your folder exists.");
             }
 
-            String filepath = path + "/output.wav" + fileSuffix;
+            String filepath = path + "/output" + fileSuffix + ".wav";
 
             OutputStream out = new FileOutputStream(filepath);
             byte[] buffer = new byte[1024];
