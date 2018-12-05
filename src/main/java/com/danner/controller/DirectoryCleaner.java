@@ -28,9 +28,11 @@ public class DirectoryCleaner {
         }, 1, 3L , TimeUnit.MINUTES);
     }
 
-
+// https://stackoverflow.com/questions/1844688/how-to-read-all-files-in-a-folder-from-java
     private void deleteDirectory(String path) {  // String path
         File file  = new File(path);
+        String[] childFilesTest = file.list();
+        logger.info("child Files: " + childFilesTest);
         String keeper = "README.md";
         LocalDateTime time = LocalDateTime.now();
         ZoneId zoneId = ZoneId.systemDefault();
@@ -45,6 +47,7 @@ public class DirectoryCleaner {
                 //Need to delete them first
                 for (String childFilePath : childFiles) {
                     //recursive delete the files
+                    logger.info("Not empty Directory" + childFilePath);
                     deleteDirectory(childFilePath);
                 }
             }
@@ -52,6 +55,7 @@ public class DirectoryCleaner {
             //it is a simple file. Proceed for deletion
             if (epoch - file.lastModified() > 12000 && !(keeper.equals(file.getName()))) { //
                 logger.info("About to delete file!!");
+                logger.info("The file: " + file.getName());
                 boolean isDeleted = file.delete();
                 logger.info("File deleted? " + isDeleted);
             }

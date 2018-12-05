@@ -70,6 +70,7 @@ public class HomeActionServlet extends HttpServlet {
         VoiceFiler audio = new VoiceFiler();
 
         String relativePath = this.getServletContext().getRealPath("audio-files/");
+        logger.info("HomeActionServlet Path to generate file: " + relativePath);
         audio.generateVoiceFile(vocalization, sessionId, relativePath);
 
         String fileSuffix = Integer.toString(vocalization.getVocalizationID());
