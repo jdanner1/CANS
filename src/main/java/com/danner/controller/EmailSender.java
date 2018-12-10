@@ -1,5 +1,6 @@
 package com.danner.controller;
 
+import com.danner.utility.PropertiesLoader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -11,8 +12,9 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-public class EmailSender {
+public class EmailSender  implements PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
+    private String FILE_PATH = "/properties.properties";
 
     // Replace sender@example.com with your "From" address.
     // This address must be verified.
@@ -24,10 +26,10 @@ public class EmailSender {
     static final String TO = "john.danner@tds.net";
 
     // Replace smtp_username with your Amazon SES SMTP user name.
-    static final String SMTP_USERNAME = "AKIAINE5M5MAA7RMYKJQ";
+    private String SMTP_USERNAME;
 
     // Replace smtp_password with your Amazon SES SMTP password.
-    static final String SMTP_PASSWORD = "AiAmu+QjOsseZAXlDfzZt43M5WznL21qElh+Y6ejvkZQ";
+    private String SMTP_PASSWORD;
 
     // The name of the Configuration Set to use for this message.
     // If you comment out or remove this variable, you will also need to
@@ -53,6 +55,10 @@ public class EmailSender {
     );
 
     public void generateEmail(String path) throws Exception {
+
+        Properties properties = loadProperties(FILE_PATH);
+        SMTP_USERNAME = properties.getProperty("SMTP_USERNAME");
+        SMTP_PASSWORD = properties.getProperty("SMTP_PASSWORD");
 
         // Create a Properties object to contain connection configuration information.
         Properties props = System.getProperties();
@@ -88,11 +94,10 @@ public class EmailSender {
 
             // Send the email.
             transport.sendMessage(msg, msg.getAllRecipients());
-            System.out.println("Email sent!");
+            logger.info("Email sent!");
         }
         catch (Exception ex) {
-            System.out.println("The email was not sent.");
-            System.out.println("Error message: " + ex.getMessage());
+            logger.info("The email was not sent." + ex.getMessage());
         }
         finally
         {

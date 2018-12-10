@@ -19,3 +19,9 @@ V
 &src/main/webapp/userRole01/history.jsp,e/f/efc6424a2870df09fb75d9ad8d19f68fb6f27694
 j
 :src/main/java/com/danner/controller/HomeActionServlet.java,9/2/9227a9c9cfb231a36360c608b4a50b7755b8a7ef
+J
+src/main/webapp/footer.jsp,3/8/3819c16e4a27752a128752c506287183b0c69775
+O
+src/main/webapp/WEB-INF/web.xml,2/e/2e22b6edd746fa3dc40ad7276c87c8d87d72a392
+d
+4src/main/java/com/danner/controller/EmailSender.java,a/8/a8fa48de24b10756ff7dd3e657a4cc245ae2fbf5

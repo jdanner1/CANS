@@ -1,10 +1,10 @@
 
-Fsquid:EmptyStatementUsageCheck"Remove this empty statement.(Ç¦ÙÊ
-esquid:S4042,"IUse "java.nio.Files#delete" here for better messages on error conditions.(²Œ­ûÿÿÿÿ
-esquid:S4042;"IUse "java.nio.Files#delete" here for better messages on error conditions.(ñŸêÿÿÿÿÿ
-Dsquid:S1604"(Make this anonymous inner class a lambda(€âÅøşÿÿÿÿ
+Dsquid:S1604"(Make this anonymous inner class a lambda(€âÅøşÿÿÿÿ
 Zsquid:UselessImportCheck"1Remove this unused import 'java.util.Collection'.(¹ÉĞšùÿÿÿÿ
 Tsquid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ
-Ysquid:UselessImportCheck"0Remove this unused import 'java.time.LocalDate'.(›‘¬èıÿÿÿÿ
 V
-squid:S899,";Do something with the "boolean" value returned by "delete".(²Œ­ûÿÿÿÿ
+squid:S899-";Do something with the "boolean" value returned by "delete".(²Œ­ûÿÿÿÿ
+esquid:S4042E"IUse "java.nio.Files#delete" here for better messages on error conditions.(ñŸêÿÿÿÿÿ
+usquid:S3776!"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(’§³ÿÿÿÿÿ8Ç¤€«ù,
+esquid:S4042-"IUse "java.nio.Files#delete" here for better messages on error conditions.(²Œ­ûÿÿÿÿ
+Ysquid:UselessImportCheck"0Remove this unused import 'java.time.LocalDate'.(›‘¬èıÿÿÿÿ

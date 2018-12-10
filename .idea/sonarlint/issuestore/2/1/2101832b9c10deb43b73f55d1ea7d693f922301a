@@ -1,12 +1,20 @@
 
-]squid:S1075"ARefactor your code to get this URI from a customizable parameter.(ŒÔúŒıÿÿÿÿ
-esquid:S20958"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(ãÓÜÿ
-qsquid:S00116"TRename this field "FILE_PATH" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŒÔúŒıÿÿÿÿ
-nsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿÛ®üÿÿÿÿ
+nsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿÛ®üÿÿÿÿ
 Zsquid:UselessImportCheck"6Remove this unused import 'javax.ws.rs.client.Client'.(ÈŠÄŸ
+dsquid:UselessImportCheck"4Remove this unused import 'java.time.LocalDateTime'.(æÃ§ƒüÿÿÿÿ8ˆÏ©®ù,
+[squid:UselessImportCheck"7Remove this unused import 'javax.ws.rs.core.MediaType'.(œ±‹¡
+isquid:CommentedOutCodeLine^"<This block of commented-out lines of code should be removed.(òÍÆ™8òÖ´®ù,
+bsquid:UselessImportCheck"9Remove this unused import 'javax.ws.rs.client.WebTarget'.(‘Êşÿÿÿÿ
+fsquid:UselessImportCheck"BRemove this unused import 'javax.servlet.http.HttpServletRequest'.(ø©¹…
+esquid:S2095:"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(ãÓÜÿ
+qsquid:S00116"TRename this field "FILE_PATH" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŒÔúŒıÿÿÿÿ
+asquid:UselessImportCheck"=Remove this unused import 'javax.ws.rs.client.ClientBuilder'.(—ãĞû
+Dsquid:S1075`"&Remove this hard-coded path-delimiter.(¿äıñ8È°Ò®ù,
+Xsquid:UselessImportCheck"-Remove this unused import 'java.time.ZoneId'.( Æ½“8ˆÏ©®ù,
+]
+squid:S899W";Do something with the "boolean" value returned by "delete".(²Œ­ûÿÿÿÿ8İ¨®ù,
+]squid:S1075"ARefactor your code to get this URI from a customizable parameter.(ŒÔúŒıÿÿÿÿ
+lsquid:S4042W"IUse "java.nio.Files#delete" here for better messages on error conditions.(²Œ­ûÿÿÿÿ8İ¨®ù,
 [squid:UselessImportCheck
 "7Remove this unused import 'org.junit.jupiter.api.Test'.(Öºˆß
-asquid:UselessImportCheck"=Remove this unused import 'javax.ws.rs.client.ClientBuilder'.(—ãĞû
-fsquid:UselessImportCheck"BRemove this unused import 'javax.servlet.http.HttpServletRequest'.(ø©¹…
-[squid:UselessImportCheck"7Remove this unused import 'javax.ws.rs.core.MediaType'.(œ±‹¡
-bsquid:UselessImportCheck"9Remove this unused import 'javax.ws.rs.client.WebTarget'.(‘Êşÿÿÿÿ
+lsquid:S4042k"IUse "java.nio.Files#delete" here for better messages on error conditions.(ñŸêÿÿÿÿÿ8İ¨®ù,
