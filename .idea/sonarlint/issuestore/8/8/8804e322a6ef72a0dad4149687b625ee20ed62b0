@@ -1,0 +1,10 @@
+
+>squid:S19893"'Add a "try/catch" block for "parseInt".(Ó˜‡€
+Bsquid:S1989M"+Add a "try/catch" block for "sendRedirect".(ğåÕï
+psquid:S1450"YRemove the "genericDao" field and declare it as a local variable in the relevant methods.(¢¹¬
+asquid:CommentedOutCodeLine?"<This block of commented-out lines of code should be removed.(´ÔÏe
+osquid:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(¢¹¬
+Ysquid:S2441H"BMake "Vocalization" serializable or don't store it in the session.(Œ”½ı
+Wsquid:UselessImportCheck"3Remove this unused import 'com.danner.entity.Role'.(Úı¨Ø
+Tsquid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ
+Vsquid:S1161+":Add the "@Override" annotation above this method signature(ÂÍ¡‘úÿÿÿÿ

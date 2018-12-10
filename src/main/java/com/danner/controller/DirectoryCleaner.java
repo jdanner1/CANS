@@ -15,13 +15,14 @@ import java.util.concurrent.*;
 public class DirectoryCleaner {
     private final Logger logger = LogManager.getLogger(this.getClass());
     private ScheduledExecutorService scheduler =
-            Executors.newScheduledThreadPool(1);;
+            Executors.newScheduledThreadPool(1);
+    private String path;
 
     public void clean(HttpSession session)  {
         logger.info("Inside the cleaner!!");
         scheduler.scheduleAtFixedRate(new Runnable() {
             public void run() {
-                String path = (String)session.getAttribute("deletePath"); // relativePath
+                path = (String)session.getAttribute("relativePath"); // relativePath
                 logger.info("Relative path: " + path);
                 deleteDirectory(path);
             }
@@ -29,10 +30,10 @@ public class DirectoryCleaner {
     }
 
 // https://stackoverflow.com/questions/1844688/how-to-read-all-files-in-a-folder-from-java
-    private void deleteDirectory(String path) {  // String path
-        File file  = new File(path);
-        String[] childFilesTest = file.list();
-        logger.info("child Files: " + childFilesTest);
+    private void deleteDirectory(String receivedPath) {  // String path
+
+        File file  = new File(receivedPath);
+
         String keeper = "README.md";
         LocalDateTime time = LocalDateTime.now();
         ZoneId zoneId = ZoneId.systemDefault();
@@ -45,10 +46,19 @@ public class DirectoryCleaner {
             } else {
                 //Directory has other files.
                 //Need to delete them first
-                for (String childFilePath : childFiles) {
+                for (String itemInFolder : childFiles) {
                     //recursive delete the files
-                    logger.info("Not empty Directory" + childFilePath);
-                    deleteDirectory(childFilePath);
+                    logger.info("Item in Directory: " + itemInFolder);
+                    String updatedPath = path + itemInFolder;
+                    logger.info("Item to delete: " + updatedPath);
+                    File tester = new File(updatedPath);
+                    if (!(tester.isDirectory())) {
+                        String fullPath = tester.getAbsolutePath();
+                        logger.info("fullPath: " + fullPath);
+                        deleteDirectory(fullPath);
+                    } else {
+                        deleteDirectory(updatedPath);
+                    }
                 }
             }
         } else {

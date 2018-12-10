@@ -71,6 +71,7 @@ public class HomeServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String sessionId = request.getSession().getId();
 
+
         relativePath = this.getServletContext().getRealPath("audio-files/");
         session.setAttribute("sessionId", sessionId);
         session.setAttribute("user", user);

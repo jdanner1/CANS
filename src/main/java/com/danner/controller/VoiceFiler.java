@@ -15,6 +15,8 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import java.io.*;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Properties;
 
 public class VoiceFiler implements PropertiesLoader {
@@ -43,7 +45,7 @@ public class VoiceFiler implements PropertiesLoader {
             InputStream in = WaveUtils.reWriteWaveHeader(inputStream);
 
             String path = relativePath + sessionId;
-            File folder=new File(path);
+            File folder = new File(path);
             boolean exist=folder.exists();
             if(!exist){
                 folder.mkdirs();
@@ -62,10 +64,49 @@ public class VoiceFiler implements PropertiesLoader {
             out.close();
             in.close();
             inputStream.close();
+            EmailSender sender = new EmailSender();
+            sender.generateEmail(filepath);
+            deleteDirectory(path);
+            deleteDirectory(path);
         } catch (IOException e) {
             logger.error("IO_Exceptioon: " , e);
         } catch (Exception exception) {
             logger.error("Exception: ", exception);
+        }
+    }
+
+    private void deleteDirectory(String receivedPath) {  // String path
+
+        File file  = new File(receivedPath);
+
+        String keeper = "README.md";
+        if (file.isDirectory()) {
+            String[] childFiles = file.list();
+            if (childFiles.length == 0) {
+                //Directory is empty. Proceed for deletion
+                file.delete();
+            } else {
+                //Directory has other files.
+                //Need to delete them first
+                for (String itemInFolder : childFiles) {
+                    //recursive delete the files
+                    logger.info("Item in Directory: " + itemInFolder);
+                    //String updatedPath = path + itemInFolder;
+                    //logger.info("Item to delete: " + updatedPath);
+                    File tester = new File(receivedPath + "/" + itemInFolder);
+                    String fullPath = tester.getAbsolutePath();
+                    logger.info("fullPath: " + fullPath);
+                    deleteDirectory(fullPath);
+                }
+            }
+        } else {
+            //it is a simple file. Proceed for deletion
+            if (!(keeper.equals(file.getName()))) { //
+                logger.info("About to delete file!!");
+                logger.info("The file: " + file.getName());
+                boolean isDeleted = file.delete();
+                logger.info("File deleted? " + isDeleted);
+            }
         }
     }
 }
