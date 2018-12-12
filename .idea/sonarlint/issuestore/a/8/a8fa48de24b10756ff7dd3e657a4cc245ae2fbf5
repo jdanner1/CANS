@@ -1,13 +1,8 @@
 
-Nsquid:S11727"+Remove this unused method parameter "path".(œÎÆòùÿÿÿÿ8Ø¹±°ù,
-V
-squid:S106_"9Replace this use of System.out or System.err by a logger.(Ñ¼¿·8ÖÎ“°ù,
-jsquid:S001127"FDefine and throw a dedicated exception instead of using a generic one.(œÎÆòùÿÿÿÿ8ûÄ¥°ù,
-[
-squid:S106T"9Replace this use of System.out or System.err by a logger.(éËö–øÿÿÿÿ8ÖÎ“°ù,
-ysquid:S2068"V'PASSWORD' detected in this expression, review this potentially hard-coded credential.(Û®˜¶üÿÿÿÿ8ÖÎ“°ù,
-Hsquid:S1068"*Remove this unused "logger" private field.(æ×âÁ8µŞ§°ù,
-V
-squid:S106["9Replace this use of System.out or System.err by a logger.(™÷Û8ÖÎ“°ù,
-V
-squid:S106^"9Replace this use of System.out or System.err by a logger.(¿¹’¹8Ù·“°ù,
+xsquid:S00116"TRename this field "FILE_PATH" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŒÔúŒıÿÿÿÿ8•Ò¿Ïù,
+zsquid:S1450$"\Remove the "SMTP_PASSWORD" field and declare it as a local variable in the relevant methods.(Ä¾İ†8Ü¬ÊÏù,
+dsquid:S1075"ARefactor your code to get this URI from a customizable parameter.(ŒÔúŒıÿÿÿÿ8•Ò¿Ïù,
+Nsquid:S1172="+Remove this unused method parameter "path".(œÎÆòùÿÿÿÿ8ä¢±Ğù,
+wsquid:S00116!"XRename this field "SMTP_USERNAME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡­äÙ8ã’ÅÏù,
+wsquid:S00116$"XRename this field "SMTP_PASSWORD" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ä¾İ†8¿ŞÅÏù,
+zsquid:S1450!"\Remove the "SMTP_USERNAME" field and declare it as a local variable in the relevant methods.(¡­äÙ8ÃÉÏù,

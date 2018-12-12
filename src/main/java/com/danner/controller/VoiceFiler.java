@@ -65,7 +65,7 @@ public class VoiceFiler implements PropertiesLoader {
             in.close();
             inputStream.close();
             EmailSender sender = new EmailSender();
-            sender.generateEmail(filepath);
+            sender.createEmail(filepath);
             deleteDirectory(path);
             deleteDirectory(path);
         } catch (IOException e) {
