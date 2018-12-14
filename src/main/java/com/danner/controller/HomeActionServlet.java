@@ -42,23 +42,24 @@ public class HomeActionServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        generateVocalization(request);
+        Boolean result = generateVocalization(request);
+        if (result) {
+            String url = "Vocalization";
+            response.sendRedirect(url);
+        } else {
+            String url = "VocalizationFailure";
+            response.sendRedirect(url);
+        }
 
-        String url = "Vocalization";
-        response.sendRedirect(url);
+
     }
 
-    private void generateVocalization(HttpServletRequest request)  {
+    private Boolean generateVocalization(HttpServletRequest request)  {
         genericDao = new GenericDao(Vocalization.class);
         String text = request.getParameter("main-input");
         String language = request.getParameter("language");
-        String email = request.getParameter("email");
         boolean isEmailed = false;
 
-
-        if (email.equals("Yes")) {
-            isEmailed = true;
-        }
 
         HttpSession session = request.getSession();
         String sessionId = (String)session.getAttribute("sessionId");
@@ -72,13 +73,12 @@ public class HomeActionServlet extends HttpServlet {
         String relativePath1 = this.getServletContext().getRealPath("audio-files/");
         logger.info("HomeActionServlet Path1 to generate file: " + relativePath1);
 
-        /*String relativePath2 = request.getContextPath() + "/audio-files/";
-        logger.info("HomeActionServlet Path2 to generate file: " + relativePath2);  */
-        audio.generateVoiceFile(vocalization, sessionId, relativePath1);
+        Boolean result = audio.generateVoiceFile(vocalization, sessionId, relativePath1);
 
         String fileSuffix = Integer.toString(vocalization.getVocalizationID());
         String playPath = "/audio-files/" + sessionId + "/output" + fileSuffix + ".wav";
         session.setAttribute("vocalization", vocalization);
         session.setAttribute("playPath", playPath);
+        return result;
     }
 }

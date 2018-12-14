@@ -23,6 +23,7 @@
     <url-pattern>/Vocalization</url-pattern>
     <url-pattern>/History</url-pattern>
     <url-pattern>/EditProfileAction</url-pattern>
+    <url-pattern>/VocalizationFailure</url-pattern>
   </web-resource-collection>
   <auth-constraint>
     <role-name>userRole01</role-name>
@@ -30,7 +31,20 @@
   </auth-constraint>
 </security-constraint>
 
-<security-role>
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>admin</web-resource-name>
+      <url-pattern>/admin/*</url-pattern>
+      <url-pattern>/DeleteUsers</url-pattern>
+      <url-pattern>/DeleteVocalizations</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+
+  <security-role>
   <role-name>admin</role-name>
 </security-role>
 

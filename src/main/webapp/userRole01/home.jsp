@@ -68,17 +68,6 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <label class="control-label col-sm-3">Email Sound File?</label>
-            <div class="col-sm-9">
-                <select class="form-control" name="email" required>
-                    <option disabled selected value>Select One</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
-            </div>
-        </div>
-
         <div class="col-sm-3"></div>
         <div class="col-sm-9">
             <input type="submit"

@@ -28,8 +28,8 @@
 
 <div class="row">
     <div class="col-sm-1"></div>
-    <h2 style="color: white; text-align: center;">Success, your email has been sent!</h2>
-    <h4 style="color: white; text-align: center;">Use the links above to create another vocalization, review history or adjust your profile.</h4>
+    <h2 style="color: white; text-align: center;">Failure, there was either a problem with Watson or Email</h2>
+    <h4 style="color: white; text-align: center;">Use the links above to try again, review history or adjust your profile.</h4>
 </div>
 
 <%@ include file="../footer.jsp" %>

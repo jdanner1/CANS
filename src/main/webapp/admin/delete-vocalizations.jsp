@@ -25,27 +25,6 @@
         </div>
     </nav>
 
-
-    <div class="row deleteList">
-        <h2 class="userTable" style="color: white;">Vocalizations:</h2>
-        <table id="userTable" class="display" cellspacing="0" width="100%">
-            <thead>
-            <th class="vocalizationTable" style="color: white; margin-left: 2em;">VocalizationID</th>
-            <th class="vocalizationTable" style="color: white; margin-left: 2em;">Create Date</th>
-            <th class="vocalizationTable" style="color: white; margin-left: 2em;">Content</th>
-            </thead>
-            <tbody>
-            <c:forEach var="vocalization" items="${vocalizations}">
-                <tr>
-                    <td class="vocalizationTable" style="color: white; margin-left: 2em;">${vocalization.vocalizationID}</td>
-                    <td class="vocalizationTable" style="color: white; margin-left: 2em;">${vocalization.createTimestamp}</td>
-                    <td class="vocalizationTable" style="color: white; margin-left: 2em;">${vocalization.text}</td>
-                </tr>
-            </c:forEach>
-            </tbody>
-        </table>
-    </div>
-
     <div class="row deleteList">
         <form class="form-horizontal"
               method="post"
@@ -57,12 +36,13 @@
                 <label class="control-label" style="color: white; margin-left: .5em;">Which Vocalization to Delete?</label>
                 <br /><br /><br />
 
-                <c:forEach var="vocalization" items="${vocalizations}">
-                    <div class="col-sm-9">
-                        <input class="form-check-input" type="radio" name="vocalization"  style="color: white;" value="${vocalization.vocalizationID}" /><span style="color: white; margin-left: 1em;">${vocalization.vocalizationID}</span>
-                    </div>
 
+                <c:forEach var="vocalization" items="${vocalizations}">
+                <div class="col-sm-9">
+                    <input class="form-check-input" type="checkbox" name="vocalization"  style="color: white;" value="${vocalization.vocalizationID}" /><span style="color: white; margin-left: 1em;">${vocalization.vocalizationID} ${vocalization.createTimestamp} ${vocalization.text}</span>
+                </div>
                 </c:forEach>
+
             </div>
 
             <input type="submit"

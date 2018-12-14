@@ -43,9 +43,14 @@ public class DeleteVocalizationActionServlet extends HttpServlet {
             throws ServletException, IOException {
 
         genericDao = new GenericDao(Vocalization.class);
-        int vocalizationID = Integer.parseInt(request.getParameter("vocalization"));
-        Vocalization vocalization = (Vocalization)genericDao.getEntityByID(vocalizationID);
-        genericDao.deleteEntity(vocalization);
+        String[] ids = request.getParameterValues("vocalization");
+        logger.info("Ids: " + ids);
+
+        for (String id : ids) {
+            int vocalizationID = Integer.parseInt(id);
+            Vocalization vocalization = (Vocalization)genericDao.getEntityByID(vocalizationID);
+            genericDao.deleteEntity(vocalization);
+        }
 
         String url = "Home";
         response.sendRedirect(url);

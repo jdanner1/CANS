@@ -1,5 +1,6 @@
 package com.danner.controller;
 
+import com.danner.entity.User;
 import com.danner.entity.Vocalization;
 import com.danner.utility.PropertiesLoader;
 import com.ibm.watson.developer_cloud.text_to_speech.v1.TextToSpeech;
@@ -24,10 +25,13 @@ public class VoiceFiler implements PropertiesLoader {
     private String FILE_PATH = "/properties.properties";
     private final Logger logger = LogManager.getLogger(this.getClass());
 
-    public void generateVoiceFile(Vocalization vocalization, String sessionId, String relativePath)  {
+    public boolean generateVoiceFile(Vocalization vocalization, String sessionId, String relativePath)  {
         TextToSpeech textToSpeech = new TextToSpeech();
+        Boolean result = false;
         String OUTPUT_FILE_SETTING = "audio/wav";
         String fileSuffix = Integer.toString(vocalization.getVocalizationID());
+        User user = vocalization.getUser();
+        String email = user.getEmail();
 
         try {
             Properties properties = loadProperties(FILE_PATH);
@@ -64,8 +68,8 @@ public class VoiceFiler implements PropertiesLoader {
             out.close();
             in.close();
             inputStream.close();
-            EmailSender sender = new EmailSender();
-            sender.createEmail(filepath);
+            SendEmail sender = new SendEmail();
+            result = sender.sendEmail(filepath, email);
             deleteDirectory(path);
             deleteDirectory(path);
         } catch (IOException e) {
@@ -73,6 +77,7 @@ public class VoiceFiler implements PropertiesLoader {
         } catch (Exception exception) {
             logger.error("Exception: ", exception);
         }
+        return result;
     }
 
     private void deleteDirectory(String receivedPath) {  // String path
