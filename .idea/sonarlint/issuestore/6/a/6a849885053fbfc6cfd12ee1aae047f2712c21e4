@@ -1,24 +1,22 @@
 
-Msquid:UselessImportCheck")Remove this unused import 'java.io.File'.(†Ğ¥Å
-Ssquid:UselessImportCheck"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ
-psquid:S1450("YRemove the "genericDao" field and declare it as a local variable in the relevant methods.(¢¹¬
 [squid:UselessImportCheck	"2Remove this unused import 'org.hibernate.Session'.(È¹›§ùÿÿÿÿ
-tsquid:S2226+"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(Ìã…—úÿÿÿÿ
-Qsquid:S11613":Add the "@Override" annotation above this method signature(ÅµÄè
-osquid:S2226)"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(îÎµ©
-jsquid:UselessImportCheck"FRemove this unused import 'javax.persistence.criteria.CriteriaDelete'.(Œƒí˜
-Bsquid:S1989W"&Add a "try/catch" block for "forward".(ÜÕˆêøÿÿÿÿ
-Asquid:S1068'"*Remove this unused "logger" private field.(æ×âÁ
-rsquid:S1450+"VRemove the "cleaner" field and declare it as a local variable in the relevant methods.(Ìã…—úÿÿÿÿ
-osquid:S2226*"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(³Õñ£
-ksquid:UselessImportCheck"BRemove this unused import 'javax.persistence.metamodel.Metamodel'.(Å¥Ğ•ÿÿÿÿÿ
-Bsquid:S1989W"&Add a "try/catch" block for "forward".(ÜÕˆêøÿÿÿÿ
+nsquid:UselessImportCheck"ERemove this unused import 'javax.persistence.criteria.CriteriaQuery'.(ıŞ§ÿÿÿÿÿ
+]squid:S2441L":Make "User" serializable or don't store it in the session.(£™Õàûÿÿÿÿ8È¶³¡ú,
+psquid:S1450("YRemove the "genericDao" field and declare it as a local variable in the relevant methods.(¢¹¬
 qsquid:S1450)"ZRemove the "genericDao2" field and declare it as a local variable in the relevant methods.(îÎµ©
 rsquid:S1450*"[Remove the "relativePath" field and declare it as a local variable in the relevant methods.(³Õñ£
-osquid:S2226("XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(¢¹¬
-nsquid:UselessImportCheck"ERemove this unused import 'javax.persistence.criteria.CriteriaQuery'.(ıŞ§ÿÿÿÿÿ
-dsquid:UselessImportCheck";Remove this unused import 'com.danner.entity.Vocalization'.(¥¹±ñùÿÿÿÿ
 jsquid:UselessImportCheck"FRemove this unused import 'javax.persistence.criteria.CriteriaUpdate'.(é¾ùÂ
+Xsquid:S2441M":Make "Role" serializable or don't store it in the session.(õß×¼8È¶³¡ú,
+osquid:S2226)"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(îÎµ©
+Bsquid:S1989T"&Add a "try/catch" block for "forward".(ÜÕˆêøÿÿÿÿ
+osquid:S2226("XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(¢¹¬
+Ssquid:UselessImportCheck"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ
+jsquid:UselessImportCheck"FRemove this unused import 'javax.persistence.criteria.CriteriaDelete'.(Œƒí˜
+ksquid:UselessImportCheck"BRemove this unused import 'javax.persistence.metamodel.Metamodel'.(Å¥Ğ•ÿÿÿÿÿ
+osquid:S2226*"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(³Õñ£
+Qsquid:S11612":Add the "@Override" annotation above this method signature(ÅµÄè
+Asquid:S1068'"*Remove this unused "logger" private field.(æ×âÁ
+Msquid:UselessImportCheck")Remove this unused import 'java.io.File'.(†Ğ¥Å
+dsquid:UselessImportCheck";Remove this unused import 'com.danner.entity.Vocalization'.(¥¹±ñùÿÿÿÿ
+Bsquid:S1989T"&Add a "try/catch" block for "forward".(ÜÕˆêøÿÿÿÿ
 jsquid:UselessImportCheck"GRemove this unused import 'javax.persistence.criteria.CriteriaBuilder'.(É¿F
-]squid:S2441M":Make "User" serializable or don't store it in the session.(£™Õàûÿÿÿÿ8È¶³¡ú,
-Xsquid:S2441N":Make "Role" serializable or don't store it in the session.(õß×¼8È¶³¡ú,

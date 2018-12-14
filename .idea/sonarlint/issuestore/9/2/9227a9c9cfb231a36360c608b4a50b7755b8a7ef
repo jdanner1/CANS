@@ -1,8 +1,8 @@
 
-]squid:UselessImportCheck	"9Remove this unused import 'javax.servlet.ServletContext'.(·°Êﬁ
-isquid:CommentedOutCodeLineK"<This block of commented-out lines of code should be removed.(Œ¢™ç8ü»ö®˘,
-psquid:S1450"YRemove the "genericDao" field and declare it as a local variable in the relevant methods.(¢π¨Å
-Vsquid:S1161*":Add the "@Override" annotation above this method signature(¬Õ°ë˙ˇˇˇˇ
-Bsquid:S19890"+Add a "try/catch" block for "sendRedirect".(Â’Ô
 osquid:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(¢π¨Å
-`squid:S2441Q"BMake "Vocalization" serializable or don't store it in the session.(£ÃÕˇ8‘∂≥°˙,
+Vsquid:S1161*":Add the "@Override" annotation above this method signature(¬Õ°ë˙ˇˇˇˇ
+psquid:S1450"YRemove the "genericDao" field and declare it as a local variable in the relevant methods.(¢π¨Å
+`squid:S2441P"BMake "Vocalization" serializable or don't store it in the session.(£ÃÕˇ8‘∂≥°˙,
+Isquid:S19893"+Add a "try/catch" block for "sendRedirect".(Â’Ô8»’ﬂÏ˙,
+]squid:UselessImportCheck	"9Remove this unused import 'javax.servlet.ServletContext'.(·°Êﬁ
+Isquid:S19890"+Add a "try/catch" block for "sendRedirect".(Â’Ô8Ñ•ﬁÏ˙,
