@@ -44,7 +44,6 @@
         <div class="form-group">
             <label class="control-label col-sm-3">Text</label>
             <div class="col-sm-9">
-                <!--<input class="form-control" type="<textarea name="main-input" id="main-input" cols="30" rows="10"></textarea>" />  -->
                 <textarea name="main-input" autofocus="autofocus" placeholder="Enter the text you wish to vocalize here." rows="10" cols="66" required></textarea>
             </div>
         </div>

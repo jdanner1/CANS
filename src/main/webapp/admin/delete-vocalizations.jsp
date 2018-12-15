@@ -4,7 +4,6 @@
 <c:set var="title" value="Search Results" />
 <%@ include file="../head-tag.jsp" %>
 
-
 <div class="container-fluid">
     <nav class="navbar navbar-inverse">
         <div class="navbar-header">

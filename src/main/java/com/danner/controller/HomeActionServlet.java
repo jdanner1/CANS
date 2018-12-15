@@ -5,8 +5,6 @@ import com.danner.entity.Vocalization;
 import com.danner.persistence.GenericDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,9 +14,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
+ * The type Home action servlet.
  *
- *
- *@author    John Danner
+ * @author John Danner
  */
 @WebServlet(
         name = "HomeAction",
@@ -26,8 +24,6 @@ import java.io.IOException;
 )
 
 public class HomeActionServlet extends HttpServlet {
-    private final Logger logger = LogManager.getLogger(this.getClass());
-    private GenericDao genericDao;
 
     /**
      *  Handles HTTP GET requests.
@@ -55,7 +51,9 @@ public class HomeActionServlet extends HttpServlet {
     }
 
     private Boolean generateVocalization(HttpServletRequest request)  {
-        genericDao = new GenericDao(Vocalization.class);
+        final Logger logger = LogManager.getLogger(this.getClass());
+        GenericDao vocalizationDao;
+        vocalizationDao = new GenericDao(Vocalization.class);
         String text = request.getParameter("main-input");
         String language = request.getParameter("language");
         boolean isEmailed = false;
@@ -66,7 +64,7 @@ public class HomeActionServlet extends HttpServlet {
         User user = (User)session.getAttribute("user");
 
         Vocalization vocalization = new Vocalization(user, text, language, isEmailed);
-        genericDao.addEntity(vocalization);
+        vocalizationDao.addEntity(vocalization);
 
         VoiceFiler audio = new VoiceFiler();
 

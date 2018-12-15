@@ -26,8 +26,6 @@ import java.util.List;
 )
 
 public class DeleteVocalizationActionServlet extends HttpServlet {
-    private final Logger logger = LogManager.getLogger(this.getClass());
-    private GenericDao genericDao;
 
     /**
      *  Handles HTTP GET requests.
@@ -41,15 +39,17 @@ public class DeleteVocalizationActionServlet extends HttpServlet {
      */
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        final Logger logger = LogManager.getLogger(this.getClass());
+        GenericDao vocalizationDao;
 
-        genericDao = new GenericDao(Vocalization.class);
+        vocalizationDao = new GenericDao(Vocalization.class);
         String[] ids = request.getParameterValues("vocalization");
         logger.info("Ids: " + ids);
 
         for (String id : ids) {
             int vocalizationID = Integer.parseInt(id);
-            Vocalization vocalization = (Vocalization)genericDao.getEntityByID(vocalizationID);
-            genericDao.deleteEntity(vocalization);
+            Vocalization vocalization = (Vocalization)vocalizationDao.getEntityByID(vocalizationID);
+            vocalizationDao.deleteEntity(vocalization);
         }
 
         String url = "Home";

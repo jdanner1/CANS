@@ -22,26 +22,25 @@ import java.util.Properties;
 
 public class VoiceFiler implements PropertiesLoader {
 
-    private String FILE_PATH = "/properties.properties";
-    private final Logger logger = LogManager.getLogger(this.getClass());
-
     public boolean generateVoiceFile(Vocalization vocalization, String sessionId, String relativePath)  {
+        final Logger logger = LogManager.getLogger(this.getClass());
+        String propertyPath = "/properties.properties";
         TextToSpeech textToSpeech = new TextToSpeech();
         Boolean result = false;
-        String OUTPUT_FILE_SETTING = "audio/wav";
+        String outputFileSetting = "audio/wav";
         String fileSuffix = Integer.toString(vocalization.getVocalizationID());
         User user = vocalization.getUser();
         String email = user.getEmail();
 
         try {
-            Properties properties = loadProperties(FILE_PATH);
+            Properties properties = loadProperties(propertyPath);
             textToSpeech.setUsernameAndPassword(properties.getProperty("username"), properties.getProperty("password"));
             textToSpeech.setEndPoint(properties.getProperty("url"));
 
             SynthesizeOptions synthesizeOptions =
                     new SynthesizeOptions.Builder()
                             .text(vocalization.getText())
-                            .accept(OUTPUT_FILE_SETTING)
+                            .accept(outputFileSetting)
                             .voice(vocalization.getLanguage())
                             .build();
 
@@ -52,7 +51,8 @@ public class VoiceFiler implements PropertiesLoader {
             File folder = new File(path);
             boolean exist=folder.exists();
             if(!exist){
-                folder.mkdirs();
+                boolean isMade = folder.mkdirs();
+                logger.info("Folders created? " + isMade);
             }else{
                 logger.info("Your folder exists.");
             }
@@ -81,7 +81,7 @@ public class VoiceFiler implements PropertiesLoader {
     }
 
     private void deleteDirectory(String receivedPath) {  // String path
-
+        final Logger logger = LogManager.getLogger(this.getClass());
         File file  = new File(receivedPath);
 
         String keeper = "README.md";
@@ -89,15 +89,14 @@ public class VoiceFiler implements PropertiesLoader {
             String[] childFiles = file.list();
             if (childFiles.length == 0) {
                 //Directory is empty. Proceed for deletion
-                file.delete();
+                boolean isDeleted = file.delete();
+                logger.info("Directory " + file.getName() + " deleted? " + isDeleted);
             } else {
                 //Directory has other files.
                 //Need to delete them first
                 for (String itemInFolder : childFiles) {
                     //recursive delete the files
                     logger.info("Item in Directory: " + itemInFolder);
-                    //String updatedPath = path + itemInFolder;
-                    //logger.info("Item to delete: " + updatedPath);
                     File tester = new File(receivedPath + "/" + itemInFolder);
                     String fullPath = tester.getAbsolutePath();
                     logger.info("fullPath: " + fullPath);

@@ -17,9 +17,9 @@ import java.util.List;
 
 
 /**
+ * The type Delete user action servlet.
  *
- *
- *@author    John Danner
+ * @author John Danner
  */
 @WebServlet(
         name = "DeleteUserAction",
@@ -27,10 +27,6 @@ import java.util.List;
 )
 
 public class DeleteUserActionServlet extends HttpServlet {
-    private final Logger logger = LogManager.getLogger(this.getClass());
-    private GenericDao genericDao;
-    private GenericDao genericDao2;
-    private GenericDao genericDao3;
 
     /**
      *  Handles HTTP GET requests.
@@ -44,35 +40,38 @@ public class DeleteUserActionServlet extends HttpServlet {
      */
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        GenericDao userDao;
 
-        genericDao = new GenericDao(User.class);
+        userDao = new GenericDao(User.class);
         int userID = Integer.parseInt(request.getParameter("userName"));
-        User user = (User)genericDao.getEntityByID(userID);
+        User user = (User)userDao.getEntityByID(userID);
         deleteVocalizations(user);
         deleteRoles(user);
 
-        genericDao.deleteEntity(user);
+        userDao.deleteEntity(user);
 
         String url = "Home";
         response.sendRedirect(url);
     }
 
     private void deleteVocalizations(User user) {
-        genericDao3 = new GenericDao(Vocalization.class);
-        List<Vocalization> allVocalizations = genericDao3.getAll();
+        GenericDao vocalizationDao;
+        vocalizationDao = new GenericDao(Vocalization.class);
+        List<Vocalization> allVocalizations = vocalizationDao.getAll();
         for (Vocalization currentVocalization : allVocalizations) {
             if (user.equals(currentVocalization.getUser())) {
-                genericDao3.deleteEntity(currentVocalization);
+                vocalizationDao.deleteEntity(currentVocalization);
             }
         }
     }
 
     private void deleteRoles(User user) {
-        genericDao2 = new GenericDao(Role.class);
-        List<Role> allRoles = genericDao2.getAll();
+        GenericDao roleDao;
+        roleDao = new GenericDao(Role.class);
+        List<Role> allRoles = roleDao.getAll();
         for (Role currentRole : allRoles) {
             if (currentRole.getUserName().equals(user.getUserName())) {
-                genericDao2.deleteEntity(currentRole);
+                roleDao.deleteEntity(currentRole);
             }
         }
     }

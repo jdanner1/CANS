@@ -71,3 +71,87 @@ Total time spent:  9 hours
  
  Total time spent:  13 hours
  
+ 
+  ### Week 8
+  
+  * Fixed JS in AWS.
+  * Set up test database
+  * Updated test classes
+  * Placed credentials for Watson in properties file
+  * Converted database access to use Generic Dao
+  
+  
+  Total time spent: 10 hours
+  
+  ### Week 9
+  
+  * Adding starts for JSPs
+  * Added CSS, including normalizing it
+  * Built out login page
+  * built out new user form
+  * built out vocalization page
+  * Adjusted voiceFiler to take vocalization as input
+  
+  
+  Total time spent:
+  
+  ### Week 10
+  
+  * Fixed authentication, AWS working now
+  * Adjusted gitignore to exclude properties file
+  * Built out edit profile capability
+  * Got started with servlets
+  * Set up intelliJ for web services
+   
+  
+  Total time spent: 8 hours, more spent on team project
+  
+  ### Week 11
+  
+  * Troubleshot file access issues
+  * Added Delete user functionality
+  * Added play controls for files
+  
+  Total time spent: 5 hours, more spent on group project
+  
+   ### Week 12
+   
+   * Worked on folder removal, couple different approaches
+   * Adjusting file naming
+   
+   Total time spent: 4 hours, more on group project
+   
+   ### Week 13
+   
+   * Adding history page, mostly working
+   * Trouble shooting issues with regenerating vocalizations
+   * Working on file deletion so more
+   
+   Total time spent: 10 hours
+   
+   ### Week 14
+   
+   * More time on file deletion
+   * Investigating email as an option
+   * got files to delete if done right after vocalization created
+   
+   Total time spent: 8 hours
+   
+   ### Week 15
+   
+   * Worked on getting email to work
+   * Fixed gitignore issues
+   * Got Email to work, adjusted vocalization screens to display email creation outcome, rather than playing the file
+   * Removed some clutter left over from other file removal attempts
+   
+   Total time spent:   10 hours
+   
+   ### Week 16
+   
+   * Updated testing now that everything is functional
+   * Cleaned up classes, worked on javadoc
+   * Reviewed expectations document, updated time log and ReadMe
+   * Made video script
+   * Recorded video
+   
+   Total time spent: 8 hours

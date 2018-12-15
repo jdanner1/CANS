@@ -31,7 +31,7 @@ class UserDaoTest {
         int userID = genericDao.addEntity(user);
         assertNotEquals(0, userID);
         User addedUser = (User)genericDao.getEntityByID(userID);
-        assertEquals("Luther", addedUser.getFirstName());
+        assertEquals(user, addedUser);
     }
 
     @Test

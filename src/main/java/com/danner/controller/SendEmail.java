@@ -2,7 +2,6 @@ package com.danner.controller;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.PrintStream;
 import java.nio.ByteBuffer;
 import java.util.Properties;
 
@@ -14,7 +13,6 @@ import javax.activation.FileDataSource;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
-import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
@@ -24,7 +22,6 @@ import javax.mail.internet.MimeMultipart;
 // from https://aws.amazon.com/sdk-for-java
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
-import com.amazonaws.regions.Regions;
 import com.amazonaws.services.simpleemail.AmazonSimpleEmailService;
 import com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceClientBuilder;
 import com.amazonaws.services.simpleemail.model.RawMessage;
@@ -34,49 +31,26 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class SendEmail implements PropertiesLoader {
-    private final Logger logger = LogManager.getLogger(this.getClass());
-    private String FILE_PATH = "/properties.properties";
 
-    // Replace sender@example.com with your "From" address.
-    // This address must be verified with Amazon SES.
-    private static String SENDER = "Advanced Text Vocalizer <jdanner1@madisoncollege.edu>";
 
-    // Replace recipient@example.com with a "To" address. If your account
-    // is still in the sandbox, this address must be verified.
-    private String recipient;
 
-    // Specify a configuration set. If you do not want to use a configuration
-    // set, comment the following variable, and the
-    // ConfigurationSetName=CONFIGURATION_SET argument below.
-    //private static String CONFIGURATION_SET = "ConfigSet";
-
-    // The subject line for the email.
-    private static String SUBJECT = "Vocalization File";
-
-    // The full path to the file that will be attached to the email.
-    // If you're using Windows, escape backslashes as shown in this variable.
-    private String attachment;
-
-    // Amazon SES SMTP host name. This example uses the US West (Oregon) region.
-    // See https://docs.aws.amazon.com/ses/latest/DeveloperGuide/regions.html#region-endpoints
-    // for more information.
-    static final String HOST = "us-east-1";  //original value: email-smtp.us-east-1.amazonaws.com
-
-    // The email body for recipients with non-HTML email clients.
-    private static String BODY_TEXT = "Hello,\r\n"
-            + "Please see the attached file for a list "
-            + "of customers to contact.";
-
-    // The HTML body of the email.
-    private static String BODY_HTML = "<html>"
-            + "<head></head>"
-            + "<body>"
-            + "<h1>Hello!</h1>"
-            + "<p>Please see the attached vocalization.</p>"
-            + "</body>"
-            + "</html>";
-
-    public Boolean sendEmail(String filePath, String email) throws AddressException, MessagingException, IOException {
+    public Boolean sendEmail(String filePath, String email) throws MessagingException, IOException {
+        final Logger logger = LogManager.getLogger(this.getClass());
+        final String host = "us-east-1";
+        String propertyPath = "/properties.properties";
+        String sender = "Advanced Text Vocalizer <jdanner1@madisoncollege.edu>";
+        String recipient;
+        String subject = "Vocalization File";
+        String attachment;
+        String bodyText = "Hello,\r\n"
+                + "Please see the attached vocalization.";
+        String bodyHtml = "<html>"
+                + "<head></head>"
+                + "<body>"
+                + "<h1>Hello!</h1>"
+                + "<p>Please see the attached vocalization.</p>"
+                + "</body>"
+                + "</html>";
 
         Boolean result;
         Session session = Session.getDefaultInstance(new Properties());
@@ -84,7 +58,7 @@ public class SendEmail implements PropertiesLoader {
         attachment = filePath;
         Properties properties = null;
         try {
-            properties = loadProperties(FILE_PATH);
+            properties = loadProperties(propertyPath);
         } catch (Exception e) {
             logger.error("Exception: " + e);
         }
@@ -93,30 +67,30 @@ public class SendEmail implements PropertiesLoader {
         MimeMessage message = new MimeMessage(session);
 
         // Add subject, from and to lines.
-        message.setSubject(SUBJECT, "UTF-8");
-        message.setFrom(new InternetAddress(SENDER));
+        message.setSubject(subject, "UTF-8");
+        message.setFrom(new InternetAddress(sender));
         message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipient));
 
         // Create a multipart/alternative child container.
-        MimeMultipart msg_body = new MimeMultipart("alternative");
+        MimeMultipart msgBody = new MimeMultipart("alternative");
 
         // Create a wrapper for the HTML and text parts.
         MimeBodyPart wrap = new MimeBodyPart();
 
         // Define the text part.
         MimeBodyPart textPart = new MimeBodyPart();
-        textPart.setContent(BODY_TEXT, "text/plain; charset=UTF-8");
+        textPart.setContent(bodyText, "text/plain; charset=UTF-8");
 
         // Define the HTML part.
         MimeBodyPart htmlPart = new MimeBodyPart();
-        htmlPart.setContent(BODY_HTML,"text/html; charset=UTF-8");
+        htmlPart.setContent(bodyHtml,"text/html; charset=UTF-8");
 
         // Add the text and HTML parts to the child container.
-        msg_body.addBodyPart(textPart);
-        msg_body.addBodyPart(htmlPart);
+        msgBody.addBodyPart(textPart);
+        msgBody.addBodyPart(htmlPart);
 
         // Add the child container to the wrapper object.
-        wrap.setContent(msg_body);
+        wrap.setContent(msgBody);
 
         // Create a multipart/mixed parent container.
         MimeMultipart msg = new MimeMultipart("mixed");
@@ -142,7 +116,7 @@ public class SendEmail implements PropertiesLoader {
                     +"using the AWS SDK for Java...");
 
             AmazonSimpleEmailService client = AmazonSimpleEmailServiceClientBuilder.standard()
-                    .withRegion(HOST)
+                    .withRegion(host)
                     .withCredentials(new AWSStaticCredentialsProvider((new BasicAWSCredentials(properties.getProperty("key_id"), properties.getProperty("key")))))
                     .build();
 

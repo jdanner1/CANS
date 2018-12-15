@@ -1,6 +1,5 @@
 package com.danner.controller;
 
-import com.danner.entity.User;
 import com.danner.entity.Vocalization;
 
 import javax.servlet.RequestDispatcher;

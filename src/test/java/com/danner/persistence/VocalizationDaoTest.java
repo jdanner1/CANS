@@ -6,10 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.time.LocalDate;
 import java.util.List;
-
 import static junit.framework.TestCase.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -35,7 +32,6 @@ class VocalizationDaoTest {
         String text = "This is a jUnit test for Vocalizations";
         String language = "en-US_AllisonVoice";
         boolean isEmailed = true;
-        LocalDate createTimestamp = LocalDate.now();
 
         Vocalization vocalization = new Vocalization(user, text, language, isEmailed);
 
@@ -46,8 +42,6 @@ class VocalizationDaoTest {
         logger.info("Vocalization Info: " + addedVocalization.toString());
     }
 
-
-
     @Test
     void getVocalizationByID() {
         Vocalization retrievedVocalization = (Vocalization)genericDao.getEntityByID(1);
@@ -55,7 +49,6 @@ class VocalizationDaoTest {
         assertEquals(genericDao.getEntityByID(1), retrievedVocalization);
         logger.info("Vocalization Info: " + retrievedVocalization.toString());
     }
-
 
     @Test
     void deleteVocalization() {

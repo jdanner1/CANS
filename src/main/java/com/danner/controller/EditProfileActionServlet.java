@@ -1,12 +1,7 @@
 package com.danner.controller;
 
-import com.danner.entity.Role;
 import com.danner.entity.User;
 import com.danner.persistence.GenericDao;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,8 +24,7 @@ import java.time.LocalDate;
 
 public class EditProfileActionServlet extends HttpServlet {
 
-    private final Logger logger = LogManager.getLogger(this.getClass());
-    private GenericDao genericDao;
+
 
     /**
      *  Handles HTTP GET requests.
@@ -45,7 +39,8 @@ public class EditProfileActionServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        genericDao = new GenericDao(User.class);
+        GenericDao userDao;
+        userDao = new GenericDao(User.class);
 
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
@@ -61,7 +56,7 @@ public class EditProfileActionServlet extends HttpServlet {
         user.setPassword(password);
         user.setStatusCode(status);
         user.setModifyDate(LocalDate.now());
-        genericDao.updateEntity(user);
+        userDao.updateEntity(user);
 
         String url = "Home";
         response.sendRedirect(url);

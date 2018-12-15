@@ -19,9 +19,6 @@ import java.util.List;
 public class GenericDao<T> {
 
     private Class<T> type;
-    private Class<Vocalization> type2;
-    private User user;
-    private final Logger logger = LogManager.getLogger(this.getClass());
 
     public GenericDao(Class<T> type) {
         this.type = type;
@@ -74,5 +71,4 @@ public class GenericDao<T> {
         transaction.commit();
         session.close();
     }
-
 }

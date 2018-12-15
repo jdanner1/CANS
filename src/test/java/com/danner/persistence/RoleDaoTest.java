@@ -2,15 +2,10 @@ package com.danner.persistence;
 
 import com.danner.entity.Role;
 import com.danner.entity.User;
-import com.danner.entity.Vocalization;
-import com.danner.persistence.GenericDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.time.LocalDate;
-
 import static junit.framework.TestCase.assertNotNull;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -44,8 +39,6 @@ class RoleDaoTest {
         logger.info("Role Info: " + addedRole.toString());
     }
 
-
-
     @Test
     void getRoleByID() {
         Role retrievedRole = (Role)genericDao.getEntityByID(1);
@@ -65,12 +58,9 @@ class RoleDaoTest {
         logger.info("Role Info: " + retrievedRole.toString());
     }
 
-
-
     @Test
     void deleteRole() {
         genericDao.deleteEntity(genericDao.getEntityByID(1));
         assertNull(genericDao.getEntityByID(1));
     }
-
 }

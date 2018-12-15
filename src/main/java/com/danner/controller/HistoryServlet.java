@@ -14,9 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 
 /**
@@ -30,8 +28,7 @@ import java.util.List;
         urlPatterns = {"/History"}
 )
 public class HistoryServlet extends HttpServlet {
-    private GenericDao genericDao;
-    private final Logger logger = LogManager.getLogger(this.getClass());
+
     /**
      * Forwards request and response objects to the JSP page.
      *
@@ -41,19 +38,14 @@ public class HistoryServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        genericDao = new GenericDao(Vocalization.class);
+        //GenericDao vocalizationDao;
+        final Logger logger = LogManager.getLogger(this.getClass());
+
+        //vocalizationDao = new GenericDao(Vocalization.class);
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("user");
-        List<Vocalization> allVocalizations = genericDao.getAll();
-        List<Vocalization> vocalizations = new ArrayList<>();
-
-
-        for (Vocalization currentVocalization : allVocalizations) {
-            if (user.equals(currentVocalization.getUser()))  {
-                vocalizations.add(currentVocalization);
-            }
-        }
-
+        Set<Vocalization> vocals = user.getVocalizations();
+        List<Vocalization> vocalizations = new ArrayList<>(vocals);
         Collections.reverse(vocalizations);
 
         logger.info("Vocalizations: " + vocalizations);
