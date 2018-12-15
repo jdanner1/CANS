@@ -1,6 +1,7 @@
 package com.danner.entity;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.SQLInsert;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -32,6 +33,7 @@ public class User {
     @Column(name = "modify_date")
     private LocalDate modifyDate;
 
+    @SQLInsert(sql = "SET NOCOUNT ON;")
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO, generator="native")
     @GenericGenerator(name = "native", strategy = "native")

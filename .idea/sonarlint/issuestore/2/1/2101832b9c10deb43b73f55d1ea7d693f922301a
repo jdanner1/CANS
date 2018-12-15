@@ -1,19 +1,14 @@
 
-dsquid:UselessImportCheck"4Remove this unused import 'java.time.LocalDateTime'.(æÃ§ƒüÿÿÿÿ8ˆÏ©®ù,
-lsquid:S4042\"IUse "java.nio.Files#delete" here for better messages on error conditions.(²Œ­ûÿÿÿÿ8İ¨®ù,
-]squid:S1075"ARefactor your code to get this URI from a customizable parameter.(ŒÔúŒıÿÿÿÿ
-lsquid:S4042p"IUse "java.nio.Files#delete" here for better messages on error conditions.(ñŸêÿÿÿÿÿ8İ¨®ù,
-qsquid:S00116"TRename this field "FILE_PATH" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŒÔúŒıÿÿÿÿ
-Zsquid:UselessImportCheck"6Remove this unused import 'javax.ws.rs.client.Client'.(ÈŠÄŸ
-asquid:UselessImportCheck"=Remove this unused import 'javax.ws.rs.client.ClientBuilder'.(—ãĞû
-]
-squid:S899\";Do something with the "boolean" value returned by "delete".(²Œ­ûÿÿÿÿ8İ¨®ù,
-Xsquid:UselessImportCheck"-Remove this unused import 'java.time.ZoneId'.( Æ½“8ˆÏ©®ù,
-[squid:UselessImportCheck"7Remove this unused import 'javax.ws.rs.core.MediaType'.(œ±‹¡
-Dsquid:S1075e"&Remove this hard-coded path-delimiter.(¿äıñ8È°Ò®ù,
 bsquid:UselessImportCheck"9Remove this unused import 'javax.ws.rs.client.WebTarget'.(‘Êşÿÿÿÿ
 esquid:S2095>"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(ãÓÜÿ
-isquid:CommentedOutCodeLinec"<This block of commented-out lines of code should be removed.(òÍÆ™8òÖ´®ù,
-nsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿÛ®üÿÿÿÿ
-fsquid:UselessImportCheck"BRemove this unused import 'javax.servlet.http.HttpServletRequest'.(ø©¹…
+Xsquid:UselessImportCheck"-Remove this unused import 'java.time.ZoneId'.( Æ½“8ˆÏ©®ù,
 [squid:UselessImportCheck"7Remove this unused import 'org.junit.jupiter.api.Test'.(Öºˆß
+dsquid:S1075"ARefactor your code to get this URI from a customizable parameter.(¤Øè£şÿÿÿÿ8ïºÓôú,
+Dsquid:S1075d"&Remove this hard-coded path-delimiter.(¿äıñ8È°Ò®ù,
+Zsquid:UselessImportCheck"6Remove this unused import 'javax.ws.rs.client.Client'.(ÈŠÄŸ
+lsquid:S4042\"IUse "java.nio.Files#delete" here for better messages on error conditions.(ñŸêÿÿÿÿÿ8İ¨®ù,
+dsquid:UselessImportCheck"4Remove this unused import 'java.time.LocalDateTime'.(æÃ§ƒüÿÿÿÿ8ˆÏ©®ù,
+fsquid:UselessImportCheck"BRemove this unused import 'javax.servlet.http.HttpServletRequest'.(ø©¹…
+lsquid:S4042o"IUse "java.nio.Files#delete" here for better messages on error conditions.(ñŸêÿÿÿÿÿ8İ¨®ù,
+asquid:UselessImportCheck"=Remove this unused import 'javax.ws.rs.client.ClientBuilder'.(—ãĞû
+[squid:UselessImportCheck"7Remove this unused import 'javax.ws.rs.core.MediaType'.(œ±‹¡

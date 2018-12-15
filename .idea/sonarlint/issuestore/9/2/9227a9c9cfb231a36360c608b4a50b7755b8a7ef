@@ -1,8 +1,5 @@
 
-osquid:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(¢¹¬
-Vsquid:S1161*":Add the "@Override" annotation above this method signature(ÂÍ¡‘úÿÿÿÿ
-psquid:S1450"YRemove the "genericDao" field and declare it as a local variable in the relevant methods.(¢¹¬
-`squid:S2441P"BMake "Vocalization" serializable or don't store it in the session.(£ÌÍÿ8Ô¶³¡ú,
-Isquid:S19893"+Add a "try/catch" block for "sendRedirect".(ğåÕï8ÈÕßìú,
-]squid:UselessImportCheck	"9Remove this unused import 'javax.servlet.ServletContext'.(á¡æŞ
-Isquid:S19890"+Add a "try/catch" block for "sendRedirect".(ğåÕï8„¥Şìú,
+`squid:S2441N"BMake "Vocalization" serializable or don't store it in the session.(£ÌÍÿ8Ô¶³¡ú,
+Vsquid:S1161&":Add the "@Override" annotation above this method signature(ÂÍ¡‘úÿÿÿÿ
+Isquid:S1989/"+Add a "try/catch" block for "sendRedirect".(ğåÕï8ÈÕßìú,
+Isquid:S1989,"+Add a "try/catch" block for "sendRedirect".(ğåÕï8„¥Şìú,

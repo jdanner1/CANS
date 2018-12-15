@@ -32,8 +32,6 @@ import org.apache.logging.log4j.Logger;
 
 public class SendEmail implements PropertiesLoader {
 
-
-
     public Boolean sendEmail(String filePath, String email) throws MessagingException, IOException {
         final Logger logger = LogManager.getLogger(this.getClass());
         final String host = "us-east-1";

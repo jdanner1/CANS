@@ -1,0 +1,6 @@
+
+ksquid:UselessImportCheck"@Remove this unused import 'org.apache.logging.log4j.LogManager'.(Ë”Ëé8¿úôú,
+Vsquid:S1161)":Add the "@Override" annotation above this method signature(ÂÍ¡‘úÿÿÿÿ
+Csquid:S1989."'Add a "try/catch" block for "parseInt".(¾©§ıÿÿÿÿ
+Bsquid:S19896"+Add a "try/catch" block for "sendRedirect".(ğåÕï
+lsquid:UselessImportCheck"<Remove this unused import 'org.apache.logging.log4j.Logger'.(»¯øÿÿÿÿ8¿úôú,
