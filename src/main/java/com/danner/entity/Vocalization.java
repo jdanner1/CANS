@@ -88,7 +88,6 @@ public class Vocalization {
         return "Vocalization{" +
                 "vocalizationID=" + vocalizationID +
                 ", user=" + user +
-                ", createDate=" + createTimestamp +
                 ", text='" + text + '\'' +
                 ", language='" + language + '\'' +
                 ", isEmailed=" + isEmailed +

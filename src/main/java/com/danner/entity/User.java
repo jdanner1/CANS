@@ -151,8 +151,6 @@ public class User {
                 ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", createDate=" + createDate +
-                ", modifyDate=" + modifyDate +
                 ", userID=" + userID +
                 '}';
     }
