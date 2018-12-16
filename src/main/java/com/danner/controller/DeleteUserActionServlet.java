@@ -48,7 +48,8 @@ public class DeleteUserActionServlet extends HttpServlet {
         deleteVocalizations(user);
         deleteRoles(user);
 
-        userDao.deleteEntity(user);
+        userDao.deleteEntity(userDao.getEntityByID(userID));
+        //userDao.deleteEntity(user);
 
         String url = "Home";
         response.sendRedirect(url);

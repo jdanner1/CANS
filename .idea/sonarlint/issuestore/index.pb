@@ -93,3 +93,5 @@ h
 8src/test/java/com/danner/controller/UserManagerTest.java,5/e/5e25744c6ccdad1445a09b791393d4ff03131fc3
 g
 7src/test/java/com/danner/controller/VoiceFilerTest.java,1/b/1bd1bc30e54231a086f6d124cc75b2d0c3742e40
+J
+logs/individualproject.log,b/0/b06af7a6895518a26c6cb50decfe9bd9b314caad

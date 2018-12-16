@@ -5,7 +5,9 @@ import org.hibernate.annotations.SQLInsert;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity(name = "User")
@@ -41,7 +43,7 @@ public class User {
     private int userID;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    private Set<Vocalization> vocalizations = new HashSet<>();
+    private List<Vocalization> vocalizations = new ArrayList<>();
 
     public User() {
 
@@ -132,11 +134,11 @@ public class User {
         this.modifyDate = modifyDate;
     }
 
-    public Set<Vocalization> getVocalizations() {
+    public List<Vocalization> getVocalizations() {
         return vocalizations;
     }
 
-    public void setVocalizations(Set<Vocalization> vocalizations) {
+    public void setVocalizations(List<Vocalization> vocalizations) {
         this.vocalizations = vocalizations;
     }
 

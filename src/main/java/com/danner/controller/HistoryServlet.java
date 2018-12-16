@@ -44,8 +44,7 @@ public class HistoryServlet extends HttpServlet {
         //vocalizationDao = new GenericDao(Vocalization.class);
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("user");
-        Set<Vocalization> vocals = user.getVocalizations();
-        List<Vocalization> vocalizations = new ArrayList<>(vocals);
+        List<Vocalization> vocalizations = user.getVocalizations();
         Collections.reverse(vocalizations);
 
         logger.info("Vocalizations: " + vocalizations);

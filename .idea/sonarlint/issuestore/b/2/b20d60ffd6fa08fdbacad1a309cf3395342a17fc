@@ -1,2 +1,4 @@
 
-osquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(İ¢êÍıÿÿÿÿ
+Xsquid:UselessImportCheck	".Remove this unused import 'java.util.HashSet'.(Ê‚êX8ıüáû,
+Zsquid:UselessImportCheck"*Remove this unused import 'java.util.Set'.(ö²„¤şÿÿÿÿ8¶«àû,
+osquid:S3776¡"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(İ¢êÍıÿÿÿÿ

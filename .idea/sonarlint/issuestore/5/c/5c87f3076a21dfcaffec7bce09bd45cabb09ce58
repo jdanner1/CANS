@@ -1,12 +1,12 @@
 
-Ysquid:UselessImportCheck"0Remove this unused import 'java.time.LocalDate'.(›‘¬èýÿÿÿÿ
 csquid:UselessImportCheck"3Remove this unused import 'com.danner.entity.User'.(ì—¢²ÿÿÿÿÿ8£ô‡õú,
+`squid:UselessImportCheck"<Remove this unused import 'javax.persistence.criteria.Path'.(±”ÝÔ
+Ysquid:UselessImportCheck"0Remove this unused import 'java.time.LocalDate'.(›‘¬èýÿÿÿÿ
+ksquid:UselessImportCheck"@Remove this unused import 'org.apache.logging.log4j.LogManager'.(Ë”Ëé8£ô‡õú,
+Vsquid:S18542"8Remove this useless assignment to local variable "root".(áÚƒ»8•…öú,
 lsquid:UselessImportCheck"<Remove this unused import 'org.apache.logging.log4j.Logger'.(»¯øÿÿÿÿ8£ô‡õú,
+Gsquid:S14812")Remove this unused "root" local variable.(áÚƒ»8•…öú,
+\squid:UselessImportCheck"3Remove this unused import 'org.hibernate.Criteria'.(öÏ¨ÿÿÿÿÿ
 _squid:UselessImportCheck
 "6Remove this unused import 'org.hibernate.query.Query'.(¤— ´ûÿÿÿÿ
-`squid:UselessImportCheck"<Remove this unused import 'javax.persistence.criteria.Path'.(±”ÝÔ
-\squid:UselessImportCheck"3Remove this unused import 'org.hibernate.Criteria'.(öÏ¨ÿÿÿÿÿ
 ksquid:UselessImportCheck";Remove this unused import 'com.danner.entity.Vocalization'.(¥¹±ñùÿÿÿÿ8£ô‡õú,
-ksquid:UselessImportCheck"@Remove this unused import 'org.apache.logging.log4j.LogManager'.(Ë”Ëé8£ô‡õú,
-Gsquid:S14812")Remove this unused "root" local variable.(áÚƒ»8•…öú,
-Vsquid:S18542"8Remove this useless assignment to local variable "root".(áÚƒ»8•…öú,
