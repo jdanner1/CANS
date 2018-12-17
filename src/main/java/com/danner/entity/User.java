@@ -2,14 +2,16 @@ package com.danner.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.SQLInsert;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
+
+/**
+ * @author jdanner
+ * The type User.
+ */
 @Entity(name = "User")
 @Table(name = "user")
 public class User {
@@ -45,10 +47,23 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Vocalization> vocalizations = new ArrayList<>();
 
+    /**
+     * Instantiates a new User.
+     */
     public User() {
 
     }
 
+    /**
+     * Instantiates a new User.
+     *
+     * @param statusCode the status code
+     * @param firstName  the first name
+     * @param lastName   the last name
+     * @param userName   the user name
+     * @param password   the password
+     * @param email      the email
+     */
     public User(String statusCode, String firstName, String lastName, String userName, String password, String email) {
         this.statusCode = statusCode;
         this.firstName = firstName;
@@ -59,85 +74,185 @@ public class User {
         createDate = LocalDate.now();
     }
 
+    /**
+     * Add vocalization.
+     *
+     * @param vocalization the vocalization
+     */
     public void addVocalization(Vocalization vocalization)  {
         vocalizations.add(vocalization);
         vocalization.setUser(this);
 
     }
 
+    /**
+     * Remove vocalization.
+     *
+     * @param vocalization the vocalization
+     */
     public void removeVocalization(Vocalization vocalization)  {
         vocalizations.remove(vocalization);
         vocalization.setUser(null);
     }
 
+    /**
+     * Gets status code.
+     *
+     * @return the status code
+     */
     public String getStatusCode() {
         return statusCode;
     }
 
+    /**
+     * Sets status code.
+     *
+     * @param statusCode the status code
+     */
     public void setStatusCode(String statusCode) {
         this.statusCode = statusCode;
     }
 
+    /**
+     * Gets first name.
+     *
+     * @return the first name
+     */
     public String getFirstName() {
         return firstName;
     }
 
+    /**
+     * Sets first name.
+     *
+     * @param firstName the first name
+     */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    /**
+     * Gets last name.
+     *
+     * @return the last name
+     */
     public String getLastName() {
         return lastName;
     }
 
+    /**
+     * Sets last name.
+     *
+     * @param lastName the last name
+     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
+    /**
+     * Gets user name.
+     *
+     * @return the user name
+     */
     public String getUserName() {
         return userName;
     }
 
+    /**
+     * Sets user name.
+     *
+     * @param userName the user name
+     */
     public void setUserName(String userName) {
         this.userName = userName;
     }
 
+    /**
+     * Gets password.
+     *
+     * @return the password
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     * Sets password.
+     *
+     * @param password the password
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
+    /**
+     * Gets email.
+     *
+     * @return the email
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Sets email.
+     *
+     * @param email the email
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     * Gets user id.
+     *
+     * @return the user id
+     */
     public int getUserID() {
         return userID;
     }
 
+    /**
+     * Gets create date.
+     *
+     * @return the create date
+     */
     public LocalDate getCreateDate() {
         return createDate;
     }
 
+    /**
+     * Gets modify date.
+     *
+     * @return the modify date
+     */
     public LocalDate getModifyDate() {
         return modifyDate;
     }
 
+    /**
+     * Sets modify date.
+     *
+     * @param modifyDate the modify date
+     */
     public void setModifyDate(LocalDate modifyDate) {
         this.modifyDate = modifyDate;
     }
 
+    /**
+     * Gets vocalizations.
+     *
+     * @return the vocalizations
+     */
     public List<Vocalization> getVocalizations() {
         return vocalizations;
     }
 
+    /**
+     * Sets vocalizations.
+     *
+     * @param vocalizations the vocalizations
+     */
     public void setVocalizations(List<Vocalization> vocalizations) {
         this.vocalizations = vocalizations;
     }

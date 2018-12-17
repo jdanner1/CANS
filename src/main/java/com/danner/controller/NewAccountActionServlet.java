@@ -10,7 +10,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
 /**
- *
+ * Process the new account form, creating new user and making details of the user available to the JSP.
  *
  *@author    John Danner
  */

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- *
+ * Identifies the vocalization selected for regeneration, gets the details needed to rebuild it and does so.  The user is directed based on the outcome.
  *
  *@author    John Danner
  */
@@ -53,11 +53,16 @@ public class ResubmitVocalizationServlet extends HttpServlet {
         vocalizationDao.addEntity(newVocalization);
 
         VoiceFiler audio = new VoiceFiler();
-        audio.generateVoiceFile(newVocalization, sessionId, relativePath);
+        Boolean result = audio.generateVoiceFile(newVocalization, sessionId, relativePath);
         session.setAttribute("vocalization", newVocalization);
 
-        String url = "Vocalization";
-        response.sendRedirect(url);
+        if (result) {
+            String url = "Vocalization";
+            response.sendRedirect(url);
+        } else {
+            String url = "VocalizationFailure";
+            response.sendRedirect(url);
+        }
     }
 }
 

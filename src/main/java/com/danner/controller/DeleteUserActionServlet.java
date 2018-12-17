@@ -17,7 +17,7 @@ import java.util.List;
 
 
 /**
- * The type Delete user action servlet.
+ * The Delete user action servlet, handles delete user form submissions by removing child records and then the user record.
  *
  * @author John Danner
  */
@@ -49,12 +49,15 @@ public class DeleteUserActionServlet extends HttpServlet {
         deleteRoles(user);
 
         userDao.deleteEntity(userDao.getEntityByID(userID));
-        //userDao.deleteEntity(user);
 
         String url = "Home";
         response.sendRedirect(url);
     }
 
+    /**
+     * Loops through vocalizations for the user, deleting each
+     * @param user
+     */
     private void deleteVocalizations(User user) {
         GenericDao vocalizationDao;
         vocalizationDao = new GenericDao(Vocalization.class);
@@ -66,6 +69,10 @@ public class DeleteUserActionServlet extends HttpServlet {
         }
     }
 
+    /**
+     * Loops through roles for the user, deleting each
+     * @param user
+     */
     private void deleteRoles(User user) {
         GenericDao roleDao;
         roleDao = new GenericDao(Role.class);

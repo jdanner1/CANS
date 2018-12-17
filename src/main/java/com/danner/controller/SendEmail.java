@@ -30,8 +30,21 @@ import com.danner.utility.PropertiesLoader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * The type Send email.
+ * @author jdanner/AWS
+ */
 public class SendEmail implements PropertiesLoader {
 
+    /**
+     * Generates email using AWS SES, configured to meet the needs and credentials in place here.
+     *
+     * @param filePath the file path
+     * @param email    the email
+     * @return boolean
+     * @throws MessagingException the messaging exception
+     * @throws IOException        the io exception
+     */
     public Boolean sendEmail(String filePath, String email) throws MessagingException, IOException {
         final Logger logger = LogManager.getLogger(this.getClass());
         final String host = "us-east-1";

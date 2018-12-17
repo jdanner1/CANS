@@ -13,7 +13,7 @@ import java.time.LocalDate;
 
 
 /**
- *
+ * Receives the edit profile form and updates user attributes with received data.
  *
  *@author    John Danner
  */

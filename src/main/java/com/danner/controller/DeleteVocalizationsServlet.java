@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * Controls the intake of page requests and forwards to the associated JSP.
- *
+ * Makes vocalizations available to the JSP.
  * @author John Danner
  *
  */

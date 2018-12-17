@@ -19,6 +19,7 @@ import java.util.*;
 
 /**
  * Controls the intake of page requests and forwards to the associated JSP.
+ * Makes user's vocalizations available to JSP, in the preferred order.
  *
  * @author John Danner
  *
@@ -38,10 +39,8 @@ public class HistoryServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        //GenericDao vocalizationDao;
         final Logger logger = LogManager.getLogger(this.getClass());
 
-        //vocalizationDao = new GenericDao(Vocalization.class);
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("user");
         List<Vocalization> vocalizations = user.getVocalizations();

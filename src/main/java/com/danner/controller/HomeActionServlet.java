@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * The type Home action servlet.
+ * The Home action servlet processes the form to create a new vocalization, calls for the new vocalization and directs the user based on the outcome of that attempt.
  *
  * @author John Danner
  */
@@ -26,7 +26,7 @@ import java.io.IOException;
 public class HomeActionServlet extends HttpServlet {
 
     /**
-     *  Handles HTTP GET requests.
+     *  Handles HTTP GET requests and directs user based on the outcome of the vocalization generation process.
      *
      *@param  request               the HttpRequest
      *@param  response              the HttpResponse
@@ -46,10 +46,13 @@ public class HomeActionServlet extends HttpServlet {
             String url = "VocalizationFailure";
             response.sendRedirect(url);
         }
-
-
     }
 
+    /**
+     * Takes the steps required to generate a vocalization and make file information available to the JSP.  It reports outcome of attempt.
+     * @param request
+     * @return
+     */
     private Boolean generateVocalization(HttpServletRequest request)  {
         final Logger logger = LogManager.getLogger(this.getClass());
         GenericDao vocalizationDao;

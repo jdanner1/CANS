@@ -16,10 +16,21 @@ import javax.persistence.criteria.Root;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * The type Generic dao.
+ * @author jdanner
+ *
+ * @param <T> the type parameter
+ */
 public class GenericDao<T> {
 
     private Class<T> type;
 
+    /**
+     * Instantiates a new Generic dao.
+     *
+     * @param type the type
+     */
     public GenericDao(Class<T> type) {
         this.type = type;
     }
@@ -28,6 +39,13 @@ public class GenericDao<T> {
         return SessionFactoryProvider.getSessionFactory().openSession();
     }
 
+    /**
+     * Gets entity by id.
+     *
+     * @param <T> the type parameter
+     * @param id  the id
+     * @return the entity by id
+     */
     public <T>T getEntityByID(int id) {
         Session session = getSession();
         T entity = (T)session.get(type, id);
@@ -35,6 +53,11 @@ public class GenericDao<T> {
         return entity;
     }
 
+    /**
+     * Delete entity.
+     *
+     * @param entity the entity
+     */
     public void deleteEntity(T entity)  {
         Session session = getSession();
         Transaction transaction = session.beginTransaction();
@@ -43,6 +66,11 @@ public class GenericDao<T> {
         session.close();
     }
 
+    /**
+     * Gets all.
+     *
+     * @return the all
+     */
     public List<T> getAll() {
         Session session = getSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
@@ -54,6 +82,12 @@ public class GenericDao<T> {
     }
 
 
+    /**
+     * Add entity int.
+     *
+     * @param entity the entity
+     * @return the int
+     */
     public int addEntity(T entity) {
         int id = 0;
         Session session = getSession();
@@ -64,6 +98,11 @@ public class GenericDao<T> {
         return id;
     }
 
+    /**
+     * Update entity.
+     *
+     * @param entity the entity
+     */
     public void updateEntity(T entity)  {
         Session session = getSession();
         Transaction transaction = session.beginTransaction();

@@ -7,12 +7,20 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import java.util.List;
 
+/**
+ * The type User manager.
+ * @author jdanner
+ */
 public class UserManager {
     private Session getSession() {
         return SessionFactoryProvider.getSessionFactory().openSession();
     }
 
-
+    /**
+     * Gets users.
+     *
+     * @return the users
+     */
     public List<User> getUsers() {
         List<User> users = null;
         Session session = getSession();
@@ -24,6 +32,11 @@ public class UserManager {
         return users;
     }
 
+    /**
+     * Gets vocalizations.
+     *
+     * @return the vocalizations
+     */
     public List<Vocalization> getVocalizations() {
         List<Vocalization> vocalization = null;
         Session session = getSession();

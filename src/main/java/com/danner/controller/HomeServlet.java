@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * Controls the intake of page requests and forwards to the associated JSP.
- *
+ * Identifies user and makes details available to JSP.
  * @author John Danner
  *
  */

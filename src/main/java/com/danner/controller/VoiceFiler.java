@@ -8,20 +8,23 @@ import com.ibm.watson.developer_cloud.text_to_speech.v1.model.SynthesizeOptions;
 import com.ibm.watson.developer_cloud.text_to_speech.v1.util.WaveUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.jupiter.api.Test;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
 import java.io.*;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.Properties;
 
+/**
+ * The type Voice filer, generates audio files using IBM Watson API
+ * @author jdanner/IBM
+ */
 public class VoiceFiler implements PropertiesLoader {
 
+    /**
+     * Generate voice file boolean.
+     *
+     * @param vocalization the vocalization
+     * @param sessionId    the session id
+     * @param relativePath the relative path
+     * @return the boolean representing the success of emailing the file.
+     */
     public boolean generateVoiceFile(Vocalization vocalization, String sessionId, String relativePath)  {
         final Logger logger = LogManager.getLogger(this.getClass());
         String propertyPath = "/properties.properties";
@@ -80,6 +83,10 @@ public class VoiceFiler implements PropertiesLoader {
         return result;
     }
 
+    /**
+     * Deletes files and directories
+     * @param receivedPath
+     */
     private void deleteDirectory(String receivedPath) {  // String path
         final Logger logger = LogManager.getLogger(this.getClass());
         File file  = new File(receivedPath);

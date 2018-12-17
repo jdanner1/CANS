@@ -6,6 +6,10 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+/**
+ * @author jdanner
+ * The type Vocalization.
+ */
 @Entity(name = "Vocalization")
 @Table(name = "vocalization")
 public class Vocalization {
@@ -28,10 +32,21 @@ public class Vocalization {
     private String language;
     private boolean isEmailed;
 
+    /**
+     * Instantiates a new Vocalization.
+     */
     public Vocalization() {
 
     }
 
+    /**
+     * Instantiates a new Vocalization.
+     *
+     * @param user      the user
+     * @param text      the text
+     * @param language  the language
+     * @param isEmailed the is emailed
+     */
     public Vocalization(User user, String text, String language, boolean isEmailed) {
         this.user = user;
         this.text = text;
@@ -40,44 +55,93 @@ public class Vocalization {
         createTimestamp = LocalDateTime.now();
     }
 
+    /**
+     * Gets vocalization id.
+     *
+     * @return the vocalization id
+     */
     public int getVocalizationID() {
         return vocalizationID;
     }
 
 
-
+    /**
+     * Gets user.
+     *
+     * @return the user
+     */
     public User getUser() {
         return user;
     }
 
+    /**
+     * Sets user.
+     *
+     * @param user the user
+     */
     public void setUser(User user) {
         this.user = user;
     }
 
+    /**
+     * Gets create timestamp.
+     *
+     * @return the create timestamp
+     */
     public LocalDateTime getCreateTimestamp() {
         return createTimestamp;
     }
 
+    /**
+     * Gets text.
+     *
+     * @return the text
+     */
     public String getText() {
         return text;
     }
 
+    /**
+     * Sets text.
+     *
+     * @param text the text
+     */
     public void setText(String text) {
         this.text = text;
     }
 
+    /**
+     * Gets language.
+     *
+     * @return the language
+     */
     public String getLanguage() {
         return language;
     }
 
+    /**
+     * Sets language.
+     *
+     * @param language the language
+     */
     public void setLanguage(String language) {
         this.language = language;
     }
 
+    /**
+     * Is emailed boolean.
+     *
+     * @return the boolean
+     */
     public boolean isEmailed() {
         return isEmailed;
     }
 
+    /**
+     * Sets emailed.
+     *
+     * @param emailed the emailed
+     */
     public void setEmailed(boolean emailed) {
         isEmailed = emailed;
     }
